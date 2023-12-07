@@ -1,3 +1,5 @@
+import Address from "./Address";
+
 export default interface Account {
   _id?: string;
   uid: string;
@@ -5,8 +7,8 @@ export default interface Account {
   displayName: string;
   email: string;
   phoneNumber: string;
-  toAddress: string;
-  fromAddress: string;
+  toAddress: Address;
+  fromAddress: Address;
   tasks: Task[];
   orders: Order[];
   expenses: Expense[];

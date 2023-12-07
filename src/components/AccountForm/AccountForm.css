@@ -1,0 +1,11 @@
+.AccountForm {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 30px;
+  width: 40%;
+}
+
+.AccountForm .address {
+  display: flex;
+  flex-direction: column;
+}
