@@ -91,38 +91,38 @@ const AccountForm = () => {
 
       <div className="address">
         <p>Current Address:</p>
-        <label htmlFor="street">Street:</label>
+        <label htmlFor="from-street">Street:</label>
         <input
-          type="street"
-          name="street"
-          id="street"
+          type="text"
+          name="from-street"
+          id="from-street"
           value={fromStreet}
           onChange={(e) => setFromStreet(e.target.value)}
         />
 
-        <label htmlFor="city">City:</label>
+        <label htmlFor="from-city">City:</label>
         <input
-          type="city"
-          name="city"
-          id="city"
+          type="text"
+          name="from-city"
+          id="from-city"
           value={fromCity}
           onChange={(e) => setFromCity(e.target.value)}
         />
 
-        <label htmlFor="state">State:</label>
+        <label htmlFor="from-state">State:</label>
         <input
-          type="state"
-          name="state"
-          id="state"
+          type="text"
+          name="from-state"
+          id="from-state"
           value={fromState}
           onChange={(e) => setFromState(e.target.value)}
         />
 
-        <label htmlFor="zipcode">Zipcode:</label>
+        <label htmlFor="from-zipcode">Zipcode:</label>
         <input
-          type="zip"
-          name="zipcode"
-          id="zipcode"
+          type="text"
+          name="from-zipcode"
+          id="from-zipcode"
           value={fromZipcode}
           onChange={(e) => setFromZipcode(e.target.value)}
         />
@@ -130,38 +130,38 @@ const AccountForm = () => {
 
       <div className="address">
         <p>New Address:</p>
-        <label htmlFor="street">Street:</label>
+        <label htmlFor="to-street">Street:</label>
         <input
-          type="street"
-          name="street"
-          id="street"
+          type="text"
+          name="to-street"
+          id="to-street"
           value={toStreet}
           onChange={(e) => setToStreet(e.target.value)}
         />
 
-        <label htmlFor="city">City:</label>
+        <label htmlFor="to-city">City:</label>
         <input
-          type="city"
-          name="city"
-          id="city"
+          type="text"
+          name="to-city"
+          id="to-city"
           value={toCity}
           onChange={(e) => setToCity(e.target.value)}
         />
 
-        <label htmlFor="state">State:</label>
+        <label htmlFor="to-state">State:</label>
         <input
-          type="state"
-          name="state"
-          id="state"
+          type="text"
+          name="to-state"
+          id="to-state"
           value={toState}
           onChange={(e) => setToState(e.target.value)}
         />
 
-        <label htmlFor="zipcode">Zipcode:</label>
+        <label htmlFor="to-zipcode">Zipcode:</label>
         <input
-          type="zip"
-          name="zipcode"
-          id="zipcode"
+          type="text"
+          name="to-zipcode"
+          id="to-zipcode"
           value={toZipcode}
           onChange={(e) => setToZipcode(e.target.value)}
         />

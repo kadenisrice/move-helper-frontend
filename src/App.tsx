@@ -5,6 +5,7 @@ import SignIn from "./components/SignIn/SignIn";
 import { useContext } from "react";
 import AuthContext from "./context/AuthContext";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Tasks from "./components/Tasks/Tasks";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={user ? <Dashboard /> : <SignIn />}></Route>
+        <Route path="/tasks" element={<Tasks />}></Route>
       </Routes>
     </BrowserRouter>
   );
