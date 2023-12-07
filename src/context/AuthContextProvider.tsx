@@ -27,12 +27,11 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
       getAccountById(user.uid).then((res) => {
         console.log("TEST", res);
 
-        if (res._id) {
+        if (res && res._id) {
           console.log("Account exists");
+          setAccount(res);
         } else {
           console.log("Account does not exist");
-        }
-        if (res._id === undefined) {
           console.log("Test", res);
 
           //create them an a account
@@ -48,8 +47,6 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
             expenses: [],
           };
           createNewAccount(newAccount).then((r) => setAccount(r));
-        } else {
-          setAccount(res);
         }
       });
     }
