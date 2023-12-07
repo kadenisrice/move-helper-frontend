@@ -9,39 +9,27 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [account, setAccount] = useState<Account | null>(null);
 
-  console.log(user);
-  console.log(account);
-
   useEffect(() => {
     // useEffect to only register once at start -- firebase auth, method onauthsavecchanges, from google sign in
     return auth.onAuthStateChanged((newUser) => {
       setUser(newUser);
-      console.log(newUser); // google user
     });
   }, []);
 
   useEffect(() => {
     if (user) {
-      console.log("New user exists");
-
       getAccountById(user.uid).then((res) => {
-        console.log("TEST", res);
-
         if (res && res._id) {
-          console.log("Account exists");
           setAccount(res);
         } else {
-          console.log("Account does not exist");
-          console.log("Test", res);
-
           //create them an a account
           const newAccount: Account = {
             uid: user.uid,
             displayName: user.displayName ?? "",
             email: user.email ?? "",
             phoneNumber: "",
-            toAddress: "",
-            fromAddress: "",
+            toAddress: { street: "", city: "", state: "", zip: 0 },
+            fromAddress: { street: "", city: "", state: "", zip: 0 },
             tasks: [],
             orders: [],
             expenses: [],
@@ -53,7 +41,9 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
   }, [user]);
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, account }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 export default AuthContextProvider;
