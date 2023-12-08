@@ -14,7 +14,8 @@ export default interface Account {
   expenses: Expense[];
 }
 
-interface Task {
+export interface Task {
+  uuid: string;
   name: string;
   content: string;
   deadline: string;
