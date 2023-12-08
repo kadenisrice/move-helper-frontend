@@ -3,9 +3,16 @@ import "./AccountForm.css";
 import Account from "../../models/Account";
 import AuthContext from "../../context/AuthContext";
 import { updateAccountById } from "../../services/accountApi";
+import { useNavigate } from "react-router-dom";
 
-const AccountForm = () => {
+interface Props {
+  setShowForm: (b: boolean) => void;
+}
+
+const AccountForm = ({ setShowForm }: Props) => {
   const { account, user } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [nickname, setNickname] = useState("");
@@ -65,6 +72,8 @@ const AccountForm = () => {
     setToCity("");
     setToState("");
     setToZipcode("");
+    setShowForm(false);
+    navigate("/dashboard");
   };
 
   return (
