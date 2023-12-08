@@ -1,17 +1,48 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import "./TaskForm.css";
+import { addNewTask, getAccountById } from "../../services/accountApi";
+import AuthContext from "../../context/AuthContext";
+import { v4 as uuidv4 } from "uuid";
 
-const TaskForm = () => {
+interface Props {
+  setShowTaskForm: (e: boolean) => void;
+}
+
+const TaskForm = ({ setShowTaskForm }: Props) => {
+  const { account, setAccount } = useContext(AuthContext);
+
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
   const [deadline, setDeadline] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    const newTask = {
+      uuid: uuidv4(),
+      name,
+      content,
+      deadline,
+    };
+
+    // if account exists then we add new task:
+    if (account) {
+      addNewTask(account.uid, newTask).then(() => {
+        getAccountById(account.uid).then((response) => {
+          if (response) {
+            setAccount(response);
+          }
+        });
+      });
+    }
+
+    setShowTaskForm(false);
   };
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
+      <button onClick={() => setShowTaskForm(false)}>close</button>
+
       <label htmlFor="name">Name:</label>
       <input
         type="text"
