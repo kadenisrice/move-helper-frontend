@@ -4,38 +4,45 @@ import EditAddressForm from "../EditAddressForm/EditAddressForm";
 import "./CostEstimate.css";
 import { getRatesFromShippo } from "../../services/shippoApi";
 import AuthContext from "../../context/AuthContext";
+import ShippoObject from "../../models/ShippoObject";
 
 const CostEstimate = () => {
   const { account } = useContext(AuthContext);
 
   const [showEditAddressForm, setShowEditAddressForm] = useState(false);
+  const [costEstimate, setCostEstimate] = useState<ShippoObject | null>(null);
 
   useEffect(() => {
     if (account) {
       getRatesFromShippo({
         address_from: {
           name: account.displayName,
-          street1: "215 Clayton St.",
-          city: "San Francisco",
-          state: "CA",
-          zip: "94117",
+          street1: account.fromAddress.street,
+          city: account.fromAddress.city,
+          state: account.fromAddress.state,
+          zip: account.fromAddress.zip,
           country: "US",
-          phone: "+1 555 341 9393",
-          email: "shippotle@goshippo.com",
+          phone: account.phoneNumber,
+          email: account.email,
         },
         address_to: {
-          name: "Mr. Hippo",
-          street1: "123 Main St.",
-          city: "New York",
-          state: "NY",
-          zip: "10001",
+          name: account.displayName,
+          street1: account.toAddress.street,
+          city: account.toAddress.city,
+          state: account.toAddress.state,
+          zip: account.toAddress.zip,
           country: "US",
-          phone: "+1 555 341 9393",
-          email: "mrhippo@goshippo.com",
+          phone: account.phoneNumber,
+          email: account.email,
         },
         parcels: account.boxes,
         async: false,
-      }).then((res) => console.log(res));
+      }).then((res) => {
+        if (res) {
+          setCostEstimate(res);
+          console.log(res);
+        }
+      });
     }
   }, []);
 
@@ -48,6 +55,15 @@ const CostEstimate = () => {
       <AddBoxForm />
       <h2>Cost Estimate</h2>
       <button>Calculate Cost Estimate</button>
+      <ul>
+        {costEstimate?.rates.map((rate) => (
+          <li key={rate.object_id}>
+            <p>{rate.provider}</p>
+            <p>${rate.amount}</p>
+            <p>{rate.duration_terms}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

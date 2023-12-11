@@ -57,6 +57,11 @@ const AddBoxForm = () => {
         }
       });
     }
+
+    setLength("");
+    setHeight("");
+    setWidth("");
+    setWeight("");
   };
 
   return (

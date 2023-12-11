@@ -28,11 +28,12 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
             displayName: user.displayName ?? "",
             email: user.email ?? "",
             phoneNumber: "",
-            toAddress: { street: "", city: "", state: "", zip: 0 },
-            fromAddress: { street: "", city: "", state: "", zip: 0 },
+            toAddress: { street: "", city: "", state: "", zip: "" },
+            fromAddress: { street: "", city: "", state: "", zip: "" },
             tasks: [],
             orders: [],
             expenses: [],
+            boxes: [],
           };
           createNewAccount(newAccount).then((r) => setAccount(r));
         }
