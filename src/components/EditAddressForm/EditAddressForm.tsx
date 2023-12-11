@@ -1,9 +1,11 @@
-import { useContext, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import "./EditAddressForm.css";
 import AuthContext from "../../context/AuthContext";
+import Account from "../../models/Account";
+import { updateAccountById } from "../../services/accountApi";
 
 const EditAddressForm = () => {
-  const { account } = useContext(AuthContext);
+  const { account, setAccount } = useContext(AuthContext);
 
   // this is to set the TO ADDRESS:
   const [toStreet, setToStreet] = useState(account?.toAddress.street ?? "");
@@ -21,8 +23,43 @@ const EditAddressForm = () => {
     account?.fromAddress.zip ?? ""
   );
 
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (account) {
+      const updatedAccount: Account = {
+        uid: account.uid,
+        name: account.name,
+        displayName: account.displayName ?? "",
+        email: account.email ?? "",
+        phoneNumber: account.phoneNumber,
+        toAddress: {
+          street: toStreet,
+          city: toCity,
+          state: toState,
+          zip: toZipcode,
+        },
+        fromAddress: {
+          street: fromStreet,
+          city: fromCity,
+          state: fromState,
+          zip: fromZipcode,
+        },
+        tasks: [...account.tasks],
+        orders: [...account.orders],
+        expenses: [...account.expenses],
+        boxes: [...account.boxes],
+      };
+      updateAccountById(account._id!, updatedAccount).then((res) => {
+        if (res) {
+          setAccount(res);
+        }
+      });
+    }
+  };
+
   return (
-    <div className="EditAddressForm">
+    <form className="EditAddressForm" onSubmit={(e) => submitHandler(e)}>
       <h2>Edit Address</h2>
 
       <h3>To Address</h3>
@@ -77,7 +114,7 @@ const EditAddressForm = () => {
         placeholder="Zipcode"
       />
       <button>Update Address</button>
-    </div>
+    </form>
   );
 };
 

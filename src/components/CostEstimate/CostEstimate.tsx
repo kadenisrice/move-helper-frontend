@@ -5,6 +5,7 @@ import "./CostEstimate.css";
 import { getRatesFromShippo } from "../../services/shippoApi";
 import AuthContext from "../../context/AuthContext";
 import ShippoObject from "../../models/ShippoObject";
+import DisplayUserBoxes from "../DisplayUserBoxes/DisplayUserBoxes";
 
 const CostEstimate = () => {
   const { account } = useContext(AuthContext);
@@ -14,6 +15,8 @@ const CostEstimate = () => {
 
   useEffect(() => {
     if (account) {
+      console.log(account.boxes);
+
       getRatesFromShippo({
         address_from: {
           name: account.displayName,
@@ -44,7 +47,7 @@ const CostEstimate = () => {
         }
       });
     }
-  }, []);
+  }, [account]);
 
   return (
     <div className="CostEstimate">
@@ -54,7 +57,7 @@ const CostEstimate = () => {
       {showEditAddressForm && <EditAddressForm />}
       <AddBoxForm />
       <h2>Cost Estimate</h2>
-      <button>Calculate Cost Estimate</button>
+
       <ul>
         {costEstimate?.rates.map((rate) => (
           <li key={rate.object_id}>
@@ -64,6 +67,7 @@ const CostEstimate = () => {
           </li>
         ))}
       </ul>
+      <DisplayUserBoxes />
     </div>
   );
 };

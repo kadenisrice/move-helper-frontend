@@ -56,3 +56,20 @@ export const removeTask = async (uuid: string, uid: string): Promise<void> => {
     console.log(err);
   }
 };
+
+//PATCH
+export const updateBoxQuantity = async (
+  uuid: string,
+  newQuantity: number
+): Promise<void> => {
+  try {
+    return (
+      await axios.patch(
+        `${baseUrl}/accounts/update-box-quantity/${encodeURIComponent(uuid)}`,
+        { quantity: newQuantity }
+      )
+    ).data;
+  } catch (err) {
+    console.log(err);
+  }
+};
