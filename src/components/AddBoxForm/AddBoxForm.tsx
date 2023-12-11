@@ -76,6 +76,7 @@ const AddBoxForm = () => {
         id="length"
         value={length}
         onChange={(e) => setLength(e.target.value)}
+        required
       />
 
       <label htmlFor="width">Width:</label>
@@ -84,6 +85,7 @@ const AddBoxForm = () => {
         id="width"
         value={width}
         onChange={(e) => setWidth(e.target.value)}
+        required
       />
 
       <label htmlFor="height">Height:</label>
@@ -92,6 +94,7 @@ const AddBoxForm = () => {
         id="height"
         value={height}
         onChange={(e) => setHeight(e.target.value)}
+        required
       />
 
       <label htmlFor="weight">Weight:</label>
@@ -100,6 +103,7 @@ const AddBoxForm = () => {
         id="weight"
         value={weight}
         onChange={(e) => setWeight(e.target.value)}
+        required
       />
       <button>Add Box</button>
     </form>
