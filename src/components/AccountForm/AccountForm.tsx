@@ -57,6 +57,7 @@ const AccountForm = ({ setShowForm }: Props) => {
         tasks: [],
         orders: [],
         expenses: [],
+        boxes: [],
       };
 
       updateAccountById(account._id!, updatedAccount);
