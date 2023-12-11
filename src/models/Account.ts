@@ -15,7 +15,7 @@ export default interface Account {
   boxes: Box[];
 }
 
-interface Box {
+export interface Box {
   uuid: string;
   length: string;
   width: string;

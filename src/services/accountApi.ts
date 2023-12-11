@@ -57,7 +57,7 @@ export const removeTask = async (uuid: string, uid: string): Promise<void> => {
   }
 };
 
-//PATCH
+// update box quantity:
 export const updateBoxQuantity = async (
   uuid: string,
   newQuantity: number
@@ -67,6 +67,21 @@ export const updateBoxQuantity = async (
       await axios.patch(
         `${baseUrl}/accounts/update-box-quantity/${encodeURIComponent(uuid)}`,
         { quantity: newQuantity }
+      )
+    ).data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// Delete box from boxes array:
+export const removeBox = async (uuid: string, uid: string): Promise<void> => {
+  try {
+    return (
+      await axios.patch(
+        `${baseUrl}/accounts/delete-box/${encodeURIComponent(
+          uuid
+        )}/${encodeURIComponent(uid)}`
       )
     ).data;
   } catch (err) {

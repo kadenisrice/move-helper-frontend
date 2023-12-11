@@ -6,6 +6,8 @@ import { getRatesFromShippo } from "../../services/shippoApi";
 import AuthContext from "../../context/AuthContext";
 import ShippoObject from "../../models/ShippoObject";
 import DisplayUserBoxes from "../DisplayUserBoxes/DisplayUserBoxes";
+import { Box } from "../../models/Account";
+import UhaulEstimate from "../UhaulEstimate/UhaulEstimate";
 
 const CostEstimate = () => {
   const { account } = useContext(AuthContext);
@@ -14,8 +16,13 @@ const CostEstimate = () => {
   const [costEstimate, setCostEstimate] = useState<ShippoObject | null>(null);
 
   useEffect(() => {
-    if (account) {
-      console.log(account.boxes);
+    if (account && account.boxes[0]) {
+      const totalBoxes: Box[] = [];
+      account.boxes.forEach((box) => {
+        for (let index = 0; index < box.quantity; index++) {
+          totalBoxes.push(box);
+        }
+      });
 
       getRatesFromShippo({
         address_from: {
@@ -38,14 +45,16 @@ const CostEstimate = () => {
           phone: account.phoneNumber,
           email: account.email,
         },
-        parcels: account.boxes,
+
+        parcels: totalBoxes,
         async: false,
       }).then((res) => {
         if (res) {
           setCostEstimate(res);
-          console.log(res);
         }
       });
+    } else {
+      setCostEstimate(null);
     }
   }, [account]);
 
@@ -56,8 +65,8 @@ const CostEstimate = () => {
       </button>
       {showEditAddressForm && <EditAddressForm />}
       <AddBoxForm />
-      <h2>Cost Estimate</h2>
 
+      <h2>Cost Estimate</h2>
       <ul>
         {costEstimate?.rates.map((rate) => (
           <li key={rate.object_id}>
@@ -68,6 +77,7 @@ const CostEstimate = () => {
         ))}
       </ul>
       <DisplayUserBoxes />
+      <UhaulEstimate />
     </div>
   );
 };
