@@ -3,6 +3,7 @@ import "./AddBoxForm.css";
 import AuthContext from "../../context/AuthContext";
 import Account from "../../models/Account";
 import { updateAccountById } from "../../services/accountApi";
+import { v4 as uuidv4 } from "uuid";
 
 const AddBoxForm = () => {
   const [length, setLength] = useState("");
@@ -41,12 +42,14 @@ const AddBoxForm = () => {
         boxes: [
           ...account.boxes,
           {
+            uuid: uuidv4(),
             length,
             width,
             height,
             distance_unit: "in",
             weight,
             mass_unit: "lb",
+            quantity: 1,
           },
         ],
       };
