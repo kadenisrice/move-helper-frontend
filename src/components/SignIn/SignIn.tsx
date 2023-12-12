@@ -16,7 +16,7 @@ const SignIn = () => {
 
   return (
     <div className="SignIn">
-      <button onClick={signInWithGoogle}>Sign In With Google</button>
+      {!user && <button onClick={signInWithGoogle}>Sign In With Google</button>}
       {showForm && <AccountForm setShowForm={setShowForm} />}
     </div>
   );

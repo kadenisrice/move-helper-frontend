@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
-import { signOut } from "../../firebaseConfig";
+import { signInWithGoogle, signOut } from "../../firebaseConfig";
 import "./Header.css";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <header className="Header">
       <Link to="/dashboard">
         <h1>MoveHelper</h1>
       </Link>
-      <button onClick={signOut}>sign out</button>
+      {user ? (
+        <button onClick={signOut}>sign out</button>
+      ) : (
+        <button onClick={signInWithGoogle}>Sign In With Google</button>
+      )}
     </header>
   );
 };
