@@ -1,11 +1,9 @@
 import { useContext } from "react";
 import "./DisplayUserBoxes.css";
 import AuthContext from "../../context/AuthContext";
-import Account from "../../models/Account";
 import {
   getAccountById,
   removeBox,
-  updateAccountById,
   updateBoxQuantity,
 } from "../../services/accountApi";
 
