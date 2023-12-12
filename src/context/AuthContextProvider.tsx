@@ -26,6 +26,7 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
           const newAccount: Account = {
             uid: user.uid,
             displayName: user.displayName ?? "",
+            photoURL: user.photoURL ?? "",
             email: user.email ?? "",
             phoneNumber: "",
             toAddress: { street: "", city: "", state: "", zip: "" },

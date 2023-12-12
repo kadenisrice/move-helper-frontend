@@ -96,6 +96,7 @@ const AccountForm = ({ setShowForm }: Props) => {
         name="phone-number"
         id="phone-number"
         value={phoneNumber}
+        required
         onChange={(e) => setPhoneNumber(e.target.value)}
       />
 
@@ -107,6 +108,7 @@ const AccountForm = ({ setShowForm }: Props) => {
           name="from-street"
           id="from-street"
           value={fromStreet}
+          required
           onChange={(e) => setFromStreet(e.target.value)}
         />
 
@@ -116,6 +118,7 @@ const AccountForm = ({ setShowForm }: Props) => {
           name="from-city"
           id="from-city"
           value={fromCity}
+          required
           onChange={(e) => setFromCity(e.target.value)}
         />
 
@@ -125,6 +128,7 @@ const AccountForm = ({ setShowForm }: Props) => {
           name="from-state"
           id="from-state"
           value={fromState}
+          required
           onChange={(e) => setFromState(e.target.value)}
         />
 
@@ -134,6 +138,7 @@ const AccountForm = ({ setShowForm }: Props) => {
           name="from-zipcode"
           id="from-zipcode"
           value={fromZipcode}
+          required
           onChange={(e) => setFromZipcode(e.target.value)}
         />
       </div>
@@ -146,6 +151,7 @@ const AccountForm = ({ setShowForm }: Props) => {
           name="to-street"
           id="to-street"
           value={toStreet}
+          required
           onChange={(e) => setToStreet(e.target.value)}
         />
 
@@ -155,6 +161,7 @@ const AccountForm = ({ setShowForm }: Props) => {
           name="to-city"
           id="to-city"
           value={toCity}
+          required
           onChange={(e) => setToCity(e.target.value)}
         />
 
@@ -164,6 +171,7 @@ const AccountForm = ({ setShowForm }: Props) => {
           name="to-state"
           id="to-state"
           value={toState}
+          required
           onChange={(e) => setToState(e.target.value)}
         />
 
@@ -173,6 +181,7 @@ const AccountForm = ({ setShowForm }: Props) => {
           name="to-zipcode"
           id="to-zipcode"
           value={toZipcode}
+          required
           onChange={(e) => setToZipcode(e.target.value)}
         />
       </div>

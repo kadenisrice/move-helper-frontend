@@ -5,6 +5,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Tasks from "./components/Tasks/Tasks";
 import CostEstimate from "./components/CostEstimate/CostEstimate";
 import AccountSetup from "./components/AccountSetup/AccountSetup";
+import CommunityTips from "./components/CommunityTips/CommunityTips";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/tasks" element={<Tasks />}></Route>
         <Route path="/cost-estimate" element={<CostEstimate />}></Route>
+        <Route path="/community-tips" element={<CommunityTips />}></Route>
       </Routes>
     </BrowserRouter>
   );

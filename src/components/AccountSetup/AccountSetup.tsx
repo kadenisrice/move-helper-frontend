@@ -4,14 +4,17 @@ import AuthContext from "../../context/AuthContext";
 import AccountForm from "../AccountForm/AccountForm";
 
 const AccountSetup = () => {
-  const { user } = useContext(AuthContext);
+  const { user, account } = useContext(AuthContext);
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     if (user) {
       setShowForm(true);
     }
-  }, [user]);
+    if (account && account.toAddress.state) {
+      setShowForm(false);
+    }
+  }, [user, account]);
 
   return (
     <div className="AccountSetup">
