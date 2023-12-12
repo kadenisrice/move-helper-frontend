@@ -1,0 +1,10 @@
+.SuggestedTasks span {
+    transition: transform 0.2s linear;
+    display: inline-block;
+    transform: rotate(0deg);
+}
+
+.SuggestedTasks .flipUpsideDown {
+    transform: rotate(-180deg);
+    
+}

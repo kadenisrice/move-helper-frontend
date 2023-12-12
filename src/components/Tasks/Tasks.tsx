@@ -3,6 +3,7 @@ import "./Tasks.css";
 import AuthContext from "../../context/AuthContext";
 import TaskForm from "../TaskForm/TaskForm";
 import { getAccountById, removeTask } from "../../services/accountApi";
+import SuggestedTasks from "../SuggestedTasks/SuggestedTasks";
 
 const Tasks = () => {
   const { account, setAccount } = useContext(AuthContext);
@@ -43,6 +44,7 @@ const Tasks = () => {
             </li>
           ))}
       </ul>
+      <SuggestedTasks />
     </div>
   );
 };
