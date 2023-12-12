@@ -1,10 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import "./SignIn.css";
+import "./AccountSetup.css";
 import AuthContext from "../../context/AuthContext";
-import { signInWithGoogle } from "../../firebaseConfig";
 import AccountForm from "../AccountForm/AccountForm";
 
-const SignIn = () => {
+const AccountSetup = () => {
   const { user } = useContext(AuthContext);
   const [showForm, setShowForm] = useState(false);
 
@@ -15,11 +14,10 @@ const SignIn = () => {
   }, [user]);
 
   return (
-    <div className="SignIn">
-      {!user && <button onClick={signInWithGoogle}>Sign In With Google</button>}
+    <div className="AccountSetup">
       {showForm && <AccountForm setShowForm={setShowForm} />}
     </div>
   );
 };
 
-export default SignIn;
+export default AccountSetup;

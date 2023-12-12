@@ -9,7 +9,7 @@ const UhaulEstimate = () => {
   const [currentUHaulTruck, setCurrentUHaulTruck] = useState<UHaul | null>(
     null
   );
-  const [cost, setCost] = useState("");
+  const [estimate, setEstimate] = useState(0);
 
   const getCurrentTruck = (truckType: string) => {
     return uhualFleet.find((truck) => truck.type === truckType);
@@ -25,13 +25,21 @@ const UhaulEstimate = () => {
     }
   }, [truck]);
 
-  const submitHandler = (e: FormEvent) => {};
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
+    if (currentUHaulTruck) {
+      const truckBaseRate = currentUHaulTruck?.rate.baseRate;
+      const truckPerMileRate = currentUHaulTruck?.rate.perMile;
+      const milesAsNumber: number = +miles;
+      setEstimate(truckBaseRate + truckPerMileRate * milesAsNumber);
+    }
+  };
 
   return (
     <div className="UhaulEstimate">
       <h2>Uhaul Cost Estimates</h2>
 
-      <form onSubmit={() => {}}>
+      <form onSubmit={(e) => submitHandler(e)}>
         <p>Truck Options:</p>
         <select
           name="trucks"
@@ -56,21 +64,47 @@ const UhaulEstimate = () => {
           name="miles-traveled"
           value={miles}
           onChange={(e) => setMiles(e.target.value)}
+          required
         />
 
         <button>calculate uhaul estimate</button>
       </form>
       {currentUHaulTruck && (
-        <div>
-          <h2>{currentUHaulTruck.movingType}</h2>
-          <p>{currentUHaulTruck.dimensions.deckHeight}</p>
-          <p>{currentUHaulTruck.dimensions.doorOpening}</p>
-          <p>{currentUHaulTruck.dimensions.inside}</p>
-          <p>{currentUHaulTruck.dimensions.length}</p>
-          <p>{currentUHaulTruck.dimensions.loadingRamp}</p>
-          <p>{currentUHaulTruck.rate.baseRate}</p>
-          <p>{currentUHaulTruck.rate.perMile}</p>
-        </div>
+        <>
+          <h3 style={{ textAlign: "center" }}>
+            {currentUHaulTruck.movingType}
+          </h3>
+          <div className="uHaulDiplayContainer">
+            <div>
+              <p>Dimensions: {currentUHaulTruck.dimensions.inside}</p>
+              {currentUHaulTruck.dimensions.doorOpening && (
+                <p>Door Opening: {currentUHaulTruck.dimensions.doorOpening}</p>
+              )}
+              {currentUHaulTruck.dimensions.deckHeight && (
+                <p>
+                  Deck: {currentUHaulTruck.dimensions.deckHeight}
+                  {" x "}
+                  {currentUHaulTruck.dimensions.length}
+                </p>
+              )}
+
+              <p></p>
+              {currentUHaulTruck.dimensions.loadingRamp && (
+                <p>{currentUHaulTruck.dimensions.loadingRamp}</p>
+              )}
+              <p>Cost:{currentUHaulTruck.rate.baseRate}</p>
+              <p>Plus ${currentUHaulTruck.rate.perMile} per mile</p>
+            </div>
+            <img src={currentUHaulTruck.image} alt="" />
+          </div>
+        </>
+      )}
+      {estimate > 0 && (
+        <p>
+          {currentUHaulTruck?.type} traveling {miles} miles would cost roughly $
+          {estimate}
+          <i> *not including tax</i>
+        </p>
       )}
     </div>
   );

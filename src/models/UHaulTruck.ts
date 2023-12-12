@@ -12,4 +12,5 @@ export default interface UHaul {
     baseRate: number;
     perMile: number;
   };
+  image: string;
 }

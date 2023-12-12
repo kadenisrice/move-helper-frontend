@@ -1,0 +1,14 @@
+.UhaulEstimate .uHaulDiplayContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ad7a50;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.UhaulEstimate .uHaulDiplayContainer img {
+  width: auto;
+  height: 100px;
+}

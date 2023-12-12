@@ -1,4 +1,11 @@
 import UHaul from "../models/UHaulTruck";
+import eightImg from "../assets/8-uhaul-pickup-truck.png";
+import nineImg from "../assets/9-uhaul-cargo-van.png";
+import tenImg from "../assets/10Medium.png";
+import fifteenImg from "../assets/15Medium.png";
+import seventeenImg from "../assets/17Medium.png";
+import twentyImg from "../assets/20Medium.png";
+import twentySixImg from "../assets/26Medium.png";
 
 const uhualFleet: UHaul[] = [
   {
@@ -11,6 +18,7 @@ const uhualFleet: UHaul[] = [
       baseRate: 19.95,
       perMile: 0.79,
     },
+    image: eightImg,
   },
   {
     type: "9' Cargo Van",
@@ -23,6 +31,7 @@ const uhualFleet: UHaul[] = [
       baseRate: 19.95,
       perMile: 0.79,
     },
+    image: nineImg,
   },
   {
     type: "10' Truck",
@@ -37,6 +46,7 @@ const uhualFleet: UHaul[] = [
       baseRate: 19.95,
       perMile: 0.99,
     },
+    image: tenImg,
   },
   {
     type: "15' Truck",
@@ -52,6 +62,7 @@ const uhualFleet: UHaul[] = [
       baseRate: 29.95,
       perMile: 0.99,
     },
+    image: fifteenImg,
   },
   {
     type: "17' Truck",
@@ -67,6 +78,7 @@ const uhualFleet: UHaul[] = [
       baseRate: 39.95,
       perMile: 0.99,
     },
+    image: seventeenImg,
   },
   {
     type: "20' Truck",
@@ -82,6 +94,7 @@ const uhualFleet: UHaul[] = [
       baseRate: 39.95,
       perMile: 0.99,
     },
+    image: twentyImg,
   },
   {
     type: "26' Truck",
@@ -97,6 +110,7 @@ const uhualFleet: UHaul[] = [
       baseRate: 39.95,
       perMile: 0.99,
     },
+    image: twentySixImg,
   },
 ];
 
