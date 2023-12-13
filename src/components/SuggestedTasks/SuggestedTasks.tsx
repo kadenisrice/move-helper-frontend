@@ -45,23 +45,6 @@ const SuggestedTasks = () => {
     setSelectedIndex("");
   };
 
-  // <label htmlFor={task.uuid}>Deadline</label>
-  // <input
-  //   className="deadline-input"
-  //   type="date"
-  //   id={task.uuid}
-  //   value={packingDeadline}
-  //   onChange={(e) => setPackingDeadline(e.target.value)}
-  // />
-  // <label htmlFor={task.uuid}>Deadline</label>
-  //               <input
-  //                 className="deadline-input"
-  //                 type="date"
-  //                 id={task.uuid}
-  //                 value={dayOfMoveDeadline}
-  //                 onChange={(e) => setDayOfMoveDeadline(e.target.value)}
-  //               />
-
   return (
     <div className="SuggestedTasks">
       <h2>Task Suggestions</h2>

@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="Header">
       <Link to="/dashboard">
-        <h1>MoveHelper</h1>
+        <h1>CargoCompanion</h1>
       </Link>
       {user ? (
         <button onClick={signOut}>sign out</button>

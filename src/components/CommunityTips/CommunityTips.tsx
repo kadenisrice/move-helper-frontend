@@ -23,7 +23,8 @@ const CommunityTips = () => {
         uuid: uuidv4(),
         from: account?.displayName,
         text: textArea,
-        photoURL: account.photoURL,
+        photoURL: account?.photoURL ?? "",
+        date: new Date(),
       };
 
       await addNewTip(newTip);
@@ -59,7 +60,16 @@ const CommunityTips = () => {
         </>
       )}
 
-      <div className="community-tip-list"></div>
+      <div className="community-tip-list">
+        {communityTips.map((tip) => (
+          <li key={tip._id}>
+            <p>From: {tip.from}</p>
+            <img src={tip.photoURL} alt="google photo" />
+            <p>Tip: {tip.text}</p>
+            <p>Date: {new Date(tip.date).toISOString().slice(0, 10)}</p>
+          </li>
+        ))}
+      </div>
     </div>
   );
 };

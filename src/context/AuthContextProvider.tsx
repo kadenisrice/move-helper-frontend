@@ -8,6 +8,7 @@ import Account from "../models/Account";
 function AuthContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [account, setAccount] = useState<Account | null>(null);
+  console.log(user?.photoURL);
 
   useEffect(() => {
     // useEffect to only register once at start -- firebase auth, method onauthsavecchanges, from google sign in
