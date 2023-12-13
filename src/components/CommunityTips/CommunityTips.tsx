@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import Tip from "../../models/Tip";
 
 const CommunityTips = () => {
-  const { account } = useContext(AuthContext);
+  const { user, account } = useContext(AuthContext);
 
   const [showTipForm, setShowTipForm] = useState(false);
   const [communityTips, setCommunityTips] = useState<Tip[]>([]);
@@ -23,7 +23,7 @@ const CommunityTips = () => {
         uuid: uuidv4(),
         from: account?.displayName,
         text: textArea,
-        photoURL: account?.photoURL ?? "",
+        photoURL: user?.photoURL ?? "",
         date: new Date(),
       };
 

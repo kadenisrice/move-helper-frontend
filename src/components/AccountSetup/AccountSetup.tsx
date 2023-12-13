@@ -3,6 +3,7 @@ import "./AccountSetup.css";
 import AuthContext from "../../context/AuthContext";
 import AccountForm from "../AccountForm/AccountForm";
 import { useNavigate } from "react-router-dom";
+import SuggestedTasks from "../SuggestedTasks/SuggestedTasks";
 
 const AccountSetup = () => {
   const { user, account } = useContext(AuthContext);
@@ -23,6 +24,7 @@ const AccountSetup = () => {
   return (
     <div className="AccountSetup">
       {showForm && <AccountForm setShowForm={setShowForm} />}
+      {showForm && <SuggestedTasks />}
     </div>
   );
 };

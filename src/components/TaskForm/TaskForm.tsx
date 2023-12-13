@@ -49,6 +49,7 @@ const TaskForm = ({ setShowTaskForm }: Props) => {
         id="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        required
       />
       <label htmlFor="content">Content:</label>
       <input
@@ -56,6 +57,7 @@ const TaskForm = ({ setShowTaskForm }: Props) => {
         id="content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
+        required
       />
       <label htmlFor="deadline">Deadline:</label>
       <input
@@ -63,6 +65,7 @@ const TaskForm = ({ setShowTaskForm }: Props) => {
         id="deadline"
         value={deadline}
         onChange={(e) => setDeadline(e.target.value)}
+        required
       />
       <button type="submit">Submit Task</button>
     </form>
