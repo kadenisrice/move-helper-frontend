@@ -42,6 +42,21 @@ export const addNewTask = async (uid: string, task: Task): Promise<Task> => {
   ).data;
 };
 
+export const updateTask = async (
+  uid: string,
+  uuid: string,
+  updatedTask: Task
+): Promise<Task> => {
+  return (
+    await axios.patch(
+      `${baseUrl}/accounts/update-task/${encodeURIComponent(
+        uuid
+      )}/${encodeURIComponent(uid)}`,
+      updatedTask
+    )
+  ).data;
+};
+
 // Delete task from tasklist:
 export const removeTask = async (uuid: string, uid: string): Promise<void> => {
   try {
