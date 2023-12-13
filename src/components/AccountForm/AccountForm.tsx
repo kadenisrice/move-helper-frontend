@@ -54,7 +54,7 @@ const AccountForm = ({ setShowForm }: Props) => {
           state: fromState,
           zip: fromZipcode,
         },
-        tasks: [],
+        tasks: [...account.tasks],
         orders: [],
         expenses: [],
         boxes: [],

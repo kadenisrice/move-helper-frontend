@@ -1,10 +1,21 @@
+.Calendar {
+  color: white;
+  height: 90vh;
+  width: 90vw;
+  background-color: #533c29;
+}
+
+.Calendar .rbc-toolbar button {
+  color: white;
+}
+
 .eventContainer {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateY(-50%);
   transform: translateX(-50%);
-  background-color: skyblue;
+  background-color: rgb(125, 188, 212);
   z-index: 10;
   padding: 20px;
   border-radius: 20px;

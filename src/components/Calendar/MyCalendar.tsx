@@ -4,7 +4,6 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css"; // Import CSS for the calendar
 import { FormEvent, useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
-import TaskForm from "../TaskForm/TaskForm";
 import { updateTask } from "../../services/accountApi";
 import { Task } from "../../models/Account";
 
@@ -66,10 +65,7 @@ const MyCalendar = () => {
   const myEventsList: MyEvent[] = tasksAsMyEvent;
 
   return (
-    <div
-      className="Calendar"
-      style={{ height: "90vh", width: "90vw", backgroundColor: "#533c29" }}
-    >
+    <div className="Calendar">
       <Calendar
         localizer={localizer}
         events={myEventsList}

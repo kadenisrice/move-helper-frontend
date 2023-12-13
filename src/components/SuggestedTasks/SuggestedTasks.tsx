@@ -12,7 +12,7 @@ import { Task } from "../../models/Account";
 import AuthContext from "../../context/AuthContext";
 
 const SuggestedTasks = () => {
-  const { account, setAccount } = useContext(AuthContext);
+  const { account, setAccount, user } = useContext(AuthContext);
 
   const [showPreMove, setShowPreMove] = useState(false);
   const [showPacking, setShowPacking] = useState(false);
@@ -30,13 +30,13 @@ const SuggestedTasks = () => {
 
   const submitHandler = async (e: FormEvent, newTask: Task) => {
     e.preventDefault();
-    if (account) {
+    if (user) {
       console.log(newTask);
 
       newTask.deadline = preMoveDeadline;
 
-      await addNewTask(account.uid, newTask);
-      const updatedAccount = await getAccountById(account.uid);
+      await addNewTask(user.uid, newTask);
+      const updatedAccount = await getAccountById(user.uid);
       if (updatedAccount) {
         setAccount(updatedAccount);
       }

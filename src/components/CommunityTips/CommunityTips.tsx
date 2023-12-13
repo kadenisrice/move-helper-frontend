@@ -31,6 +31,8 @@ const CommunityTips = () => {
     }
 
     setTextArea("");
+
+    getAllTips().then((res) => setCommunityTips(res));
   };
 
   useEffect(() => {
