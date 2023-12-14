@@ -21,10 +21,10 @@ const MainNavigation = ({ showMainNav, setShowMainNav }: Props) => {
           <Link to={"/cost-estimate"}>Cost Estimate</Link>
         </li>
         <li>
-          <Link to={"/community-tips"}>Community Tips</Link>
+          <Link to={"/calendar"}>Calendar</Link>
         </li>
         <li>
-          <Link to={"/calendar"}>Calendar</Link>
+          <Link to={"/community-tips"}>Community Tips</Link>
         </li>
       </ul>
     </nav>

@@ -64,6 +64,7 @@ const CommunityTips = () => {
               onChange={(e) => {
                 setTextArea(e.target.value);
               }}
+              required
             ></textarea>
             <button>add</button>
           </form>
@@ -78,7 +79,13 @@ const CommunityTips = () => {
           .map((tip) => (
             <li key={tip._id}>
               <p>From: {tip.from}</p>
-              <img src={tip.photoURL} alt="google photo" />
+              {tip.photoURL ? (
+                <img src={tip.photoURL} alt="google photo" />
+              ) : (
+                <img
+                  src={`https://robohash.org/${user?.displayName}?set=set4`}
+                />
+              )}
               <p>Tip: {tip.text}</p>
               <p>Date: {new Date(tip.date).toISOString().slice(0, 10)}</p>
             </li>

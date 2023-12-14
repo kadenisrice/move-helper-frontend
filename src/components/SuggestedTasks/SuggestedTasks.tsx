@@ -59,7 +59,7 @@ const SuggestedTasks = () => {
 
   return (
     <div className="SuggestedTasks">
-      <h2>Task Suggestions</h2>
+      <h2>Add Moving Tasks to Your Account and Calendar!</h2>
       <ul>
         <h3 onClick={() => setShowPreMove((prev) => !prev)}>
           Pre-Move Planning{" "}

@@ -4,7 +4,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css"; // Import CSS for the calendar
 import { FormEvent, useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
-import { updateTask } from "../../services/accountApi";
+import { getAccountById, updateTask } from "../../services/accountApi";
 import { Task } from "../../models/Account";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const MyCalendar = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
-  const { account, user } = useContext(AuthContext);
+  const { account, user, setAccount } = useContext(AuthContext);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -64,9 +64,17 @@ const MyCalendar = () => {
         content: description,
         deadline: event.start.toISOString().slice(0, 10),
       };
-      updateTask(account.uid, event.uuid, updatedTask).then((res) =>
-        console.log(res)
-      );
+      updateTask(account.uid, event.uuid, updatedTask).then((res) => {
+        if (res) {
+          getAccountById(account.uid).then((response) => {
+            if (response) {
+              setAccount(response);
+            }
+          });
+        }
+      });
+      setShowEditForm(false);
+      setEvent(null);
     }
   };
 
