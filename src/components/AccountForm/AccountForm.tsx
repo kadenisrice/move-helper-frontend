@@ -10,7 +10,7 @@ interface Props {
 }
 
 const AccountForm = ({ setShowForm }: Props) => {
-  const { account, user } = useContext(AuthContext);
+  const { account, user, setAccount } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -60,7 +60,11 @@ const AccountForm = ({ setShowForm }: Props) => {
         boxes: [],
       };
 
-      updateAccountById(account._id!, updatedAccount);
+      updateAccountById(account._id!, updatedAccount).then((res) => {
+        if (res) {
+          setAccount(res);
+        }
+      });
     }
 
     setNickname("");
