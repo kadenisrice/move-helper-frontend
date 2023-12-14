@@ -6,6 +6,7 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import { updateTask } from "../../services/accountApi";
 import { Task } from "../../models/Account";
+import { useNavigate } from "react-router-dom";
 
 const localizer = momentLocalizer(moment);
 
@@ -21,7 +22,14 @@ const MyCalendar = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
-  const { account } = useContext(AuthContext);
+  const { account, user } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!account || !user) {
+      navigate("/");
+    }
+  }, [user]);
 
   useEffect(() => {
     if (event) {

@@ -1,12 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Tasks.css";
 import AuthContext from "../../context/AuthContext";
 import TaskForm from "../TaskForm/TaskForm";
 import { getAccountById, removeTask } from "../../services/accountApi";
 import SuggestedTasks from "../SuggestedTasks/SuggestedTasks";
+import { useNavigate } from "react-router-dom";
 
 const Tasks = () => {
-  const { account, setAccount } = useContext(AuthContext);
+  const { account, user, setAccount } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!account || !user) {
+      navigate("/");
+    }
+  }, [user]);
   const [showTaskForm, setShowTaskForm] = useState(false);
 
   // -------------------------------------------------------

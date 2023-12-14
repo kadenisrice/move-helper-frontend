@@ -8,9 +8,17 @@ import ShippoObject from "../../models/ShippoObject";
 import DisplayUserBoxes from "../DisplayUserBoxes/DisplayUserBoxes";
 import { Box } from "../../models/Account";
 import UhaulEstimate from "../UhaulEstimate/UhaulEstimate";
+import { useNavigate } from "react-router-dom";
 
 const CostEstimate = () => {
-  const { account } = useContext(AuthContext);
+  const { account, user } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!account || !user) {
+      navigate("/");
+    }
+  }, [user]);
 
   const [showEditAddressForm, setShowEditAddressForm] = useState(false);
   const [costEstimate, setCostEstimate] = useState<ShippoObject | null>(null);
@@ -68,13 +76,17 @@ const CostEstimate = () => {
 
       <h2>Cost Estimate</h2>
       <ul>
-        {costEstimate?.rates.map((rate) => (
-          <li key={rate.object_id}>
-            <p>{rate.provider}</p>
-            <p>${rate.amount}</p>
-            <p>{rate.duration_terms}</p>
-          </li>
-        ))}
+        {costEstimate && costEstimate.rates[0] ? (
+          costEstimate?.rates.map((rate) => (
+            <li key={rate.object_id}>
+              <p>{rate.provider}</p>
+              <p>${rate.amount}</p>
+              <p>{rate.duration_terms}</p>
+            </li>
+          ))
+        ) : (
+          <p>No Estimates Available</p>
+        )}
       </ul>
       <DisplayUserBoxes />
       <UhaulEstimate />

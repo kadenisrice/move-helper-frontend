@@ -5,9 +5,17 @@ import { addNewTip, getAllTips } from "../../services/tipsApi";
 import { v4 as uuidv4 } from "uuid";
 import AuthContext from "../../context/AuthContext";
 import Tip from "../../models/Tip";
+import { useNavigate } from "react-router-dom";
 
 const CommunityTips = () => {
-  const { user, account } = useContext(AuthContext);
+  const { account, user } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!account || !user) {
+      navigate("/");
+    }
+  }, [user]);
 
   const [showTipForm, setShowTipForm] = useState(false);
   const [communityTips, setCommunityTips] = useState<Tip[]>([]);
