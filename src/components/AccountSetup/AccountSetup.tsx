@@ -15,7 +15,7 @@ const AccountSetup = () => {
     if (user) {
       setShowForm(true);
     }
-    if (account && account.toAddress.state) {
+    if (account && user && account.toAddress.state) {
       setShowForm(false);
       navigate("/dashboard");
     }
@@ -23,8 +23,8 @@ const AccountSetup = () => {
 
   return (
     <div className="AccountSetup">
-      {showForm && <AccountForm setShowForm={setShowForm} />}
       {showForm && <SuggestedTasks />}
+      {showForm && <AccountForm setShowForm={setShowForm} />}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import MyCalendar from "../Calendar/MyCalendar";
 import { useContext, useEffect, useState } from "react";
@@ -7,7 +7,14 @@ import { getAllTips } from "../../services/tipsApi";
 import Tip from "../../models/Tip";
 
 const Dashboard = () => {
-  const { account } = useContext(AuthContext);
+  const { account, user } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!account || !user) {
+      navigate("/");
+    }
+  }, [user]);
 
   const [recentTips, setRecentTips] = useState<Tip[]>([]);
 
@@ -16,9 +23,9 @@ const Dashboard = () => {
       const temp = res
         .sort((a, b) => {
           // SORTING BY WHATEVER IS DUE NEXT
-          return new Date(a.date).getTime() - new Date(b.date).getTime();
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
         })
-        .slice(0, 3);
+        .slice(0, 4);
 
       setRecentTips(temp);
     });
@@ -64,16 +71,23 @@ const Dashboard = () => {
 
           <Link to="/community-tips">
             <div className="mini-tips mini-display">
-              <h3>Recent Tips:</h3>
+              <h3>Recent Advice:</h3>
               <ul>
-                {recentTips.map((tip) => {
-                  return (
-                    <li key={tip._id}>
-                      <p>{tip.text}</p>
-                      <p>- {tip.from}</p>
-                    </li>
-                  );
-                })}
+                {recentTips
+                  .sort((a, b) => {
+                    // SORTING BY WHATEVER IS DUE NEXT
+                    return (
+                      new Date(b.date).getTime() - new Date(a.date).getTime()
+                    );
+                  })
+                  .map((tip) => {
+                    return (
+                      <li key={tip._id}>
+                        <p>{tip.text}</p>
+                        <p>- {tip.from}</p>
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
           </Link>

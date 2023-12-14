@@ -30,19 +30,26 @@ const Tasks = () => {
       {showTaskForm && <TaskForm setShowTaskForm={setShowTaskForm} />}
       <ul>
         {account &&
-          account.tasks.map((task) => (
-            <li key={task.uuid}>
-              <i
-                className="fa-solid fa-xmark"
-                onClick={() => handleRemoveTask(task.uuid)}
-              ></i>
-              <div className="list-content">
-                <p>{task.name}</p>
-                <p>{task.content}</p>
-                <p>{task.deadline}</p>
-              </div>
-            </li>
-          ))}
+          account.tasks
+            .sort((a, b) => {
+              // SORTING BY WHATEVER IS DUE NEXT
+              return (
+                new Date(a.deadline).getTime() - new Date(b.deadline).getTime()
+              );
+            })
+            .map((task) => (
+              <li key={task.uuid}>
+                <i
+                  className="fa-solid fa-xmark"
+                  onClick={() => handleRemoveTask(task.uuid)}
+                ></i>
+                <div className="list-content">
+                  <p>{task.name}</p>
+                  <p>{task.content}</p>
+                  <p>{task.deadline}</p>
+                </div>
+              </li>
+            ))}
       </ul>
       <SuggestedTasks />
     </div>

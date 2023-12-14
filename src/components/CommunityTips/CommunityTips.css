@@ -1,0 +1,65 @@
+/* Overall Layout */
+.CommunityTips {
+  max-width: 800px;
+  padding: 20px;
+  background-color: #e4cbb6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.CommunityTips h2 {
+  color: #333;
+  text-align: center;
+}
+
+/* Form Styling */
+.add-tip-form {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-tip-form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.add-tip-form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-tip-form button:hover {
+  background-color: #45a049;
+}
+
+/* List Styling */
+.community-tip-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.community-tip-list li {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.community-tip-list img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-right: 10px;
+  border-radius: 100%;
+}
+
+.community-tip-list p {
+  margin: 5px 0;
+}

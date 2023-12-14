@@ -28,13 +28,25 @@ const SuggestedTasks = () => {
   const [postMoveDeadline, setPostMoveDeadline] = useState("");
   const [utilityAdminDeadline, setUtilityAdminDeadline] = useState("");
 
+  const getDeadlineForSelectedTask = (): string => {
+    if (preMovePlanningTasks.some((task) => task.uuid === selectedIndex)) {
+      return preMoveDeadline;
+    } else if (packingTasks.some((task) => task.uuid === selectedIndex)) {
+      return packingDeadline;
+    } else if (dayOfMoveTasks.some((task) => task.uuid === selectedIndex)) {
+      return dayOfMoveDeadline;
+    } else if (postMoveTasks.some((task) => task.uuid === selectedIndex)) {
+      return postMoveDeadline;
+    } else if (utilityAdminTasks.some((task) => task.uuid === selectedIndex)) {
+      return utilityAdminDeadline;
+    }
+    return "";
+  };
+
   const submitHandler = async (e: FormEvent, newTask: Task) => {
     e.preventDefault();
-    if (user) {
-      console.log(newTask);
-
-      newTask.deadline = preMoveDeadline;
-
+    if (user && account) {
+      newTask.deadline = getDeadlineForSelectedTask();
       await addNewTask(user.uid, newTask);
       const updatedAccount = await getAccountById(user.uid);
       if (updatedAccount) {

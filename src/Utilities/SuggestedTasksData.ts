@@ -27,7 +27,6 @@ export const preMovePlanningTasks: Task[] = [
     content: "Order boxes, tape, bubble wrap, and other supplies.",
     deadline: "",
   },
-  // ... other related tasks
 ];
 // Packing Tasks
 export const packingTasks: Task[] = [
@@ -49,7 +48,6 @@ export const packingTasks: Task[] = [
     content: "Pack a box with essentials for moving day.",
     deadline: "",
   },
-  // ... other related tasks
 ];
 // Day of Move Tasks
 export const dayOfMoveTasks: Task[] = [
@@ -71,7 +69,6 @@ export const dayOfMoveTasks: Task[] = [
     content: "Do a final inspection of your old home.",
     deadline: "",
   },
-  // ... other related tasks
 ];
 // Post-Move Tasks
 export const postMoveTasks: Task[] = [
@@ -93,7 +90,6 @@ export const postMoveTasks: Task[] = [
     content: "Update your address on legal documents and IDs.",
     deadline: "",
   },
-  // ... other related tasks
 ];
 // Utility and Administration Tasks
 export const utilityAdminTasks: Task[] = [
@@ -117,5 +113,4 @@ export const utilityAdminTasks: Task[] = [
     content: "Update your address for subscriptions and online accounts.",
     deadline: "",
   },
-  // ... other related tasks
 ];
