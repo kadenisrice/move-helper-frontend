@@ -1,7 +1,16 @@
 .CostEstimate ul {
   margin-left: 10px;
+  list-style: none;
 }
 
 .CostEstimate li {
   padding-bottom: 10px;
+}
+
+.CostEstimate .form-boxlist {
+  display: flex;
+}
+
+.CostEstimate .rates-lists {
+  display: flex;
 }

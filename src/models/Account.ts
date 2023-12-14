@@ -1,4 +1,5 @@
 import Address from "./Address";
+import BoxSet from "./BoxSet";
 
 export default interface Account {
   _id?: string;
@@ -14,6 +15,7 @@ export default interface Account {
   orders: Order[];
   expenses: Expense[];
   boxes: Box[];
+  boxSets: BoxSet[];
 }
 
 export interface Box {

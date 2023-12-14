@@ -5,4 +5,5 @@ export default interface Tip {
   text: string;
   photoURL?: string;
   date: Date;
+  stars: string[];
 }

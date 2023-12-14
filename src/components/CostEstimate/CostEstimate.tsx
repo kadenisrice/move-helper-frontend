@@ -9,6 +9,9 @@ import DisplayUserBoxes from "../DisplayUserBoxes/DisplayUserBoxes";
 import { Box } from "../../models/Account";
 import UhaulEstimate from "../UhaulEstimate/UhaulEstimate";
 import { useNavigate } from "react-router-dom";
+import BoxSet from "../../models/BoxSet";
+import { ReccomendedBoxSetsDataArr } from "../../Utilities/ReccomendedBoxSetsData";
+import BoxSetList from "../BoxSetList/BoxSetList";
 
 const CostEstimate = () => {
   const { account, user } = useContext(AuthContext);
@@ -22,6 +25,10 @@ const CostEstimate = () => {
 
   const [showEditAddressForm, setShowEditAddressForm] = useState(false);
   const [costEstimate, setCostEstimate] = useState<ShippoObject | null>(null);
+  const [showBoxSetList, setShowBoxSetList] = useState(false);
+  const [boxSetList, setBoxSetList] = useState<BoxSet[]>(
+    ReccomendedBoxSetsDataArr
+  );
 
   useEffect(() => {
     if (account && account.boxes[0]) {
@@ -72,23 +79,48 @@ const CostEstimate = () => {
         Edit Address Information
       </button>
       {showEditAddressForm && <EditAddressForm />}
-      <AddBoxForm />
 
+      <button onClick={() => setShowBoxSetList((prev) => !prev)}>
+        Choose box set
+      </button>
+      {showBoxSetList && <BoxSetList setShowBoxSetList={setShowBoxSetList} />}
+
+      <div className="form-boxlist">
+        <AddBoxForm />
+        <DisplayUserBoxes />
+      </div>
       <h2>Cost Estimate</h2>
-      <ul>
-        {costEstimate && costEstimate.rates[0] ? (
-          costEstimate?.rates.map((rate) => (
-            <li key={rate.object_id}>
-              <p>{rate.provider}</p>
-              <p>${rate.amount}</p>
-              <p>{rate.duration_terms}</p>
-            </li>
-          ))
-        ) : (
-          <p>No Estimates Available</p>
-        )}
-      </ul>
-      <DisplayUserBoxes />
+      <div className="rates-lists">
+        <ul>
+          {costEstimate?.rates
+            .filter((rate) => {
+              return rate.provider === "UPS";
+            })
+            .sort((a, b) => +a.amount - +b.amount)
+            .map((rate) => (
+              <li key={rate.object_id}>
+                <p>{rate.provider}</p>
+                <p>${rate.amount}</p>
+                <p>{rate.duration_terms}</p>
+              </li>
+            ))}
+        </ul>
+        <ul>
+          {costEstimate?.rates
+            .filter((rate) => {
+              return rate.provider === "USPS";
+            })
+            .sort((a, b) => +a.amount - +b.amount)
+            .map((rate) => (
+              <li key={rate.object_id}>
+                <p>{rate.provider}</p>
+                <p>${rate.amount}</p>
+                <p>{rate.duration_terms}</p>
+              </li>
+            ))}
+        </ul>
+      </div>
+
       <UhaulEstimate />
     </div>
   );

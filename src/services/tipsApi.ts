@@ -9,6 +9,17 @@ export const getAllTips = (): Promise<Tip[]> => {
   return axios.get(`${baseUrl}/community/tips`).then((res) => res.data);
 };
 
+// get tip by ID:
+export const getTipById = async (uuid: string): Promise<Tip | void> => {
+  try {
+    return (
+      await axios.get(`${baseUrl}/community/tips/${encodeURIComponent(uuid)}`)
+    ).data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // add new tip:
 export const addNewTip = (tip: Tip): Promise<Tip> => {
   return axios.post(`${baseUrl}/community/tips`, tip).then((res) => res.data);
@@ -19,4 +30,21 @@ export const deleteTip = (uuid: string): Promise<void> => {
   return axios
     .delete(`${baseUrl}/community/tips/${encodeURIComponent(uuid)}`)
     .then((res) => res.data);
+};
+
+// update tip:
+export const updateTipById = async (
+  uuid: string,
+  tip: Tip
+): Promise<Tip | void> => {
+  try {
+    return (
+      await axios.put(
+        `${baseUrl}/community/tips/${encodeURIComponent(uuid)}`,
+        tip
+      )
+    ).data;
+  } catch (err) {
+    console.log(err);
+  }
 };

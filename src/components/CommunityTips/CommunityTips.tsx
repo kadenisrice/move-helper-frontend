@@ -1,6 +1,11 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import "./CommunityTips.css";
-import { addNewTip, getAllTips } from "../../services/tipsApi";
+import {
+  addNewTip,
+  getAllTips,
+  getTipById,
+  updateTipById,
+} from "../../services/tipsApi";
 
 import { v4 as uuidv4 } from "uuid";
 import AuthContext from "../../context/AuthContext";
@@ -33,6 +38,7 @@ const CommunityTips = () => {
         text: textArea,
         photoURL: user?.photoURL ?? "",
         date: new Date(),
+        stars: [],
       };
 
       await addNewTip(newTip);
@@ -46,6 +52,16 @@ const CommunityTips = () => {
   useEffect(() => {
     getAllTips().then((res) => setCommunityTips(res));
   }, []);
+
+  const likeHandler = (uuid: string, updatedTip: Tip) => {
+    updateTipById(uuid, updatedTip).then(() => {
+      getAllTips().then((res) => setCommunityTips(res));
+    });
+  };
+
+  const isItLiked = (tip: Tip) => {
+    return tip.stars.some((person) => person === account?._id);
+  };
 
   return (
     <div className="CommunityTips">
@@ -88,6 +104,21 @@ const CommunityTips = () => {
               )}
               <p>Tip: {tip.text}</p>
               <p>Date: {new Date(tip.date).toISOString().slice(0, 10)}</p>
+              <p>stars: {tip.stars.length}</p>
+
+              {account && (
+                <i
+                  className={`fa-${
+                    isItLiked(tip) ? `solid` : `regular`
+                  } fa-star`}
+                  onClick={() =>
+                    likeHandler(tip.uuid, {
+                      ...tip,
+                      stars: [...tip.stars, account._id!],
+                    })
+                  }
+                ></i>
+              )}
             </li>
           ))}
       </div>

@@ -58,6 +58,7 @@ const AccountForm = ({ setShowForm }: Props) => {
         orders: [],
         expenses: [],
         boxes: [],
+        boxSets: [],
       };
 
       updateAccountById(account._id!, updatedAccount).then((res) => {

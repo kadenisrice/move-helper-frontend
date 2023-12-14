@@ -36,6 +36,7 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
             orders: [],
             expenses: [],
             boxes: [],
+            boxSets: [],
           };
           createNewAccount(newAccount).then((r) => setAccount(r));
         }

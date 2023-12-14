@@ -1,14 +1,20 @@
-import { useContext } from "react";
+import { FormEvent, useContext, useState } from "react";
 import "./DisplayUserBoxes.css";
 import AuthContext from "../../context/AuthContext";
 import {
   getAccountById,
   removeBox,
+  updateAccountById,
   updateBoxQuantity,
 } from "../../services/accountApi";
+import Account from "../../models/Account";
+import { v4 as uuidv4 } from "uuid";
 
 const DisplayUserBoxes = () => {
-  const { account, setAccount } = useContext(AuthContext);
+  const { account, setAccount, user } = useContext(AuthContext);
+
+  const [boxSetName, setBoxSetName] = useState("");
+  const [squareFeet, setSquareFeet] = useState("");
 
   const clickHandler = (uuid: string, newQuantity: number) => {
     updateBoxQuantity(uuid, newQuantity).then(() => {
@@ -32,9 +38,56 @@ const DisplayUserBoxes = () => {
     });
   };
 
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
+    console.log(account);
+
+    if (user && account) {
+      const updatedAccount: Account = {
+        ...account,
+        boxSets: [
+          ...account.boxSets,
+          {
+            uuid: uuidv4(),
+            name: boxSetName,
+            maxSquareFeet: +squareFeet,
+            boxes: account.boxes,
+          },
+        ],
+      };
+
+      updateAccountById(account._id!, updatedAccount).then((res) => {
+        if (res) {
+          setAccount(res);
+        }
+      });
+    }
+  };
+
   return (
     <div className="DisplayUserBoxes">
       <h2>Your Boxes</h2>
+      <form onSubmit={(e) => submitHandler(e)}>
+        <label htmlFor="set-name">Box Set Name:</label>
+        <input
+          type="text"
+          id="set-name"
+          name="set-name"
+          value={boxSetName}
+          onChange={(e) => setBoxSetName(e.target.value)}
+        />
+
+        <label htmlFor="max-square-feet"> Square Feet: {`(optional)`} </label>
+        <input
+          type="text"
+          id="max-square-feet"
+          name="max-square-feet"
+          value={squareFeet}
+          onChange={(e) => setSquareFeet(e.target.value)}
+        />
+
+        <button>save this box set</button>
+      </form>
       <ul>
         {account?.boxes.map((box, index) => (
           <li key={box.uuid}>
