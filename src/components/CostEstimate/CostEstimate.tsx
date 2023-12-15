@@ -9,7 +9,7 @@ import DisplayUserBoxes from "../DisplayUserBoxes/DisplayUserBoxes";
 import { Box } from "../../models/Account";
 import UhaulEstimate from "../UhaulEstimate/UhaulEstimate";
 import { useNavigate } from "react-router-dom";
-import BoxSetList from "../BoxSetList/BoxSetList";
+import RateList from "../RateList/RateList";
 
 const CostEstimate = () => {
   const { account, user } = useContext(AuthContext);
@@ -21,9 +21,22 @@ const CostEstimate = () => {
     }
   }, [user]);
 
-  const [showEditAddressForm, setShowEditAddressForm] = useState(false);
   const [costEstimate, setCostEstimate] = useState<ShippoObject | null>(null);
-  const [showBoxSetList, setShowBoxSetList] = useState(false);
+
+  // these will be displayed as soon as the user enters cost estimate:
+  const [showYourBoxTab, setShowYourBoxTab] = useState(true);
+
+  // these are apart of the tabs at the top:
+  const [showRateList, setShowRateList] = useState(false);
+  const [showUhaul, setShowUhaul] = useState(false);
+  const [showEditAddressForm, setShowEditAddressForm] = useState(false);
+
+  const setAllFalse = () => {
+    setShowYourBoxTab(false);
+    setShowRateList(false);
+    setShowUhaul(false);
+    setShowEditAddressForm(false);
+  };
 
   useEffect(() => {
     if (account && account.boxes[0]) {
@@ -72,61 +85,60 @@ const CostEstimate = () => {
     <div className="CostEstimate">
       {/* this is the top tab bar where the user can navigate through out the cost estimate page */}
       <div className="cost-estimate-tabs">
-        <p>Your Boxes</p>
-        <p>Cost Estimates</p>
-        <p>Uhaul Calculator</p>
-        <p>Edit Address</p>
+        <button
+          onClick={() => {
+            setAllFalse();
+
+            setShowYourBoxTab(true);
+          }}
+        >
+          Your Boxes
+        </button>
+
+        <button
+          onClick={() => {
+            setAllFalse();
+            setShowRateList(true);
+          }}
+        >
+          Cost Estimates
+        </button>
+
+        <button
+          onClick={() => {
+            setAllFalse();
+            setShowUhaul(true);
+          }}
+        >
+          Uhaul Calculator
+        </button>
+
+        <button
+          onClick={() => {
+            setAllFalse();
+            setShowEditAddressForm(true);
+          }}
+        >
+          Edit Address
+        </button>
       </div>
-
-      {/* <button onClick={() => setShowEditAddressForm((prev) => !prev)}>
-        Edit Address Information
-      </button>
-      {showEditAddressForm && <EditAddressForm />}
-
-      <button onClick={() => setShowBoxSetList((prev) => !prev)}>
-        Choose box set
-      </button>
-      {showBoxSetList && <BoxSetList setShowBoxSetList={setShowBoxSetList} />} */}
 
       {/* this is the first "your boxes" tab where you can add boxes, box sets, and see your boxes */}
-      <div className="form-boxlist">
-        <AddBoxForm />
-        <DisplayUserBoxes />
-      </div>
+      {showYourBoxTab && (
+        <div className="form-boxlist">
+          <AddBoxForm />
+          <DisplayUserBoxes />
+        </div>
+      )}
 
-      <h2>Cost Estimate</h2>
-      <div className="rates-lists">
-        <ul>
-          {costEstimate?.rates
-            .filter((rate) => {
-              return rate.provider === "UPS";
-            })
-            .sort((a, b) => +a.amount - +b.amount)
-            .map((rate) => (
-              <li key={rate.object_id}>
-                <p>{rate.provider}</p>
-                <p>${rate.amount}</p>
-                <p>{rate.duration_terms}</p>
-              </li>
-            ))}
-        </ul>
-        <ul>
-          {costEstimate?.rates
-            .filter((rate) => {
-              return rate.provider === "USPS";
-            })
-            .sort((a, b) => +a.amount - +b.amount)
-            .map((rate) => (
-              <li key={rate.object_id}>
-                <p>{rate.provider}</p>
-                <p>${rate.amount}</p>
-                <p>{rate.duration_terms}</p>
-              </li>
-            ))}
-        </ul>
-      </div>
+      {/* Cost Estimates being conditionally rendered */}
+      {showRateList && <RateList costEstimate={costEstimate} />}
 
-      <UhaulEstimate />
+      {/* Uhaul calculator thingy conditionally rendered */}
+      {showUhaul && <UhaulEstimate />}
+
+      {/* Edit Address tab being conditionally rendered */}
+      {showEditAddressForm && <EditAddressForm />}
     </div>
   );
 };

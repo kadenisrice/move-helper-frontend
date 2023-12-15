@@ -9,12 +9,13 @@
   display: flex;
 }
 
-.CostEstimate .cost-estimate-tabs p {
+.CostEstimate .cost-estimate-tabs button {
   background-color: #f3d5b5;
   margin-right: 7px;
   padding: 7px 10px;
   border-radius: 10px 10px 0 0;
   text-align: center;
+  border: none;
 }
 
 /* Your Boxes tab: */
@@ -23,6 +24,7 @@
 
 .CostEstimate .form-boxlist {
   display: flex;
+  flex-direction: column;
 }
 
 .CostEstimate .rates-lists {

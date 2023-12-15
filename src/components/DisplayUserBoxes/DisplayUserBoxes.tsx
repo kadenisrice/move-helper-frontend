@@ -9,12 +9,14 @@ import {
 } from "../../services/accountApi";
 import Account from "../../models/Account";
 import { v4 as uuidv4 } from "uuid";
+import BoxSetList from "../BoxSetList/BoxSetList";
 
 const DisplayUserBoxes = () => {
   const { account, setAccount, user } = useContext(AuthContext);
 
   const [boxSetName, setBoxSetName] = useState("");
   const [squareFeet, setSquareFeet] = useState("");
+  const [showBoxSetList, setShowBoxSetList] = useState(false);
 
   const clickHandler = (uuid: string, newQuantity: number) => {
     updateBoxQuantity(uuid, newQuantity).then(() => {
@@ -69,6 +71,10 @@ const DisplayUserBoxes = () => {
   return (
     <div className="DisplayUserBoxes">
       <h2>Your Boxes</h2>
+      <button onClick={() => setShowBoxSetList((prev) => !prev)}>
+        Choose box set
+      </button>
+      {showBoxSetList && <BoxSetList setShowBoxSetList={setShowBoxSetList} />}
       <form onSubmit={(e) => submitHandler(e)}>
         <label htmlFor="set-name">Box Set Name:</label>
         <input
