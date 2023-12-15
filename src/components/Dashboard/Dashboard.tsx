@@ -47,25 +47,29 @@ const Dashboard = () => {
           <Link to="/tasks">
             <div className="mini-tasks mini-display">
               <h3>Next Tasks:</h3>
-              <ul>
-                {account?.tasks
-                  .sort((a, b) => {
-                    // SORTING BY WHATEVER IS DUE NEXT
-                    return (
-                      new Date(a.deadline).getTime() -
-                      new Date(b.deadline).getTime()
-                    );
-                  })
-                  .map(
-                    (task, index) =>
-                      // ONLY DISPLAYING 4 TASKS
-                      index <= 3 && (
-                        <li key={task.uuid}>
-                          <p>{task.name}</p> <p>{task.deadline}</p>
-                        </li>
-                      )
-                  )}
-              </ul>
+              {account && account.tasks[0] ? (
+                <ul>
+                  {account?.tasks
+                    .sort((a, b) => {
+                      // SORTING BY WHATEVER IS DUE NEXT
+                      return (
+                        new Date(a.deadline).getTime() -
+                        new Date(b.deadline).getTime()
+                      );
+                    })
+                    .map(
+                      (task, index) =>
+                        // ONLY DISPLAYING 4 TASKS
+                        index <= 3 && (
+                          <li key={task.uuid}>
+                            <p>{task.name}</p> <p>{task.deadline}</p>
+                          </li>
+                        )
+                    )}
+                </ul>
+              ) : (
+                <p>Add Tasks Here!</p>
+              )}
             </div>
           </Link>
 

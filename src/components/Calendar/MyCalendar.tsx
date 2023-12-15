@@ -1,5 +1,5 @@
 import "./MyCalendar.css";
-import { Calendar, momentLocalizer, Event } from "react-big-calendar";
+import { Calendar, momentLocalizer, Event, SlotInfo } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css"; // Import CSS for the calendar
 import { FormEvent, useContext, useEffect, useState } from "react";
@@ -7,6 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import { getAccountById, updateTask } from "../../services/accountApi";
 import { Task } from "../../models/Account";
 import { useNavigate } from "react-router-dom";
+import TaskForm from "../TaskForm/TaskForm";
 
 const localizer = momentLocalizer(moment);
 
@@ -18,7 +19,12 @@ interface MyEvent extends Event {
 
 const MyCalendar = () => {
   const [event, setEvent] = useState<MyEvent | null>(null);
+
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showAddForm, setShowAddForm] = useState(false);
+
+  const [clickedDate, setClickedDate] = useState<Date | null>(null);
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -63,6 +69,7 @@ const MyCalendar = () => {
         name,
         content: description,
         deadline: event.start.toISOString().slice(0, 10),
+        completed: false,
       };
       updateTask(account.uid, event.uuid, updatedTask).then((res) => {
         if (res) {
@@ -80,6 +87,16 @@ const MyCalendar = () => {
 
   const myEventsList: MyEvent[] = tasksAsMyEvent;
 
+  const handleClickDay = (e: SlotInfo) => {
+    setShowAddForm(true);
+    const date = e.slots[0];
+    setClickedDate(date);
+  };
+
+  const close = (): void => {
+    setShowAddForm(false);
+  };
+
   return (
     <div className="Calendar">
       <Calendar
@@ -89,6 +106,8 @@ const MyCalendar = () => {
         endAccessor="end"
         views={["month", "agenda"]}
         onSelectEvent={(e) => setEvent(e)}
+        onSelectSlot={handleClickDay}
+        selectable
       />
       {event && (
         <div className="eventContainer">
@@ -126,6 +145,9 @@ const MyCalendar = () => {
           )}
         </div>
       )}
+      <div>
+        {showAddForm && <TaskForm close={close} clickedDate={clickedDate} />}
+      </div>
     </div>
   );
 };

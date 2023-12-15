@@ -27,6 +27,8 @@ const CommunityTips = () => {
 
   const [textArea, setTextArea] = useState("");
 
+  const [filter, setFilter] = useState("desc");
+
   // SUBMIT HANDLER -------------------------------------------------
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
@@ -51,8 +53,8 @@ const CommunityTips = () => {
   };
 
   useEffect(() => {
-    getAllTips("emptyhehe").then((res) => setCommunityTips(res));
-  }, []);
+    getAllTips(filter).then((res) => setCommunityTips(res));
+  }, [filter]);
 
   const likeHandler = (uuid: string, tip: Tip) => {
     // Check if the tip is already liked by the user
@@ -104,43 +106,42 @@ const CommunityTips = () => {
           </form>
         </>
       )}
+      <div className="filter">
+        <button onClick={() => setFilter("mostLiked")}>Most Liked</button>
+        <button onClick={() => setFilter("desc")}>Newest</button>
+        <button onClick={() => setFilter("asc")}>Oldest</button>
+      </div>
 
       <div className="community-tip-list">
-        {communityTips
-          .sort((a, b) => {
-            return new Date(b.date).getTime() - new Date(a.date).getTime();
-          })
-          .map((tip) => (
-            <li key={tip._id}>
-              <p>From: {tip.from}</p>
-              {tip.photoURL ? (
-                <img src={tip.photoURL} alt="google photo" />
-              ) : (
-                <img
-                  src={`https://robohash.org/${user?.displayName}?set=set4`}
-                />
-              )}
-              <p>Tip: {tip.text}</p>
-              <p>Date: {new Date(tip.date).toISOString().slice(0, 10)}</p>
+        {communityTips.map((tip) => (
+          <li key={tip._id}>
+            <p>From: {tip.from}</p>
+            {tip.photoURL ? (
+              <img src={tip.photoURL} alt="google photo" />
+            ) : (
+              <img src={`https://robohash.org/${user?.displayName}?set=set4`} />
+            )}
+            <p>Tip: {tip.text}</p>
+            <p>Date: {new Date(tip.date).toISOString().slice(0, 10)}</p>
 
-              {account && (
-                <>
-                  <i
-                    className={`fa-${
-                      isItLiked(tip) ? `solid` : `regular`
-                    } fa-star`}
-                    onClick={() => likeHandler(tip.uuid, tip)}
-                  ></i>
-                  <span>{tip.stars.length}</span>
-                  {tip.from_id === account._id && (
-                    <button onClick={() => deleteTipHandler(tip.uuid)}>
-                      delete
-                    </button>
-                  )}
-                </>
-              )}
-            </li>
-          ))}
+            {account && (
+              <>
+                <i
+                  className={`fa-${
+                    isItLiked(tip) ? `solid` : `regular`
+                  } fa-star`}
+                  onClick={() => likeHandler(tip.uuid, tip)}
+                ></i>
+                <span>{tip.stars.length}</span>
+                {tip.from_id === account._id && (
+                  <button onClick={() => deleteTipHandler(tip.uuid)}>
+                    delete
+                  </button>
+                )}
+              </>
+            )}
+          </li>
+        ))}
       </div>
     </div>
   );

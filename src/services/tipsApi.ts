@@ -5,8 +5,10 @@ import Tip from "../models/Tip";
 const baseUrl: string = import.meta.env.VITE_APP_BASE_URL ?? "";
 
 // get all tips:
-export const getAllTips = (mostLiked?: string): Promise<Tip[]> => {
-  const params = { ...(mostLiked ? { "most-liked": mostLiked } : {}) };
+export const getAllTips = (sortValue?: string): Promise<Tip[]> => {
+  const params = {
+    "sort-value": sortValue,
+  };
 
   return axios
     .get(`${baseUrl}/community/tips`, {

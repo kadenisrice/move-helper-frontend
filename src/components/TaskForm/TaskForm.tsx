@@ -5,15 +5,19 @@ import AuthContext from "../../context/AuthContext";
 import { v4 as uuidv4 } from "uuid";
 
 interface Props {
-  setShowTaskForm: (e: boolean) => void;
+  setShowTaskForm?: (e: boolean) => void;
+  close?: () => void;
+  clickedDate?: Date | null;
 }
 
-const TaskForm = ({ setShowTaskForm }: Props) => {
+const TaskForm = ({ setShowTaskForm, close, clickedDate }: Props) => {
   const { account, setAccount } = useContext(AuthContext);
 
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
-  const [deadline, setDeadline] = useState("");
+  const [deadline, setDeadline] = useState(
+    clickedDate?.toISOString().slice(0, 10) ?? ""
+  );
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -23,6 +27,7 @@ const TaskForm = ({ setShowTaskForm }: Props) => {
       name,
       content,
       deadline,
+      completed: false,
     };
 
     // if account exists then we add new task:
@@ -35,13 +40,17 @@ const TaskForm = ({ setShowTaskForm }: Props) => {
         });
       });
     }
-
-    setShowTaskForm(false);
+    if (setShowTaskForm) {
+      setShowTaskForm(false);
+    }
   };
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <button onClick={() => setShowTaskForm(false)}>close</button>
+      {setShowTaskForm && (
+        <button onClick={() => setShowTaskForm(false)}>close</button>
+      )}
+      {close && <button onClick={close}>close</button>}
 
       <label htmlFor="name">Name:</label>
       <input
