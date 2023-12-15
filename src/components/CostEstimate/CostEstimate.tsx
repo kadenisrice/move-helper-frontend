@@ -70,7 +70,15 @@ const CostEstimate = () => {
 
   return (
     <div className="CostEstimate">
-      <button onClick={() => setShowEditAddressForm((prev) => !prev)}>
+      {/* this is the top tab bar where the user can navigate through out the cost estimate page */}
+      <div className="cost-estimate-tabs">
+        <p>Your Boxes</p>
+        <p>Cost Estimates</p>
+        <p>Uhaul Calculator</p>
+        <p>Edit Address</p>
+      </div>
+
+      {/* <button onClick={() => setShowEditAddressForm((prev) => !prev)}>
         Edit Address Information
       </button>
       {showEditAddressForm && <EditAddressForm />}
@@ -78,12 +86,14 @@ const CostEstimate = () => {
       <button onClick={() => setShowBoxSetList((prev) => !prev)}>
         Choose box set
       </button>
-      {showBoxSetList && <BoxSetList setShowBoxSetList={setShowBoxSetList} />}
+      {showBoxSetList && <BoxSetList setShowBoxSetList={setShowBoxSetList} />} */}
 
+      {/* this is the first "your boxes" tab where you can add boxes, box sets, and see your boxes */}
       <div className="form-boxlist">
         <AddBoxForm />
         <DisplayUserBoxes />
       </div>
+
       <h2>Cost Estimate</h2>
       <div className="rates-lists">
         <ul>
