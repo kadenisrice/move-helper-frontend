@@ -1,9 +1,11 @@
 /* Overall Layout */
 .CommunityTips {
   max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #e4cbb6;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5; /* Light gray background */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .CommunityTips h2 {
@@ -12,54 +14,74 @@
 }
 
 /* Form Styling */
-.add-tip-form {
+.CommunityTips .add-tip-form {
   margin: 20px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
-.add-tip-form textarea {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.CommunityTips .add-tip-form textarea {
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd; /* Light gray border */
 }
 
-.add-tip-form button {
-  background-color: #4caf50;
+.CommunityTips .add-tip-form button {
+  background-color: #4caf50; /* Green button */
   color: white;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.add-tip-form button:hover {
-  background-color: #45a049;
+.CommunityTips .add-tip-form button:hover {
+  background-color: #45a049; /* Slightly darker shade on hover */
 }
 
 /* List Styling */
-.community-tip-list {
+.CommunityTips .community-tip-list {
   list-style-type: none;
   padding: 0;
 }
 
-.community-tip-list li {
+.CommunityTips .community-tip-list li {
   background-color: #fff;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.community-tip-list img {
+.CommunityTips .community-tip-list li:hover {
+  transform: scale(1.02); /* Scale effect on hover */
+}
+
+.CommunityTips .community-tip-list img {
   max-width: 80px;
   max-height: 80px;
-  margin-right: 10px;
-  border-radius: 100%;
+  margin-right: 15px;
+  border-radius: 50%;
 }
 
-.community-tip-list p {
-  margin: 5px 0;
+.CommunityTips .community-tip-list .actions {
+  display: flex;
+  align-items: center;
+}
+
+.CommunityTips .community-tip-list .star-icon {
+  margin-right: 10px;
+}
+
+.CommunityTips .community-tip-list p {
+  margin: 10px 0;
+}
+
+
+
+.CommunityTips .community-tip-list span {
+  margin-right: 10px; 
 }
