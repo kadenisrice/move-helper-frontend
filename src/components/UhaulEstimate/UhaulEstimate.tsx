@@ -44,7 +44,8 @@ const UhaulEstimate = () => {
 
     boxes.forEach((box) => {
       totalBoxVolume +=
-        ((((+box.length / 12) * +box.width) / 12) * +box.height) / 12;
+        box.quantity *
+        ((+box.length / 12) * (+box.width / 12) * (+box.height / 12));
     });
 
     if (totalBoxVolume <= uhaul.volume) {
