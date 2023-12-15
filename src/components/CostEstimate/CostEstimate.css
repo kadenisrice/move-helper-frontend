@@ -1,11 +1,25 @@
+/* RESETS */
 .CostEstimate ul {
-  margin-left: 10px;
   list-style: none;
 }
 
-.CostEstimate li {
-  padding-bottom: 10px;
+/* STYLE ----------------------------------- */
+
+.CostEstimate .cost-estimate-tabs {
+  display: flex;
 }
+
+.CostEstimate .cost-estimate-tabs p {
+  background-color: #f3d5b5;
+  margin-right: 7px;
+  padding: 7px 10px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+}
+
+/* Your Boxes tab: */
+
+/* ---------------- */
 
 .CostEstimate .form-boxlist {
   display: flex;
