@@ -55,7 +55,9 @@ const Tasks = () => {
   return (
     <div className="Tasks">
       <h3>Tasks</h3>
-      <button onClick={() => setShowTaskForm(true)}>Create a new task</button>
+      <button onClick={() => setShowTaskForm((prev) => !prev)}>
+        Create a new task
+      </button>
       {showTaskForm && <TaskForm setShowTaskForm={setShowTaskForm} />}
       <button onClick={() => setShowProgressList(true)}>In Progress</button>
       <button onClick={() => setShowProgressList(false)}>Finished</button>

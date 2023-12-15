@@ -1,0 +1,58 @@
+.TaskForm {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.TaskForm button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.3s;
+}
+
+.TaskForm button:hover {
+  background-color: #0056b3;
+}
+
+.TaskForm label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 16px;
+}
+
+.TaskForm input[type="text"],
+.TaskForm input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.TaskForm input[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  display: block;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.TaskForm input[type="submit"]:hover {
+  background-color: #218838;
+}
