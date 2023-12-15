@@ -50,10 +50,14 @@ const UhaulEstimate = () => {
 
     if (totalBoxVolume <= uhaul.volume) {
       const remainingSpace = uhaul.volume - totalBoxVolume;
-      return `Your boxes fit. Remaining space in U-Haul: ${remainingSpace} cubic feet.`;
+      return `Your boxes fit. Remaining space in U-Haul: ${Math.round(
+        remainingSpace
+      )} cubic feet.`;
     } else {
       const additionalSpaceNeeded = totalBoxVolume - uhaul.volume;
-      return `Your boxes do not fit. Additional space needed: ${additionalSpaceNeeded} cubic feet.`;
+      return `Your boxes do not fit. Additional space needed: ${Math.round(
+        additionalSpaceNeeded
+      )} cubic feet.`;
     }
   };
 
@@ -119,7 +123,7 @@ const UhaulEstimate = () => {
               {currentUHaulTruck.dimensions.loadingRamp && (
                 <p>{currentUHaulTruck.dimensions.loadingRamp}</p>
               )}
-              <p>Cost:{currentUHaulTruck.rate.baseRate}</p>
+              <p>Cost: ${currentUHaulTruck.rate.baseRate}</p>
               <p>Plus ${currentUHaulTruck.rate.perMile} per mile</p>
             </div>
             <img src={currentUHaulTruck.image} alt="" />
@@ -129,7 +133,7 @@ const UhaulEstimate = () => {
       {estimate > 0 && (
         <p>
           {currentUHaulTruck?.type} traveling {miles} miles would cost roughly $
-          {estimate}
+          {estimate.toFixed(2)}
           <i> *not including tax</i>
         </p>
       )}

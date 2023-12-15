@@ -61,6 +61,8 @@ const DisplayUserBoxes = () => {
           setAccount(res);
         }
       });
+      setBoxSetName("");
+      setSquareFeet("");
     }
   };
 

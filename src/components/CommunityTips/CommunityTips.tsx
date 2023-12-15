@@ -1,6 +1,11 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import "./CommunityTips.css";
-import { addNewTip, getAllTips, updateTipById } from "../../services/tipsApi";
+import {
+  addNewTip,
+  deleteTip,
+  getAllTips,
+  updateTipById,
+} from "../../services/tipsApi";
 
 import { v4 as uuidv4 } from "uuid";
 import AuthContext from "../../context/AuthContext";
@@ -26,10 +31,11 @@ const CommunityTips = () => {
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (account) {
+    if (account && account._id) {
       const newTip = {
         uuid: uuidv4(),
         from: account?.displayName,
+        from_id: account._id,
         text: textArea,
         photoURL: user?.photoURL ?? "",
         date: new Date(),
@@ -45,7 +51,7 @@ const CommunityTips = () => {
   };
 
   useEffect(() => {
-    getAllTips().then((res) => setCommunityTips(res));
+    getAllTips("emptyhehe").then((res) => setCommunityTips(res));
   }, []);
 
   const likeHandler = (uuid: string, tip: Tip) => {
@@ -67,6 +73,12 @@ const CommunityTips = () => {
 
   const isItLiked = (tip: Tip) => {
     return tip.stars.some((person) => person === account?._id);
+  };
+
+  const deleteTipHandler = (uuid: string) => {
+    deleteTip(uuid).then(() => {
+      getAllTips().then((res) => setCommunityTips(res));
+    });
   };
 
   return (
@@ -110,15 +122,22 @@ const CommunityTips = () => {
               )}
               <p>Tip: {tip.text}</p>
               <p>Date: {new Date(tip.date).toISOString().slice(0, 10)}</p>
-              <p>stars: {tip.stars.length}</p>
 
               {account && (
-                <i
-                  className={`fa-${
-                    isItLiked(tip) ? `solid` : `regular`
-                  } fa-star`}
-                  onClick={() => likeHandler(tip.uuid, tip)}
-                ></i>
+                <>
+                  <i
+                    className={`fa-${
+                      isItLiked(tip) ? `solid` : `regular`
+                    } fa-star`}
+                    onClick={() => likeHandler(tip.uuid, tip)}
+                  ></i>
+                  <span>{tip.stars.length}</span>
+                  {tip.from_id === account._id && (
+                    <button onClick={() => deleteTipHandler(tip.uuid)}>
+                      delete
+                    </button>
+                  )}
+                </>
               )}
             </li>
           ))}

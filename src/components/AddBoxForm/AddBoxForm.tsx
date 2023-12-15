@@ -35,41 +35,6 @@ const AddBoxForm = () => {
           },
         ],
       };
-      // const updatedAccount: Account = {
-      //   uid: user.uid,
-      //   name: account.name,
-      //   displayName: user.displayName ?? "",
-      //   email: user.email ?? "",
-      //   phoneNumber: account.phoneNumber,
-      //   toAddress: {
-      //     street: account.toAddress.street,
-      //     city: account.toAddress.city,
-      //     state: account.toAddress.state,
-      //     zip: account.toAddress.zip,
-      //   },
-      //   fromAddress: {
-      //     street: account.fromAddress.street,
-      //     city: account.fromAddress.city,
-      //     state: account.fromAddress.state,
-      //     zip: account.fromAddress.zip,
-      //   },
-      //   tasks: [...account.tasks],
-      //   orders: [...account.orders],
-      //   expenses: [...account.expenses],
-      // boxes: [
-      //   ...account.boxes,
-      //   {
-      //     uuid: uuidv4(),
-      //     length,
-      //     width,
-      //     height,
-      //     distance_unit: "in",
-      //     weight,
-      //     mass_unit: "lb",
-      //     quantity: 1,
-      //   },
-      // ],
-      // };
 
       updateAccountById(account._id!, updatedAccount).then((res) => {
         if (res) {
