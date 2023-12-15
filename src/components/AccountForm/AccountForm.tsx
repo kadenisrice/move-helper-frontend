@@ -104,91 +104,92 @@ const AccountForm = ({ setShowForm }: Props) => {
         required
         onChange={(e) => setPhoneNumber(e.target.value)}
       />
+      <div className="both-address-container">
+        <div className="address">
+          <p>Current Address:</p>
+          <label htmlFor="from-street">Street:</label>
+          <input
+            type="text"
+            name="from-street"
+            id="from-street"
+            value={fromStreet}
+            required
+            onChange={(e) => setFromStreet(e.target.value)}
+          />
 
-      <div className="address">
-        <p>Current Address:</p>
-        <label htmlFor="from-street">Street:</label>
-        <input
-          type="text"
-          name="from-street"
-          id="from-street"
-          value={fromStreet}
-          required
-          onChange={(e) => setFromStreet(e.target.value)}
-        />
+          <label htmlFor="from-city">City:</label>
+          <input
+            type="text"
+            name="from-city"
+            id="from-city"
+            value={fromCity}
+            required
+            onChange={(e) => setFromCity(e.target.value)}
+          />
 
-        <label htmlFor="from-city">City:</label>
-        <input
-          type="text"
-          name="from-city"
-          id="from-city"
-          value={fromCity}
-          required
-          onChange={(e) => setFromCity(e.target.value)}
-        />
+          <label htmlFor="from-state">State:</label>
+          <input
+            type="text"
+            name="from-state"
+            id="from-state"
+            value={fromState}
+            required
+            onChange={(e) => setFromState(e.target.value)}
+          />
 
-        <label htmlFor="from-state">State:</label>
-        <input
-          type="text"
-          name="from-state"
-          id="from-state"
-          value={fromState}
-          required
-          onChange={(e) => setFromState(e.target.value)}
-        />
+          <label htmlFor="from-zipcode">Zipcode:</label>
+          <input
+            type="text"
+            name="from-zipcode"
+            id="from-zipcode"
+            value={fromZipcode}
+            required
+            onChange={(e) => setFromZipcode(e.target.value)}
+          />
+        </div>
 
-        <label htmlFor="from-zipcode">Zipcode:</label>
-        <input
-          type="text"
-          name="from-zipcode"
-          id="from-zipcode"
-          value={fromZipcode}
-          required
-          onChange={(e) => setFromZipcode(e.target.value)}
-        />
-      </div>
+        <div className="address">
+          <p>New Address:</p>
+          <label htmlFor="to-street">Street:</label>
+          <input
+            type="text"
+            name="to-street"
+            id="to-street"
+            value={toStreet}
+            required
+            onChange={(e) => setToStreet(e.target.value)}
+          />
 
-      <div className="address">
-        <p>New Address:</p>
-        <label htmlFor="to-street">Street:</label>
-        <input
-          type="text"
-          name="to-street"
-          id="to-street"
-          value={toStreet}
-          required
-          onChange={(e) => setToStreet(e.target.value)}
-        />
+          <label htmlFor="to-city">City:</label>
+          <input
+            type="text"
+            name="to-city"
+            id="to-city"
+            value={toCity}
+            required
+            onChange={(e) => setToCity(e.target.value)}
+          />
 
-        <label htmlFor="to-city">City:</label>
-        <input
-          type="text"
-          name="to-city"
-          id="to-city"
-          value={toCity}
-          required
-          onChange={(e) => setToCity(e.target.value)}
-        />
+          <label htmlFor="to-state">State:</label>
+          <input
+            type="text"
+            name="to-state"
+            id="to-state"
+            value={toState}
+            required
+            onChange={(e) => setToState(e.target.value)}
+          />
 
-        <label htmlFor="to-state">State:</label>
-        <input
-          type="text"
-          name="to-state"
-          id="to-state"
-          value={toState}
-          required
-          onChange={(e) => setToState(e.target.value)}
-        />
-
-        <label htmlFor="to-zipcode">Zipcode:</label>
-        <input
-          type="text"
-          name="to-zipcode"
-          id="to-zipcode"
-          value={toZipcode}
-          required
-          onChange={(e) => setToZipcode(e.target.value)}
-        />
+          <label htmlFor="to-zipcode">Zipcode:</label>
+          <input
+            type="text"
+            name="to-zipcode"
+            id="to-zipcode"
+            value={toZipcode}
+            required
+            onChange={(e) => setToZipcode(e.target.value)}
+          />
+        </div>
       </div>
 
       <button>Add information to your account</button>

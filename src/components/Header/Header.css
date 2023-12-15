@@ -1,5 +1,39 @@
 .Header {
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
-  margin: 10px;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.Header a {
+  text-decoration: none;
+  color: #333;
+}
+
+.Header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.Header button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.Header button:hover {
+  background-color: #0056b3;
+}
+
+.Header .fa-bars {
+  cursor: pointer;
+  color: #333;
+  font-size: 24px;
 }

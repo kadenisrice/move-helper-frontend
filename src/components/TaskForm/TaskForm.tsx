@@ -46,7 +46,7 @@ const TaskForm = ({ setShowTaskForm, close, clickedDate }: Props) => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form className="TaskForm" onSubmit={(e) => handleSubmit(e)}>
       {setShowTaskForm && (
         <button onClick={() => setShowTaskForm(false)}>close</button>
       )}

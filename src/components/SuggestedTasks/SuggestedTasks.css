@@ -1,13 +1,85 @@
-.SuggestedTasks span {
-  transition: transform 0.2s linear;
-  display: inline-block;
-  transform: rotate(0deg);
+.SuggestedTasks {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  height: fit-content;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
 }
 
-.SuggestedTasks .flipUpsideDown {
-  transform: rotate(-180deg);
+.SuggestedTasks h2 {
+  color: #333;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.SuggestedTasks ul {
+  list-style: none;
+  padding: 0;
 }
 
 .SuggestedTasks h3 {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.SuggestedTasks h3:hover {
+  background-color: #dde4e8;
+}
+
+.SuggestedTasks h3 span {
+  float: right;
+  transition: transform 0.3s;
+}
+
+.SuggestedTasks .flipUpsideDown {
+  transform: rotate(180deg);
+}
+
+.SuggestedTasks li {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.SuggestedTasks p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.SuggestedTasks .deadline-input {
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.SuggestedTasks button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.SuggestedTasks button:hover {
+  background-color: #0056b3;
+}
+
+@media only screen and (min-width: 768px) {
 }
