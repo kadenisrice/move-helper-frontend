@@ -46,15 +46,19 @@ export const updateTask = async (
   uid: string,
   uuid: string,
   updatedTask: Task
-): Promise<Task> => {
-  return (
-    await axios.patch(
-      `${baseUrl}/accounts/update-task/${encodeURIComponent(
-        uuid
-      )}/${encodeURIComponent(uid)}`,
-      updatedTask
-    )
-  ).data;
+): Promise<Task | void> => {
+  try {
+    return (
+      await axios.patch(
+        `${baseUrl}/accounts/update-task/${encodeURIComponent(
+          uuid
+        )}/${encodeURIComponent(uid)}`,
+        updatedTask
+      )
+    ).data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // Delete task from tasklist:
