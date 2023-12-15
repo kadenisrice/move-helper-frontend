@@ -1,7 +1,9 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import "./UhaulEstimate.css";
-import uhualFleet from "../../Utilities/UHaulTruckData";
+import uhualFleet from "../../utilities/UHaulTruckData";
 import UHaul from "../../models/UHaulTruck";
+import { Box } from "../../models/Account";
+import AuthContext from "../../context/AuthContext";
 
 const UhaulEstimate = () => {
   const [miles, setMiles] = useState("");
@@ -10,6 +12,8 @@ const UhaulEstimate = () => {
     null
   );
   const [estimate, setEstimate] = useState(0);
+
+  const { account } = useContext(AuthContext);
 
   const getCurrentTruck = (truckType: string) => {
     return uhualFleet.find((truck) => truck.type === truckType);
@@ -35,9 +39,31 @@ const UhaulEstimate = () => {
     }
   };
 
+  const calculateBoxFitAndRemainingSpace = (uhaul: UHaul, boxes: Box[]) => {
+    let totalBoxVolume = 0.0;
+
+    boxes.forEach((box) => {
+      totalBoxVolume +=
+        ((((+box.length / 12) * +box.width) / 12) * +box.height) / 12;
+    });
+
+    if (totalBoxVolume <= uhaul.volume) {
+      const remainingSpace = uhaul.volume - totalBoxVolume;
+      return `Your boxes fit. Remaining space in U-Haul: ${remainingSpace} cubic feet.`;
+    } else {
+      const additionalSpaceNeeded = totalBoxVolume - uhaul.volume;
+      return `Your boxes do not fit. Additional space needed: ${additionalSpaceNeeded} cubic feet.`;
+    }
+  };
+
   return (
     <div className="UhaulEstimate">
       <h2>Uhaul Cost Estimates</h2>
+      <p>
+        {currentUHaulTruck &&
+          account &&
+          calculateBoxFitAndRemainingSpace(currentUHaulTruck, account.boxes)}
+      </p>
 
       <form onSubmit={(e) => submitHandler(e)}>
         <p>Truck Options:</p>

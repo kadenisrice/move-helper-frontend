@@ -49,6 +49,7 @@ const EditAddressForm = () => {
         orders: [...account.orders],
         expenses: [...account.expenses],
         boxes: [...account.boxes],
+        boxSets: [...account.boxSets],
       };
       updateAccountById(account._id!, updatedAccount).then((res) => {
         if (res) {

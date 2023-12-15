@@ -1,11 +1,6 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import "./CommunityTips.css";
-import {
-  addNewTip,
-  getAllTips,
-  getTipById,
-  updateTipById,
-} from "../../services/tipsApi";
+import { addNewTip, getAllTips, updateTipById } from "../../services/tipsApi";
 
 import { v4 as uuidv4 } from "uuid";
 import AuthContext from "../../context/AuthContext";
@@ -53,10 +48,21 @@ const CommunityTips = () => {
     getAllTips().then((res) => setCommunityTips(res));
   }, []);
 
-  const likeHandler = (uuid: string, updatedTip: Tip) => {
-    updateTipById(uuid, updatedTip).then(() => {
-      getAllTips().then((res) => setCommunityTips(res));
-    });
+  const likeHandler = (uuid: string, tip: Tip) => {
+    // Check if the tip is already liked by the user
+    if (account && account._id) {
+      const isLiked = tip.stars.includes(account._id);
+
+      const updatedStars = isLiked
+        ? tip.stars.filter((id) => id !== account._id) // Remove like
+        : [...tip.stars, account._id];
+
+      const updatedTip = { ...tip, stars: updatedStars };
+
+      updateTipById(uuid, updatedTip).then(() => {
+        getAllTips().then((res) => setCommunityTips(res));
+      });
+    }
   };
 
   const isItLiked = (tip: Tip) => {
@@ -111,12 +117,7 @@ const CommunityTips = () => {
                   className={`fa-${
                     isItLiked(tip) ? `solid` : `regular`
                   } fa-star`}
-                  onClick={() =>
-                    likeHandler(tip.uuid, {
-                      ...tip,
-                      stars: [...tip.stars, account._id!],
-                    })
-                  }
+                  onClick={() => likeHandler(tip.uuid, tip)}
                 ></i>
               )}
             </li>

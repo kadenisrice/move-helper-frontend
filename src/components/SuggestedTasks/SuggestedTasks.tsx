@@ -5,7 +5,7 @@ import {
   postMoveTasks,
   preMovePlanningTasks,
   utilityAdminTasks,
-} from "../../Utilities/SuggestedTasksData";
+} from "../../utilities/SuggestedTasksData";
 import "./SuggestedTasks.css";
 import { addNewTask, getAccountById } from "../../services/accountApi";
 import { Task } from "../../models/Account";

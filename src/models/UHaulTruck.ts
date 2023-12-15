@@ -13,4 +13,5 @@ export default interface UHaul {
     perMile: number;
   };
   image: string;
+  volume: number;
 }

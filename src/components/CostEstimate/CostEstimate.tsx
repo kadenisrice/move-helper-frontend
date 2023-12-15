@@ -9,8 +9,6 @@ import DisplayUserBoxes from "../DisplayUserBoxes/DisplayUserBoxes";
 import { Box } from "../../models/Account";
 import UhaulEstimate from "../UhaulEstimate/UhaulEstimate";
 import { useNavigate } from "react-router-dom";
-import BoxSet from "../../models/BoxSet";
-import { ReccomendedBoxSetsDataArr } from "../../Utilities/ReccomendedBoxSetsData";
 import BoxSetList from "../BoxSetList/BoxSetList";
 
 const CostEstimate = () => {
@@ -26,9 +24,6 @@ const CostEstimate = () => {
   const [showEditAddressForm, setShowEditAddressForm] = useState(false);
   const [costEstimate, setCostEstimate] = useState<ShippoObject | null>(null);
   const [showBoxSetList, setShowBoxSetList] = useState(false);
-  const [boxSetList, setBoxSetList] = useState<BoxSet[]>(
-    ReccomendedBoxSetsDataArr
-  );
 
   useEffect(() => {
     if (account && account.boxes[0]) {

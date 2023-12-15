@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ReccomendedBoxSetsDataArr } from "../../Utilities/ReccomendedBoxSetsData";
+import { ReccomendedBoxSetsDataArr } from "../../utilities/ReccomendedBoxSetsData";
 import "./BoxSetList.css";
 import AuthContext from "../../context/AuthContext";
 

@@ -19,6 +19,7 @@ const uhualFleet: UHaul[] = [
       perMile: 0.79,
     },
     image: eightImg,
+    volume: 75,
   },
   {
     type: "9' Cargo Van",
@@ -32,6 +33,7 @@ const uhualFleet: UHaul[] = [
       perMile: 0.79,
     },
     image: nineImg,
+    volume: 245,
   },
   {
     type: "10' Truck",
@@ -47,6 +49,7 @@ const uhualFleet: UHaul[] = [
       perMile: 0.99,
     },
     image: tenImg,
+    volume: 402,
   },
   {
     type: "15' Truck",
@@ -63,6 +66,7 @@ const uhualFleet: UHaul[] = [
       perMile: 0.99,
     },
     image: fifteenImg,
+    volume: 764,
   },
   {
     type: "17' Truck",
@@ -79,6 +83,7 @@ const uhualFleet: UHaul[] = [
       perMile: 0.99,
     },
     image: seventeenImg,
+    volume: 865,
   },
   {
     type: "20' Truck",
@@ -95,6 +100,7 @@ const uhualFleet: UHaul[] = [
       perMile: 0.99,
     },
     image: twentyImg,
+    volume: 1016,
   },
   {
     type: "26' Truck",
@@ -111,6 +117,7 @@ const uhualFleet: UHaul[] = [
       perMile: 0.99,
     },
     image: twentySixImg,
+    volume: 1682,
   },
 ];
 
