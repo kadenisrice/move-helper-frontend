@@ -14,16 +14,16 @@ const MainNavigation = ({ showMainNav, setShowMainNav }: Props) => {
         className="fa-solid fa-xmark"
       ></i>
       <ul>
-        <li>
+        <li onClick={() => setShowMainNav(false)}>
           <Link to={"/tasks"}>Tasks</Link>
         </li>
-        <li>
+        <li onClick={() => setShowMainNav(false)}>
           <Link to={"/cost-estimate"}>Cost Estimate</Link>
         </li>
-        <li>
+        <li onClick={() => setShowMainNav(false)}>
           <Link to={"/calendar"}>Calendar</Link>
         </li>
-        <li>
+        <li onClick={() => setShowMainNav(false)}>
           <Link to={"/community-tips"}>Community Tips</Link>
         </li>
       </ul>

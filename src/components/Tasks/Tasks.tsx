@@ -96,7 +96,7 @@ const Tasks = () => {
             .sort((a, b) => {
               // SORTING BY WHATEVER IS DUE NEXT
               return (
-                new Date(a.deadline).getTime() - new Date(b.deadline).getTime()
+                new Date(b.deadline).getTime() - new Date(a.deadline).getTime()
               );
             })
             .filter((task) => task.completed)

@@ -1,11 +1,15 @@
-import { FormEvent, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./UhaulEstimate.css";
-import uhualFleet from "../../utilities/UHaulTruckData";
 import UHaul from "../../models/UHaulTruck";
 import { Box } from "../../models/Account";
 import AuthContext from "../../context/AuthContext";
+import uhualFleet from "../../Utilities/UHaulTruckData";
+import UhaulContext from "../../context/UhaulContext";
 
 const UhaulEstimate = () => {
+  const { truckOption, milesTraveling, setTruckOption, setMilesTraveling } =
+    useContext(UhaulContext);
+
   const [miles, setMiles] = useState("");
   const [truck, setTruck] = useState("");
   const [currentUHaulTruck, setCurrentUHaulTruck] = useState<UHaul | null>(
@@ -19,7 +23,23 @@ const UhaulEstimate = () => {
     return uhualFleet.find((truck) => truck.type === truckType);
   };
 
-  console.log(truck);
+  useEffect(() => {
+    if (milesTraveling) {
+      setMiles(milesTraveling);
+    } else {
+    }
+    if (truckOption) {
+      setTruck(truckOption);
+    }
+    if (currentUHaulTruck && miles) {
+      const truckBaseRate = currentUHaulTruck?.rate.baseRate;
+      const truckPerMileRate = currentUHaulTruck?.rate.perMile;
+      const milesAsNumber: number = +miles;
+      setEstimate(truckBaseRate + truckPerMileRate * milesAsNumber);
+    } else {
+      setEstimate(0);
+    }
+  }, [currentUHaulTruck, miles]);
 
   useEffect(() => {
     const currentTruck = getCurrentTruck(truck);
@@ -28,16 +48,6 @@ const UhaulEstimate = () => {
       setCurrentUHaulTruck(currentTruck);
     }
   }, [truck]);
-
-  const submitHandler = (e: FormEvent) => {
-    e.preventDefault();
-    if (currentUHaulTruck) {
-      const truckBaseRate = currentUHaulTruck?.rate.baseRate;
-      const truckPerMileRate = currentUHaulTruck?.rate.perMile;
-      const milesAsNumber: number = +miles;
-      setEstimate(truckBaseRate + truckPerMileRate * milesAsNumber);
-    }
-  };
 
   const calculateBoxFitAndRemainingSpace = (uhaul: UHaul, boxes: Box[]) => {
     let totalBoxVolume = 0.0;
@@ -70,13 +80,16 @@ const UhaulEstimate = () => {
           calculateBoxFitAndRemainingSpace(currentUHaulTruck, account.boxes)}
       </p>
 
-      <form onSubmit={(e) => submitHandler(e)}>
+      <form>
         <p>Truck Options:</p>
         <select
           name="trucks"
           id="trucks"
           value={truck}
-          onChange={(e) => setTruck(e.target.value)}
+          onChange={(e) => {
+            setTruck(e.target.value);
+            setTruckOption(e.target.value);
+          }}
         >
           <option value="UHaul Trucks">UHaul Trucks</option>
           <option value="8' Pickup Truck">8' Pickup Truck</option>
@@ -94,11 +107,12 @@ const UhaulEstimate = () => {
           id="miles-traveled"
           name="miles-traveled"
           value={miles}
-          onChange={(e) => setMiles(e.target.value)}
+          onChange={(e) => {
+            setMiles(e.target.value);
+            setMilesTraveling(e.target.value);
+          }}
           required
         />
-
-        <button>calculate uhaul estimate</button>
       </form>
       {currentUHaulTruck && (
         <>

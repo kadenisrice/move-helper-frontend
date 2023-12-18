@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { ReccomendedBoxSetsDataArr } from "../../utilities/ReccomendedBoxSetsData";
 import "./BoxSetList.css";
 import AuthContext from "../../context/AuthContext";
 import BoxSet from "../../models/BoxSet";
 import Account from "../../models/Account";
 import { updateAccountById } from "../../services/accountApi";
+import { ReccomendedBoxSetsDataArr } from "../../Utilities/ReccomendedBoxSetsData";
 
 interface Props {
   setShowBoxSetList: (b: boolean) => void;
@@ -33,18 +33,30 @@ const BoxSetList = ({ setShowBoxSetList }: Props) => {
       <h2>Premade Box Sets</h2>
       <ul className="premade-list">
         {ReccomendedBoxSetsDataArr.map((boxset) => (
-          <li key={boxset.uuid} onClick={() => clickHandler(boxset)}>
+          <li
+            key={boxset.uuid}
+            onClick={() => {
+              clickHandler(boxset);
+              setShowBoxSetList(false);
+            }}
+          >
             <p>{boxset.name}</p>
             <p>{boxset.maxSquareFeet} square feet</p>
           </li>
         ))}
       </ul>
 
-      <h2>My Box Set</h2>
+      <h2>My Box Sets</h2>
       <ul className="premade-list">
         {account &&
           account.boxSets.map((boxset) => (
-            <li key={boxset.uuid} onClick={() => clickHandler(boxset)}>
+            <li
+              key={boxset.uuid}
+              onClick={() => {
+                clickHandler(boxset);
+                setShowBoxSetList(false);
+              }}
+            >
               <p>{boxset.name}</p>
               {boxset.maxSquareFeet && boxset.maxSquareFeet > 0 ? (
                 <p>{boxset.maxSquareFeet} square feet</p>

@@ -37,6 +37,7 @@ const CommunityTips = () => {
       const newTip = {
         uuid: uuidv4(),
         from: account?.displayName,
+        fromNickname: account.name ?? "",
         from_id: account._id,
         text: textArea,
         photoURL: user?.photoURL ?? "",
@@ -53,7 +54,9 @@ const CommunityTips = () => {
   };
 
   useEffect(() => {
-    getAllTips(filter).then((res) => setCommunityTips(res));
+    getAllTips(filter).then((res) => {
+      setCommunityTips(res);
+    });
   }, [filter]);
 
   const likeHandler = (uuid: string, tip: Tip) => {
@@ -115,7 +118,7 @@ const CommunityTips = () => {
       <div className="community-tip-list">
         {communityTips.map((tip) => (
           <li key={tip._id}>
-            <p>From: {tip.from}</p>
+            <p>From: {tip.fromNickname === "" ? tip.from : tip.fromNickname}</p>
             {tip.photoURL ? (
               <img src={tip.photoURL} alt="google photo" />
             ) : (
