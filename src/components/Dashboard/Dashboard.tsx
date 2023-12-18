@@ -147,7 +147,7 @@ const Dashboard = () => {
 
         <Link to="/calendar">
           <div className="mini-calendar mini-display">
-            <MyCalendar />
+            <MyCalendar isMiniView={true} />
           </div>
         </Link>
       </div>

@@ -17,7 +17,11 @@ interface MyEvent extends Event {
   uuid: string;
 }
 
-const MyCalendar = () => {
+interface Props {
+  isMiniView?: boolean;
+}
+
+const MyCalendar = ({ isMiniView }: Props) => {
   const [event, setEvent] = useState<MyEvent | null>(null);
 
   const [showEditForm, setShowEditForm] = useState(false);
@@ -98,7 +102,7 @@ const MyCalendar = () => {
   };
 
   return (
-    <div className="Calendar">
+    <div className="Calendar" style={isMiniView ? { marginTop: "0px" } : {}}>
       <Calendar
         localizer={localizer}
         events={myEventsList}
@@ -145,9 +149,11 @@ const MyCalendar = () => {
           )}
         </div>
       )}
-      <div>
-        {showAddForm && <TaskForm close={close} clickedDate={clickedDate} />}
-      </div>
+      {showAddForm && (
+        <div className="addFormContainer">
+          {showAddForm && <TaskForm close={close} clickedDate={clickedDate} />}
+        </div>
+      )}
     </div>
   );
 };
