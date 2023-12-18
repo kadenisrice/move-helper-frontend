@@ -5,11 +5,23 @@
   color: black;
 }
 
+.Dashboard .todays-date {
+  font-size: 2.5em;
+  font-weight: bold; /* Makes the font bold */
+  color: #235382; /* A deep, elegant blue color */
+  padding: 10px; /* Adds padding for a better look */
+  border-radius: 10px; /* Rounded corners */
+  max-width: 60%; /* Limits the width */
+}
+
 .Dashboard .dashboard-display {
   background-color: bisque;
   width: 100%;
   height: fit-content;
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Dashboard .tasks-tips {

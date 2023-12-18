@@ -8,7 +8,7 @@ import {
   updateTask,
 } from "../../services/accountApi";
 import SuggestedTasks from "../SuggestedTasks/SuggestedTasks";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Task } from "../../models/Account";
 
 const Tasks = () => {
@@ -54,13 +54,30 @@ const Tasks = () => {
 
   return (
     <div className="Tasks">
-      <h3>Tasks</h3>
-      <button onClick={() => setShowTaskForm((prev) => !prev)}>
-        Create a new task
-      </button>
-      {showTaskForm && <TaskForm setShowTaskForm={setShowTaskForm} />}
-      <button onClick={() => setShowProgressList(true)}>In Progress</button>
-      <button onClick={() => setShowProgressList(false)}>Finished</button>
+      <div className="tasks-header">
+        <h3>My Tasks</h3>
+        <nav>
+          <button>
+            <Link to="/calendar">View in Calendar📅</Link>
+          </button>
+        </nav>
+      </div>
+
+      <div className="filterBtnContainer">
+        <button
+          className={showProgressList ? `isActive` : ""}
+          onClick={() => setShowProgressList(true)}
+        >
+          In Progress
+        </button>
+        <button
+          className={!showProgressList ? `isActive` : ""}
+          onClick={() => setShowProgressList(false)}
+        >
+          Finished
+        </button>
+      </div>
+
       <ul>
         {showProgressList &&
           account &&
@@ -74,17 +91,20 @@ const Tasks = () => {
             .filter((task) => !task.completed)
             .map((task) => (
               <li key={task.uuid}>
-                <i
-                  className="fa-solid fa-xmark"
-                  onClick={() => handleRemoveTask(task.uuid)}
-                ></i>
                 <div className="list-content">
-                  <p>{task.name}</p>
+                  <h4>{task.name}</h4>
                   <p>{task.content}</p>
-                  <p>{task.deadline}</p>
-                  <button onClick={() => handleTaskStatus(task, true)}>
-                    &#9989;
-                  </button>
+                  <div className="bottom-of-list-item">
+                    <button onClick={() => handleTaskStatus(task, true)}>
+                      &#9989;
+                    </button>
+                    <p>Deadline: {task.deadline}</p>
+                  </div>
+
+                  <i
+                    className="fa-solid fa-xmark"
+                    onClick={() => handleRemoveTask(task.uuid)}
+                  ></i>
                 </div>
               </li>
             ))}
@@ -102,22 +122,31 @@ const Tasks = () => {
             .filter((task) => task.completed)
             .map((task) => (
               <li key={task.uuid}>
-                <i
-                  className="fa-solid fa-xmark"
-                  onClick={() => handleRemoveTask(task.uuid)}
-                ></i>
                 <div className="list-content">
-                  <p>{task.name}</p>
+                  <h4>{task.name}</h4>
                   <p>{task.content}</p>
-                  <p>{task.deadline}</p>
-                  <p>Complete</p>
-                  <button onClick={() => handleTaskStatus(task, false)}>
-                    &#10006;
-                  </button>
+                  <div className="bottom-of-list-item">
+                    <button onClick={() => handleTaskStatus(task, false)}>
+                      Remove
+                    </button>
+                    <p>Deadline: {task.deadline}</p>
+                  </div>
+
+                  <i
+                    className="fa-solid fa-xmark"
+                    onClick={() => handleRemoveTask(task.uuid)}
+                  ></i>
                 </div>
               </li>
             ))}
       </ul>
+      {showTaskForm && <TaskForm setShowTaskForm={setShowTaskForm} />}
+      {!showTaskForm && (
+        <button onClick={() => setShowTaskForm((prev) => !prev)}>
+          Create a new task
+        </button>
+      )}
+
       <SuggestedTasks />
     </div>
   );
