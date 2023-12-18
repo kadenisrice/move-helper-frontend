@@ -89,7 +89,9 @@ const CommunityTips = () => {
   return (
     <div className="CommunityTips">
       <h2>Community Tips</h2>
-      <button onClick={() => setShowTipForm((prev) => !prev)}>Add Tip</button>
+      <button onClick={() => setShowTipForm((prev) => !prev)}>
+        Share Your Insight 📌
+      </button>
       {showTipForm && (
         <>
           <form className="add-tip-form" onSubmit={(e) => submitHandler(e)}>
@@ -105,7 +107,7 @@ const CommunityTips = () => {
               }}
               required
             ></textarea>
-            <button>add</button>
+            <button>Submit</button>
           </form>
         </>
       )}
@@ -119,9 +121,6 @@ const CommunityTips = () => {
         {communityTips.map((tip) => (
           <li key={tip._id} className="tip-item-container">
             <div className="left-column">
-              <p>
-                From: {tip.fromNickname === "" ? tip.from : tip.fromNickname}
-              </p>
               {tip.photoURL ? (
                 <img src={tip.photoURL} alt="google photo" />
               ) : (
@@ -150,6 +149,10 @@ const CommunityTips = () => {
                         delete
                       </button>
                     )}
+                    <p>
+                      From:{" "}
+                      {tip.fromNickname === "" ? tip.from : tip.fromNickname}
+                    </p>
                   </>
                 )}
               </div>

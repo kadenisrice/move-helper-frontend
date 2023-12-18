@@ -28,7 +28,7 @@
 }
 
 .CommunityTips .add-tip-form button {
-  background-color: #4caf50;
+  background-color: rgb(125, 188, 212);
   color: white;
   padding: 15px 20px;
   border: none;
@@ -39,7 +39,7 @@
 }
 
 .CommunityTips .add-tip-form button:hover {
-  background-color: #45a049; 
+  background-color: #007bff;
 }
 
 /* List Styling */
@@ -64,8 +64,8 @@
 }
 
 .CommunityTips .community-tip-list img {
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 100px;
+  max-height: 100px;
   margin-right: 15px;
   border-radius: 50%;
 }
@@ -104,8 +104,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc; /* Optional: Add a border between tips */
-  padding: 10px; /* Adjust padding as needed */
+  border-top: 2px solid rgb(42, 18, 72); 
+  border-bottom: 2px solid rgb(42, 18, 72); 
+  padding: 10px;
 }
 
 .left-column {
@@ -118,19 +119,25 @@
 .right-column {
   display: flex;
   flex-direction: column;
-  margin-left: 50px; /* Adjust the margin between columns as needed */
+  margin-left: 50px; 
   flex: 3; 
 }
 
 .community-tip-list img {
-  max-width: 100px; /* Adjust the width as needed */
+  max-width: 100px; 
 }
 
 .tip-content {
-  margin-bottom: 10px; /* Optional: Add margin between tip content and actions */
+  margin-bottom: 10px; 
 }
 
 .tip-actions {
   display: flex;
   align-items: center;
 }
+
+.CommunityTips .tip-actions p {
+  margin-left: auto; 
+
+}
+
