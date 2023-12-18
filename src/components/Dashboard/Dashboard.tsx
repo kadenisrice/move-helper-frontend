@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import { getAllTips } from "../../services/tipsApi";
 import Tip from "../../models/Tip";
+import { Task } from "../../models/Account";
 
 const Dashboard = () => {
   const { account, user } = useContext(AuthContext);
@@ -26,22 +27,68 @@ const Dashboard = () => {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
         })
         .slice(0, 4);
-
+      temp.forEach((tip) => {
+        if (tip.text.length >= 40) {
+          tip.text = tip.text.slice(0, 40) + "... more";
+        }
+      });
       setRecentTips(temp);
     });
   }, []);
 
+  const formatDate = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    };
+    return date.toLocaleDateString("en-US", options);
+  };
+
+  const today = new Date();
+  const formattedDate = formatDate(today);
+
+  const getTasksForToday = (): Task[] => {
+    let todaysTasks: Task[] = [];
+    if (account) {
+      const today = new Date();
+      todaysTasks = account.tasks.filter((task) => {
+        return task.deadline === today.toISOString().slice(0, 10);
+      });
+    }
+    return todaysTasks;
+  };
+
   return (
     <div className="Dashboard">
-      <nav className="main-nav">
-        <Link to={"/tasks"}>Tasks</Link>
-        <Link to={"/cost-estimate"}>Cost Estimate</Link>
-        <Link to={"/community-tips"}>Community Tips</Link>
-        <Link to={"/calendar"}>Calendar</Link>
-      </nav>
-
       <div className="dashboard-display">
-        <h2>Dashboard:</h2>
+        <div className="todays-date">{formattedDate}</div>
+
+        <ul className="todays-task-list">
+          <h2
+            style={{
+              textAlign: "center",
+              textDecoration: "underline",
+              marginBottom: "10px",
+            }}
+          >
+            Today's Tasks
+          </h2>
+          {getTasksForToday().map((task, index) => {
+            return (
+              <>
+                <li style={{ marginBottom: "10px" }} key={task.uuid}>
+                  <p>
+                    {index + 1}
+                    {") "}
+                    {task.name}:
+                  </p>
+                  <p>{task.content}</p>
+                </li>
+              </>
+            );
+          })}
+        </ul>
 
         <div className="tasks-tips">
           <Link to="/tasks">
@@ -50,6 +97,7 @@ const Dashboard = () => {
               {account && account.tasks[0] ? (
                 <ul>
                   {account?.tasks
+                    .filter((task) => !task.completed)
                     .sort((a, b) => {
                       // SORTING BY WHATEVER IS DUE NEXT
                       return (

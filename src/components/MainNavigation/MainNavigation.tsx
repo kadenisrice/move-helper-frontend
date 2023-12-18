@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./MainNavigation.css";
+import { signOut } from "../../firebaseConfig";
 
 interface Props {
   showMainNav: boolean;
@@ -14,9 +15,10 @@ const MainNavigation = ({ showMainNav, setShowMainNav }: Props) => {
         className="fa-solid fa-xmark"
       ></i>
       <ul>
-        <li onClick={() => setShowMainNav(false)}>
-          <Link to={"/tasks"}>Tasks</Link>
-        </li>
+        <Link to={"/tasks"}>
+          <li onClick={() => setShowMainNav(false)}>Tasks</li>
+        </Link>
+
         <li onClick={() => setShowMainNav(false)}>
           <Link to={"/cost-estimate"}>Cost Estimate</Link>
         </li>
@@ -25,6 +27,9 @@ const MainNavigation = ({ showMainNav, setShowMainNav }: Props) => {
         </li>
         <li onClick={() => setShowMainNav(false)}>
           <Link to={"/community-tips"}>Community Tips</Link>
+        </li>
+        <li onClick={() => setShowMainNav(false)}>
+          <button onClick={signOut}>sign out</button>
         </li>
       </ul>
     </nav>

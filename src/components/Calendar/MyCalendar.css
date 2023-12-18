@@ -1,15 +1,36 @@
 .Calendar {
-  color: white;
   height: 90vh;
   width: 90vw;
-  background-color: #533c29;
+  color: #333;
+  background-color: #f4f4f4;
+  margin: auto; 
+  /* added margin auto to center calendar */
+  
+}
+
+.Calendar .rbc-toolbar {
+  background-color: #99acc1;
+  color: rgb(50, 48, 48);
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .Calendar .rbc-toolbar button {
-  color: white;
+  color: #333;
+  background-color: rgb(125, 188, 212);
+  border: none;
+  margin: 0 5px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.eventContainer {
+.Calendar .rbc-toolbar button:hover {
+  background-color: #007bff;
+}
+
+/* Event container styles -- */
+.Calendar .eventContainer {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -19,4 +40,15 @@
   z-index: 10;
   padding: 20px;
   border-radius: 20px;
+  box-shadow: 2px 4px 3px 4px rgba(0, 0, 0, 0.2);
 }
+
+.Calendar .eventContainer button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  /* transition: background-color 0.3s ease; */
+}
+

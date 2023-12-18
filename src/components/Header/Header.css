@@ -1,6 +1,5 @@
 .Header {
-  background-color: #f8f9fa;
-  padding: 10px 20px;
+  padding: 15px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -14,7 +13,7 @@
 }
 
 .Header h1 {
-  font-size: 24px;
+  font-size: 32px;
   margin: 0;
 }
 
@@ -35,5 +34,5 @@
 .Header .fa-bars {
   cursor: pointer;
   color: #333;
-  font-size: 24px;
+  font-size: 30px;
 }
