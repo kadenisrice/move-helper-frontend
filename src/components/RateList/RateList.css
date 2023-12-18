@@ -1,0 +1,32 @@
+.RateList {
+  background-color: #f3d5b5;
+  padding: 10px 5px;
+}
+
+.RateList .rate-list {
+  padding: 10px 10px;
+}
+
+/* This is to flex each provider equally among the page */
+
+.RateList .rates-lists {
+  display: flex;
+}
+
+.RateList .ups-list {
+  flex: 1;
+}
+
+.RateList .usps-list {
+  flex: 1;
+}
+
+/* ------------------------------------------------------ */
+
+.RateList .rate-item {
+  background-color: #ffedd8;
+  padding: 10px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  box-shadow: 0px 3px 5px #0000002e;
+}

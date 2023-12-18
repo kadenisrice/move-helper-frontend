@@ -1,0 +1,86 @@
+.DisplayUserBoxes {
+  background-color: #f3d5b5;
+  margin-top: 25px;
+  height: 60%;
+  padding: 10px 5px;
+  position: relative;
+}
+
+/* BOX SET FORM STUFF ------------------------------------ */
+
+.DisplayUserBoxes h2 {
+  margin-bottom: 10px;
+}
+
+.DisplayUserBoxes .choose-boxset {
+  background-color: #ffedd8;
+  box-shadow: 0px 3px 5px #0000002e;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.DisplayUserBoxes .boxset-form {
+  padding: 10px 0;
+}
+
+.DisplayUserBoxes .boxset-input {
+  background-color: #ffedd8;
+  margin-bottom: 7px;
+
+  padding: 7px 10px;
+  border-radius: 20px;
+  width: 60%;
+  box-shadow: 0px 3px 5px #0000002e;
+}
+
+.DisplayUserBoxes .boxset-form input {
+  background-color: #ffedd8;
+  width: 50%;
+  border: none;
+}
+
+.DisplayUserBoxes .boxset-form button {
+  background-color: #ffedd8;
+  border: none;
+  width: 30%;
+  padding: 14px 0;
+  border-radius: 20px;
+  box-shadow: 0px 3px 5px #0000002e;
+}
+
+/* BOX LIST STUFF ------------------------------------ */
+
+.DisplayUserBoxes .box-list {
+  overflow: scroll;
+  height: 40%;
+  padding: 10px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-top: 2px solid white;
+  box-shadow: inset 0px 3px 6px 0px #00000024;
+}
+
+/* BOX ITEMS (THE BOX CARDS) */
+
+.DisplayUserBoxes .singular-box-item h3 {
+  font-size: 15px;
+}
+
+.DisplayUserBoxes .singular-box-item p {
+  font-size: 10px;
+}
+
+.DisplayUserBoxes .singular-box-item {
+  background-color: #ffedd8;
+  width: 100px;
+  height: 100px;
+  padding: 15px 15px;
+  border-radius: 20px;
+  box-shadow: 0px 3px 5px #0000002e;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* ----------------------------------- */

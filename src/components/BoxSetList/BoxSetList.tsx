@@ -30,10 +30,17 @@ const BoxSetList = ({ setShowBoxSetList }: Props) => {
 
   return (
     <div className="BoxSetList">
-      <h2>Premade Box Sets</h2>
+      <div className="title-close">
+        <h2>Premade Box Sets</h2>
+        <i
+          className="fa-solid fa-xmark"
+          onClick={() => setShowBoxSetList(false)}
+        ></i>
+      </div>
       <ul className="premade-list">
         {ReccomendedBoxSetsDataArr.map((boxset) => (
           <li
+            className="boxset-card"
             key={boxset.uuid}
             onClick={() => {
               clickHandler(boxset);
@@ -47,10 +54,11 @@ const BoxSetList = ({ setShowBoxSetList }: Props) => {
       </ul>
 
       <h2>My Box Sets</h2>
-      <ul className="premade-list">
+      <ul className="user-list">
         {account &&
           account.boxSets.map((boxset) => (
             <li
+              className="boxset-card"
               key={boxset.uuid}
               onClick={() => {
                 clickHandler(boxset);

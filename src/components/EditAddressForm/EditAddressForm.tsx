@@ -63,57 +63,61 @@ const EditAddressForm = () => {
     <form className="EditAddressForm" onSubmit={(e) => submitHandler(e)}>
       <h2>Edit Address</h2>
 
-      <h3>To Address</h3>
-      <input
-        type="text"
-        value={toStreet}
-        onChange={(e) => setToStreet(e.target.value)}
-        placeholder="Street"
-      />
-      <input
-        type="text"
-        value={toCity}
-        onChange={(e) => setToCity(e.target.value)}
-        placeholder="City"
-      />
-      <input
-        type="text"
-        value={toState}
-        onChange={(e) => setToState(e.target.value)}
-        placeholder="State"
-      />
-      <input
-        type="text"
-        value={toZipcode}
-        onChange={(e) => setToZipcode(e.target.value)}
-        placeholder="Zipcode"
-      />
+      <div className="to-address-edit address">
+        <h3>To Address</h3>
+        <input
+          type="text"
+          value={toStreet}
+          onChange={(e) => setToStreet(e.target.value)}
+          placeholder="Street"
+        />
+        <input
+          type="text"
+          value={toCity}
+          onChange={(e) => setToCity(e.target.value)}
+          placeholder="City"
+        />
+        <input
+          type="text"
+          value={toState}
+          onChange={(e) => setToState(e.target.value)}
+          placeholder="State"
+        />
+        <input
+          type="text"
+          value={toZipcode}
+          onChange={(e) => setToZipcode(e.target.value)}
+          placeholder="Zipcode"
+        />
+      </div>
 
-      <h3>From Address</h3>
-      <input
-        type="text"
-        value={fromStreet}
-        onChange={(e) => setFromStreet(e.target.value)}
-        placeholder="Street"
-      />
-      <input
-        type="text"
-        value={fromCity}
-        onChange={(e) => setFromCity(e.target.value)}
-        placeholder="City"
-      />
-      <input
-        type="text"
-        value={fromState}
-        onChange={(e) => setFromState(e.target.value)}
-        placeholder="State"
-      />
-      <input
-        type="text"
-        value={fromZipcode}
-        onChange={(e) => setFromZipcode(e.target.value)}
-        placeholder="Zipcode"
-      />
+      <div className="from-address-edit address">
+        <h3>From Address</h3>
+        <input
+          type="text"
+          value={fromStreet}
+          onChange={(e) => setFromStreet(e.target.value)}
+          placeholder="Street"
+        />
+        <input
+          type="text"
+          value={fromCity}
+          onChange={(e) => setFromCity(e.target.value)}
+          placeholder="City"
+        />
+        <input
+          type="text"
+          value={fromState}
+          onChange={(e) => setFromState(e.target.value)}
+          placeholder="State"
+        />
+        <input
+          type="text"
+          value={fromZipcode}
+          onChange={(e) => setFromZipcode(e.target.value)}
+          placeholder="Zipcode"
+        />
+      </div>
       <button>Update Address</button>
     </form>
   );

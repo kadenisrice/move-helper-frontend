@@ -1,5 +1,25 @@
 .BoxSetList {
-  background-color: lightsteelblue;
+  overflow: scroll;
+  background-color: #f3d5b5;
   position: absolute;
   padding: 20px 20px;
+  border-radius: 25px;
+  box-shadow: 0px 3px 20px 6px #0000002e;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 70%;
+}
+
+.BoxSetList .title-close {
+  display: flex;
+  justify-content: space-between;
+}
+
+.BoxSetList .boxset-card {
+  background-color: #ffedd8;
+  margin-bottom: 5px;
+  padding: 5px 5px;
+  border-radius: 10px;
 }
