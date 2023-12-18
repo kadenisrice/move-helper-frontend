@@ -71,34 +71,40 @@ const DisplayUserBoxes = () => {
   return (
     <div className="DisplayUserBoxes">
       <h2>Your Boxes</h2>
-      <button onClick={() => setShowBoxSetList((prev) => !prev)}>
+      <button
+        className="choose-boxset"
+        onClick={() => setShowBoxSetList((prev) => !prev)}
+      >
         Choose box set
       </button>
       {showBoxSetList && <BoxSetList setShowBoxSetList={setShowBoxSetList} />}
-      <form onSubmit={(e) => submitHandler(e)}>
-        <label htmlFor="set-name">Box Set Name:</label>
-        <input
-          type="text"
-          id="set-name"
-          name="set-name"
-          value={boxSetName}
-          onChange={(e) => setBoxSetName(e.target.value)}
-        />
-
-        <label htmlFor="max-square-feet"> Square Feet: {`(optional)`} </label>
-        <input
-          type="text"
-          id="max-square-feet"
-          name="max-square-feet"
-          value={squareFeet}
-          onChange={(e) => setSquareFeet(e.target.value)}
-        />
-
-        <button>save this box set</button>
+      <form className="boxset-form" onSubmit={(e) => submitHandler(e)}>
+        <div className="boxset-input">
+          <label htmlFor="set-name">Box Set Name:</label>
+          <input
+            type="text"
+            id="set-name"
+            name="set-name"
+            value={boxSetName}
+            onChange={(e) => setBoxSetName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="boxset-input">
+          <label htmlFor="max-square-feet"> Square Feet: </label>
+          <input
+            type="text"
+            id="max-square-feet"
+            name="max-square-feet"
+            value={squareFeet}
+            onChange={(e) => setSquareFeet(e.target.value)}
+          />
+        </div>
+        <button>Save Box Set</button>
       </form>
-      <ul>
+      <ul className="box-list">
         {account?.boxes.map((box, index) => (
-          <li key={box.uuid}>
+          <li key={box.uuid} className="singular-box-item">
             <h3>Box: {index + 1}</h3>
             <p>Quantity: {box.quantity}</p>
             <button

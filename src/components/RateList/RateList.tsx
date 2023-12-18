@@ -58,30 +58,30 @@ const RateList = () => {
 
   return (
     <div className="RateList">
-      <h2>Cost Estimate</h2>
+      <h2>Here are shipping rates for your current box sets!</h2>
       <div className="rates-lists">
-        <ul>
+        <ul className="ups-list rate-list">
           {costEstimate?.rates
             .filter((rate) => {
               return rate.provider === "UPS";
             })
             .sort((a, b) => +a.amount - +b.amount)
             .map((rate) => (
-              <li key={rate.object_id}>
+              <li className="rate-item" key={rate.object_id}>
                 <p>{rate.provider}</p>
                 <p>${rate.amount}</p>
                 <p>{rate.duration_terms}</p>
               </li>
             ))}
         </ul>
-        <ul>
+        <ul className="ups-list rate-list">
           {costEstimate?.rates
             .filter((rate) => {
               return rate.provider === "USPS";
             })
             .sort((a, b) => +a.amount - +b.amount)
             .map((rate) => (
-              <li key={rate.object_id}>
+              <li className="rate-item" key={rate.object_id}>
                 <p>{rate.provider}</p>
                 <p>${rate.amount}</p>
                 <p>{rate.duration_terms}</p>

@@ -52,42 +52,50 @@ const AddBoxForm = () => {
   return (
     <form className="AddBoxForm" onSubmit={(e) => submitHandler(e)}>
       <h2>Add Box</h2>
-      <label htmlFor="length">Length:</label>
-      <input
-        type="text"
-        id="length"
-        value={length}
-        onChange={(e) => setLength(e.target.value)}
-        required
-      />
+      <div className="add-box-input">
+        <label htmlFor="length">Length:</label>
+        <input
+          type="text"
+          id="length"
+          value={length}
+          onChange={(e) => setLength(e.target.value)}
+          required
+        />
+      </div>
 
-      <label htmlFor="width">Width:</label>
-      <input
-        type="text"
-        id="width"
-        value={width}
-        onChange={(e) => setWidth(e.target.value)}
-        required
-      />
+      <div className="add-box-input">
+        <label htmlFor="width">Width:</label>
+        <input
+          type="text"
+          id="width"
+          value={width}
+          onChange={(e) => setWidth(e.target.value)}
+          required
+        />
+      </div>
 
-      <label htmlFor="height">Height:</label>
-      <input
-        type="text"
-        id="height"
-        value={height}
-        onChange={(e) => setHeight(e.target.value)}
-        required
-      />
+      <div className="add-box-input">
+        <label htmlFor="height">Height:</label>
+        <input
+          type="text"
+          id="height"
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
+          required
+        />
+      </div>
 
-      <label htmlFor="weight">Weight:</label>
-      <input
-        type="text"
-        id="weight"
-        value={weight}
-        onChange={(e) => setWeight(e.target.value)}
-        required
-      />
-      <button>Add Box</button>
+      <div className="add-box-input">
+        <label htmlFor="weight">Weight:</label>
+        <input
+          type="text"
+          id="weight"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          required
+        />
+      </div>
+      <button>Create Box</button>
     </form>
   );
 };

@@ -14,6 +14,8 @@ import RateList from "../RateList/RateList";
 const CostEstimate = () => {
   const { account, user } = useContext(AuthContext);
 
+  const [selectedTab, setSelectedTab] = useState(0);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!account || !user) {
@@ -21,79 +23,65 @@ const CostEstimate = () => {
     }
   }, [user]);
 
-  // these will be displayed as soon as the user enters cost estimate:
-  const [showYourBoxTab, setShowYourBoxTab] = useState(true);
-
-  // these are apart of the tabs at the top:
-  const [showRateList, setShowRateList] = useState(false);
-  const [showUhaul, setShowUhaul] = useState(false);
-  const [showEditAddressForm, setShowEditAddressForm] = useState(false);
-
-  const setAllFalse = () => {
-    setShowYourBoxTab(false);
-    setShowRateList(false);
-    setShowUhaul(false);
-    setShowEditAddressForm(false);
-  };
-
   return (
     <div className="CostEstimate">
       {/* this is the top tab bar where the user can navigate through out the cost estimate page */}
       <div className="cost-estimate-tabs">
         <button
+          className={`your-boxes ${selectedTab === 0 ? "selected" : ""}`}
           onClick={() => {
-            setAllFalse();
-
-            setShowYourBoxTab(true);
+            setSelectedTab(0);
           }}
         >
           Your Boxes
         </button>
 
         <button
+          className={`rate-lists ${selectedTab === 1 ? "selected" : ""}`}
           onClick={() => {
-            setAllFalse();
-            setShowRateList(true);
+            setSelectedTab(1);
           }}
         >
           Cost Estimates
         </button>
 
         <button
+          className={`uhaul-estimate ${selectedTab === 2 ? "selected" : ""}`}
           onClick={() => {
-            setAllFalse();
-            setShowUhaul(true);
+            setSelectedTab(2);
           }}
         >
           Uhaul Calculator
         </button>
 
         <button
+          className={`edit-address-tab ${selectedTab === 3 ? "selected" : ""}`}
           onClick={() => {
-            setAllFalse();
-            setShowEditAddressForm(true);
+            setSelectedTab(3);
           }}
         >
           Edit Address
         </button>
       </div>
 
-      {/* this is the first "your boxes" tab where you can add boxes, box sets, and see your boxes */}
-      {showYourBoxTab && (
-        <div className="form-boxlist">
-          <AddBoxForm />
-          <DisplayUserBoxes />
-        </div>
-      )}
+      <div className="tab-components">
+        {/* this is the first "your boxes" tab where you can add boxes, box sets, and see your boxes */}
+        {selectedTab === 0 && (
+          <div className="form-boxlist">
+            <AddBoxForm />
+            <DisplayUserBoxes />
+          </div>
+        )}
 
-      {/* Cost Estimates being conditionally rendered */}
-      {showRateList && <RateList />}
+        {/* Cost Estimates being conditionally rendered */}
+        {selectedTab === 1 && <RateList />}
 
-      {/* Uhaul calculator thingy conditionally rendered */}
-      {showUhaul && <UhaulEstimate />}
+        {/* Uhaul calculator thingy conditionally rendered */}
+        {selectedTab === 2 && <UhaulEstimate />}
 
-      {/* Edit Address tab being conditionally rendered */}
-      {showEditAddressForm && <EditAddressForm />}
+        {/* Edit Address tab being conditionally rendered */}
+        {selectedTab === 3 && <EditAddressForm />}
+      </div>
     </div>
   );
 };
