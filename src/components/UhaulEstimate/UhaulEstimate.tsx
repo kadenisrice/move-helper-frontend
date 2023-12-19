@@ -4,7 +4,7 @@ import UHaul from "../../models/UHaulTruck";
 import { Box } from "../../models/Account";
 import AuthContext from "../../context/AuthContext";
 import UhaulContext from "../../context/UhaulContext";
-import uhualFleet from "../../Utilities/UHaulTruckData";
+import uhualFleet from "../../utilities/UHaulTruckData";
 
 const UhaulEstimate = () => {
   const { truckOption, milesTraveling, setTruckOption, setMilesTraveling } =
@@ -51,12 +51,15 @@ const UhaulEstimate = () => {
 
   const calculateBoxFitAndRemainingSpace = (uhaul: UHaul, boxes: Box[]) => {
     let totalBoxVolume = 0.0;
+    const marginError = 1.25; // 25% margin
 
     boxes.forEach((box) => {
       totalBoxVolume +=
         box.quantity *
         ((+box.length / 12) * (+box.width / 12) * (+box.height / 12));
     });
+
+    totalBoxVolume *= marginError;
 
     if (totalBoxVolume <= uhaul.volume) {
       const remainingSpace = uhaul.volume - totalBoxVolume;

@@ -55,10 +55,12 @@ const RateList = () => {
       setCostEstimate(null);
     }
   }, [account]);
+  console.log(costEstimate);
 
   return (
     <div className="RateList">
       <h2>Here are shipping rates for your current box sets!</h2>
+      {!costEstimate?.rates[0] && <p>None Available</p>}
       <div className="rates-lists">
         <ul className="ups-list rate-list">
           {costEstimate?.rates
