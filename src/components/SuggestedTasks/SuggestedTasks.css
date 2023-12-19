@@ -23,6 +23,11 @@
   padding: 0;
 }
 
+.SuggestedTasks ul li .suggested-title {
+  text-align: center;
+  font-weight: bold;
+}
+
 .SuggestedTasks h3 {
   color: #333; /* For better readability */
   padding: 12px;

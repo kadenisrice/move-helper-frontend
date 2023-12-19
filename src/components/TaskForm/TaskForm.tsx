@@ -43,6 +43,9 @@ const TaskForm = ({ setShowTaskForm, close, clickedDate }: Props) => {
     if (setShowTaskForm) {
       setShowTaskForm(false);
     }
+    if (close) {
+      close();
+    }
   };
 
   return (

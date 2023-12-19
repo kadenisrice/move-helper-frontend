@@ -13,7 +13,8 @@
   height: 90%;
 }
 
-.Calendar .main-calendar-mini {
+.not-mini {
+  border: 6px outset #b5dafe;
 }
 
 .Calendar .rbc-toolbar {
@@ -72,9 +73,12 @@
   padding: 25px;
   border-radius: 25px;
   box-shadow: 0 5px 15px rgba(35, 83, 130, 0.3); /* Deep Sea color for the shadow */
-  width: 90%;
+  width: fit-content;
   max-width: 80vw; /* Adjust based on content */
   color: #235382; /* Deep Sea for text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Calendar .eventContainer h2,
@@ -92,10 +96,18 @@
   font-weight: bold;
   margin-right: 10px;
   transition: background-color 0.3s ease;
+  width: fit-content;
 }
 
 .Calendar .eventContainer button:hover {
   background-color: #7489be; /* Evening Tide */
+}
+
+.Calendar .eventContainer .edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
 /* Add Form Container Styles */
@@ -141,8 +153,9 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .Calendar {
+  .not-mini {
     margin: 40px auto;
     width: 60vw;
+    border: 6px outset #b5dafe;
   }
 }
