@@ -1,5 +1,5 @@
 .EditAddressForm {
-  background-color: #f3d5b5;
+  background-color: white;
   display: flex;
   flex-direction: column;
   padding: 10px 5px;
@@ -15,23 +15,18 @@
 }
 
 .EditAddressForm input {
-  background-color: #ffedd8;
+  background-color: white;
   margin-bottom: 7px;
-
+  border: 1px solid #80808066;
   padding: 7px 10px;
   border-radius: 20px;
   width: 60%;
   box-shadow: 0px 3px 5px #0000002e;
 }
 
-.EditAddressForm input {
-  background-color: #ffedd8;
-  width: 50%;
-  border: none;
-}
-
 .EditAddressForm button {
-  background-color: #ffedd8;
+  background-color: #0e4d86;
+  color: white;
   border: none;
   width: 30%;
 

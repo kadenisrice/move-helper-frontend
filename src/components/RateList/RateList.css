@@ -1,5 +1,5 @@
 .RateList {
-  background-color: #f3d5b5;
+  background-color: white;
   padding: 10px 5px;
 }
 
@@ -24,7 +24,8 @@
 /* ------------------------------------------------------ */
 
 .RateList .rate-item {
-  background-color: #ffedd8;
+  background-color: white;
+  border: 1px solid #80808066;
   padding: 10px 10px;
   border-radius: 20px;
   margin-bottom: 10px;

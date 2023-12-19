@@ -1,7 +1,7 @@
 .DisplayUserBoxes {
-  background-color: #f3d5b5;
+  background-color: white;
   margin-top: 25px;
-  height: 60%;
+  height: fit-content;
   padding: 10px 5px;
   position: relative;
 }
@@ -13,7 +13,8 @@
 }
 
 .DisplayUserBoxes .choose-boxset {
-  background-color: #ffedd8;
+  background-color: #0e4d86;
+  color: white;
   box-shadow: 0px 3px 5px #0000002e;
   border: none;
   padding: 5px 10px;
@@ -25,9 +26,9 @@
 }
 
 .DisplayUserBoxes .boxset-input {
-  background-color: #ffedd8;
+  background-color: white;
   margin-bottom: 7px;
-
+  border: 1px solid #80808066;
   padding: 7px 10px;
   border-radius: 20px;
   width: 60%;
@@ -35,13 +36,15 @@
 }
 
 .DisplayUserBoxes .boxset-form input {
-  background-color: #ffedd8;
+  background-color: white;
+
   width: 50%;
   border: none;
 }
 
 .DisplayUserBoxes .boxset-form button {
-  background-color: #ffedd8;
+  background-color: #0e4d86;
+  color: white;
   border: none;
   width: 30%;
   padding: 14px 0;
@@ -60,6 +63,7 @@
   justify-content: space-around;
   border-top: 2px solid white;
   box-shadow: inset 0px 3px 6px 0px #00000024;
+  border: 1px solid #80808066;
 }
 
 /* BOX ITEMS (THE BOX CARDS) */
@@ -73,7 +77,9 @@
 }
 
 .DisplayUserBoxes .singular-box-item {
-  background-color: #ffedd8;
+  background-color: white;
+
+  border: 1px solid #80808066;
   width: 100px;
   height: 100px;
   padding: 15px 15px;
@@ -84,3 +90,21 @@
 }
 
 /* ----------------------------------- */
+
+@media only screen and (min-width: 768px) {
+  .DisplayUserBoxes .box-form-list {
+    display: flex;
+  }
+
+  .DisplayUserBoxes .boxset-form-title {
+    flex: 1;
+  }
+
+  .DisplayUserBoxes .box-list {
+    flex: 1;
+  }
+
+  .DisplayUserBoxes .box-list::-webkit-scrollbar {
+    display: none;
+  }
+}

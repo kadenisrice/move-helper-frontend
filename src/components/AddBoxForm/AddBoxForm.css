@@ -1,5 +1,5 @@
 .AddBoxForm {
-  background-color: #f3d5b5;
+  background-color: white;
   display: flex;
   flex-direction: column;
   padding: 10px 5px;
@@ -11,9 +11,9 @@
 }
 
 .AddBoxForm .add-box-input {
-  background-color: #ffedd8;
+  background-color: white;
   margin-bottom: 7px;
-
+  border: 1px solid #80808066;
   padding: 7px 10px;
   border-radius: 20px;
   width: 60%;
@@ -21,13 +21,14 @@
 }
 
 .AddBoxForm input {
-  background-color: #ffedd8;
+  background-color: white;
   width: 50%;
   border: none;
 }
 
 .AddBoxForm button {
-  background-color: #ffedd8;
+  background-color: #0e4d86;
+  color: white;
   border: none;
   width: 30%;
   padding: 14px 0;
