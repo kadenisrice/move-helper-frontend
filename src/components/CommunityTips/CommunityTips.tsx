@@ -152,7 +152,7 @@ const CommunityTips = () => {
                       </button>
                     )}
                     <p>
-                      From:{" "}
+                      {" "}
                       {tip.fromNickname === "" ? tip.from : tip.fromNickname}
                     </p>
                   </>

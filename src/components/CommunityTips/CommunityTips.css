@@ -32,7 +32,7 @@
 }
 
 .CommunityTips .add-tip-form button {
-  background-color: #a58c8c;
+  background-color: #7489be;
   color: white;
   padding: 15px 20px;
   border: none;
@@ -43,7 +43,7 @@
 }
 
 .CommunityTips .add-tip-form button:hover {
-  background-color: #7d4f50;
+  background-color: #235382;
 }
 
 /* List Styling */
@@ -54,14 +54,14 @@
 }
 
 .CommunityTips .community-tip-list li {
-  background-color: #a58c8c;
+  background-color: #a6b5db;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-background-image: url("../../assets/route.png");
-background-repeat: no-repeat;
+  background-image: url("../../assets/route.png");
+  background-repeat: no-repeat;
   
 }
 
@@ -148,14 +148,14 @@ background-repeat: no-repeat;
 }
 
 .CommunityTips .tip-actions button {
-  background-color: #a58c8c;
+  background-color: #7489be;
   cursor: pointer;
   border-radius: 10px;
 }
 
 
 .CommunityTips .tip-actions button:hover {
-  background-color: #7d4f50;
+  background-color: #235382;
 }
 
 @media only screen and (min-width: 768px) {
