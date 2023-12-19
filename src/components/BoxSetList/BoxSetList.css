@@ -11,6 +11,11 @@
   transform: translate(-50%, -50%);
   width: 50%;
   height: 70%;
+  z-index: 15;
+}
+
+.BoxSetList::-webkit-scrollbar {
+  display: none;
 }
 
 .BoxSetList .title-close {
@@ -19,9 +24,19 @@
 }
 
 .BoxSetList .boxset-card {
-  background-color: #0e4d86;
+  background-color: #6893be;
   color: white;
   margin-bottom: 5px;
   padding: 10px 10px;
   border-radius: 10px;
+
+  box-shadow: #0000002e 0px 3px 5px, rgba(255, 255, 255, 0) 0px 3px 5px inset;
+  transition: 0.5s;
+}
+
+.BoxSetList .boxset-card:hover {
+  scale: 1.03;
+  background-color: #769fc7;
+  box-shadow: #0000002e 0px 3px 5px,
+    rgba(255, 255, 255, 0.329) 0px 3px 5px inset;
 }

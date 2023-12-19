@@ -72,17 +72,18 @@ const DisplayUserBoxes = () => {
     <div className="DisplayUserBoxes">
       <div className="box-form-list">
         <div className="boxset-form-title">
-          <h2>Your Boxes</h2>
-          <button
-            className="choose-boxset"
-            onClick={() => setShowBoxSetList((prev) => !prev)}
-          >
-            Choose box set
-          </button>
-          {showBoxSetList && (
-            <BoxSetList setShowBoxSetList={setShowBoxSetList} />
-          )}
-
+          <div className="title-boxset">
+            <h2>My Boxes</h2>
+            <button
+              className="choose-boxset"
+              onClick={() => setShowBoxSetList((prev) => !prev)}
+            >
+              Choose box set
+            </button>
+            {showBoxSetList && (
+              <BoxSetList setShowBoxSetList={setShowBoxSetList} />
+            )}
+          </div>
           <form className="boxset-form" onSubmit={(e) => submitHandler(e)}>
             <div className="boxset-input">
               <label htmlFor="set-name">Box Set Name:</label>
@@ -113,13 +114,15 @@ const DisplayUserBoxes = () => {
             <li key={box.uuid} className="singular-box-item">
               <h3>Box: {index + 1}</h3>
               <p>Quantity: {box.quantity}</p>
-              <button
-                onClick={() => clickHandler(box.uuid, -1)}
-                disabled={box.quantity === 1}
-              >
-                -
-              </button>
-              <button onClick={() => clickHandler(box.uuid, +1)}>+</button>
+              <div className="plus-minus-button">
+                <button
+                  onClick={() => clickHandler(box.uuid, -1)}
+                  disabled={box.quantity === 1}
+                >
+                  -
+                </button>
+                <button onClick={() => clickHandler(box.uuid, +1)}>+</button>
+              </div>
               <p>Height: {box.height} in</p>
               <p>Length: {box.length} in</p>
               <p>Width: {box.width} in</p>

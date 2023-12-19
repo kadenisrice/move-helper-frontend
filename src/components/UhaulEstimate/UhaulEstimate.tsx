@@ -4,7 +4,7 @@ import UHaul from "../../models/UHaulTruck";
 import { Box } from "../../models/Account";
 import AuthContext from "../../context/AuthContext";
 import UhaulContext from "../../context/UhaulContext";
-import uhualFleet from "../../utilities/UHaulTruckData";
+import uhualFleet from "../../Utilities/UHaulTruckData";
 
 const UhaulEstimate = () => {
   const { truckOption, milesTraveling, setTruckOption, setMilesTraveling } =
@@ -138,7 +138,6 @@ const UhaulEstimate = () => {
                     </p>
                   )}
 
-                  <p></p>
                   {currentUHaulTruck.dimensions.loadingRamp && (
                     <p>{currentUHaulTruck.dimensions.loadingRamp}</p>
                   )}

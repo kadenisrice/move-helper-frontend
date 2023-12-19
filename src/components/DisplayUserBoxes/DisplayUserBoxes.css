@@ -1,25 +1,44 @@
 .DisplayUserBoxes {
   background-color: white;
   margin-top: 25px;
-  height: fit-content;
+  height: 80%;
   padding: 10px 5px;
   position: relative;
 }
 
 /* BOX SET FORM STUFF ------------------------------------ */
 
-.DisplayUserBoxes h2 {
-  margin-bottom: 10px;
+.DisplayUserBoxes .title-boxset {
+  display: flex;
+  align-items: flex-end;
 }
 
+.DisplayUserBoxes h2 {
+  margin-bottom: 10px;
+  margin-right: 15px;
+}
+
+/* animation here */
 .DisplayUserBoxes .choose-boxset {
-  background-color: #0e4d86;
+  background-color: #6893be;
   color: white;
   box-shadow: 0px 3px 5px #0000002e;
   border: none;
   padding: 5px 10px;
   border-radius: 10px;
+  margin-bottom: 10px;
+
+  box-shadow: #0000002e 0px 3px 5px, rgba(255, 255, 255, 0) 0px 3px 5px inset;
+  transition: 0.5s;
 }
+
+.DisplayUserBoxes .choose-boxset:hover {
+  scale: 1.03;
+  background-color: #769fc7;
+  box-shadow: #0000002e 0px 3px 5px,
+    rgba(255, 255, 255, 0.329) 0px 3px 5px inset;
+}
+/* ------------------------------------------------------------- */
 
 .DisplayUserBoxes .boxset-form {
   padding: 10px 0;
@@ -42,39 +61,47 @@
   border: none;
 }
 
+/* animation here */
 .DisplayUserBoxes .boxset-form button {
-  background-color: #0e4d86;
+  background-color: #6893be;
   color: white;
   border: none;
   width: 30%;
   padding: 14px 0;
   border-radius: 20px;
   box-shadow: 0px 3px 5px #0000002e;
+
+  box-shadow: #0000002e 0px 3px 5px, rgba(255, 255, 255, 0) 0px 3px 5px inset;
+  transition: 0.5s;
+}
+
+.DisplayUserBoxes .boxset-form button:hover {
+  scale: 1.03;
+  background-color: #769fc7;
+  box-shadow: #0000002e 0px 3px 5px,
+    rgba(255, 255, 255, 0.329) 0px 3px 5px inset;
 }
 
 /* BOX LIST STUFF ------------------------------------ */
 
 .DisplayUserBoxes .box-list {
   overflow: scroll;
-  height: 40%;
+  height: 200px;
   padding: 10px 5px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   border-top: 2px solid white;
-  box-shadow: inset 0px 3px 6px 0px #00000024;
+  box-shadow: inset 0px 3px 6px 0px #0000000a;
   border: 1px solid #80808066;
+  border-radius: 10px;
+}
+
+.box-list::-webkit-scrollbar {
+  display: none;
 }
 
 /* BOX ITEMS (THE BOX CARDS) */
-
-.DisplayUserBoxes .singular-box-item h3 {
-  font-size: 15px;
-}
-
-.DisplayUserBoxes .singular-box-item p {
-  font-size: 10px;
-}
 
 .DisplayUserBoxes .singular-box-item {
   background-color: white;
@@ -87,11 +114,47 @@
   box-shadow: 0px 3px 5px #0000002e;
   text-align: center;
   margin-bottom: 15px;
+
+  transition: 0.5s;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.DisplayUserBoxes .plus-minus-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40px;
+}
+
+.DisplayUserBoxes .singular-box-item button {
+  background-color: #6893be;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+
+.DisplayUserBoxes .singular-box-item:hover {
+  scale: 1.03;
+}
+
+.DisplayUserBoxes .singular-box-item h3 {
+  font-size: 15px;
+}
+
+.DisplayUserBoxes .singular-box-item p {
+  font-size: 10px;
 }
 
 /* ----------------------------------- */
 
 @media only screen and (min-width: 768px) {
+  .DisplayUserBoxes {
+    position: static;
+  }
+
   .DisplayUserBoxes .box-form-list {
     display: flex;
   }

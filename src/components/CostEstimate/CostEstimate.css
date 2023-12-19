@@ -10,6 +10,10 @@
   height: 100vh;
 }
 
+.CostEstimate::-webkit-scrollbar {
+  display: none;
+}
+
 .CostEstimate button {
   cursor: pointer;
 }
