@@ -68,7 +68,7 @@ const SuggestedTasks = () => {
         {showPreMove &&
           preMovePlanningTasks.map((task) => (
             <li key={task.uuid}>
-              <p>{task.name}</p>
+              <p className="suggested-title">{task.name}</p>
               <p>{task.content}</p>
 
               {selectedIndex === task.uuid ? (
@@ -104,7 +104,7 @@ const SuggestedTasks = () => {
         {showPacking &&
           packingTasks.map((task) => (
             <li key={task.uuid}>
-              <p>{task.name}</p>
+              <p className="suggested-title">{task.name}</p>
               <p>{task.content}</p>
 
               {selectedIndex === task.uuid ? (
@@ -141,7 +141,7 @@ const SuggestedTasks = () => {
         {showDayOfMove &&
           dayOfMoveTasks.map((task) => (
             <li key={task.uuid}>
-              <p>{task.name}</p>
+              <p className="suggested-title">{task.name}</p>
               <p>{task.content}</p>
 
               {selectedIndex === task.uuid ? (
@@ -178,7 +178,7 @@ const SuggestedTasks = () => {
         {showPostMove &&
           postMoveTasks.map((task) => (
             <li key={task.uuid}>
-              <p>{task.name}</p>
+              <p className="suggested-title">{task.name}</p>
               <p>{task.content}</p>
 
               {selectedIndex === task.uuid ? (
@@ -215,7 +215,7 @@ const SuggestedTasks = () => {
         {showUtilityAdmin &&
           utilityAdminTasks.map((task) => (
             <li key={task.uuid}>
-              <p>{task.name}</p>
+              <p className="suggested-title">{task.name}</p>
               <p>{task.content}</p>
 
               {selectedIndex === task.uuid ? (

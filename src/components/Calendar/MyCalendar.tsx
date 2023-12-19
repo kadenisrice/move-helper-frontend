@@ -115,7 +115,7 @@ const MyCalendar = ({ isMiniView }: Props) => {
 
   return (
     <div
-      className="Calendar"
+      className={`Calendar ${!isMiniView ? "not-mini" : ""}`}
       style={isMiniView ? { marginTop: "0px", boxSizing: "border-box" } : {}}
     >
       {!isMiniView && (
@@ -140,17 +140,22 @@ const MyCalendar = ({ isMiniView }: Props) => {
         <div className="eventContainer">
           <h2>{event.title}</h2>
           <p>{event.description}</p>
-          <button
-            onClick={() => {
-              setEvent(null);
-              setShowEditForm(false);
-            }}
-          >
-            Close
-          </button>
-          <button onClick={() => setShowEditForm((prev) => !prev)}>Edit</button>
+          <div>
+            <button
+              onClick={() => {
+                setEvent(null);
+                setShowEditForm(false);
+              }}
+            >
+              Close
+            </button>
+            <button onClick={() => setShowEditForm((prev) => !prev)}>
+              Edit
+            </button>
+          </div>
+
           {showEditForm && (
-            <form onSubmit={(e) => submitHandler(e)}>
+            <form className="edit-form" onSubmit={(e) => submitHandler(e)}>
               <label htmlFor="name">Task: </label>
               <input
                 type="text"

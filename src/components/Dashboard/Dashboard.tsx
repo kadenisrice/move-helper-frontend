@@ -139,7 +139,7 @@ const Dashboard = () => {
                   .map((tip) => {
                     return (
                       <li key={tip._id}>
-                        <p>{tip.text}</p>
+                        <p style={{ wordWrap: "break-word" }}>{tip.text}</p>
                         <p>- {tip.from}</p>
                       </li>
                     );

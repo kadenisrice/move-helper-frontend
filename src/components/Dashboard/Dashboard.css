@@ -5,6 +5,12 @@
   color: #235382; /* Deep Sea */
 }
 
+.Dashboard ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .Dashboard .todays-date {
   font-size: 2.6em;
   font-weight: bold;
@@ -58,4 +64,7 @@
   background-color: #f2eeeb; /* Gentle Whisper */
   width: 100%;
   height: 40vh;
+}
+
+@media only screen and (min-width: 768px) {
 }
