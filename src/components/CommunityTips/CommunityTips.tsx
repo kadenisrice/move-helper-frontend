@@ -131,10 +131,10 @@ const CommunityTips = () => {
             </div>
             <div className="right-column">
               <div className="tip-content">
-                <p>"{tip.text}"</p>
                 <p className="date">
                   Date: {new Date(tip.date).toISOString().slice(0, 10)}
                 </p>
+                <p className="tip-text">{tip.text}</p>
               </div>
               <div className="tip-actions">
                 {account && (

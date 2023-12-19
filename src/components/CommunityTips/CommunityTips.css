@@ -1,12 +1,13 @@
 /* Overall Layout */
 .CommunityTips {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
   padding: 20px;
   background-color: #f0f0f0;; 
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  word-wrap: break-word;
+  /* background-image: url("../../assets/route.png");
+  background-repeat: no-repeat; */
 }
 
 .CommunityTips h2 {
@@ -15,6 +16,14 @@
   text-align: center;
 
 }
+
+.CommunityTips .tip-text{
+  display: inline-block;
+  overflow-wrap: break-word;
+white-space: normal;
+width: 90%;
+}
+
 
 /* Form Styling */
 .CommunityTips .add-tip-form {
@@ -57,8 +66,8 @@
   background-color: #a6b5db;
   padding: 20px;
   margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 1px 0px 8px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   background-image: url("../../assets/route.png");
   background-repeat: no-repeat;
@@ -83,8 +92,9 @@
 }
 
 
+
 .CommunityTips .fa-solid.fa-star {
-  color: #e2ab54; /* Gold for solid star */
+  color: #FFD700; /* Gold for solid star */
 }
 
 .CommunityTips .fa-regular.fa-star {
@@ -107,8 +117,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 5px solid rgb(61, 58, 65); 
-  border-bottom: 5px solid rgb(61, 58, 65); 
+  border-top: 5px solid rgb(15, 3, 86); 
+  border-bottom: 5px solid rgb(15, 3, 86); ; 
   padding: 10px;
   
 }
@@ -117,14 +127,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
+  width: 25%
 }
 
 .CommunityTips .right-column {
   display: flex;
   flex-direction: column;
   margin-left: 50px; 
-  flex: 3; 
+  width: 75%;
 }
 
 /* .CommunityTips .community-tip-list img {
@@ -136,11 +146,12 @@
 }
 
 .CommunityTips .tip-content .date{
-  font-size: smaller;
+  font-size: small;
 }
 .CommunityTips .tip-actions {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .CommunityTips .tip-actions p {
@@ -151,6 +162,7 @@
   background-color: #7489be;
   cursor: pointer;
   border-radius: 10px;
+  
 }
 
 
