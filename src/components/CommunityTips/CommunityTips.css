@@ -1,16 +1,19 @@
 /* Overall Layout */
 .CommunityTips {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 500px;
+  margin: auto;
   padding: 20px;
   background-color: #f0f0f0;; 
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  word-wrap: break-word;
 }
 
 .CommunityTips h2 {
+ 
   color: #333;
   text-align: center;
+
 }
 
 /* Form Styling */
@@ -19,6 +22,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
 .CommunityTips .add-tip-form textarea {
@@ -28,7 +32,7 @@
 }
 
 .CommunityTips .add-tip-form button {
-  background-color: rgb(125, 188, 212);
+  background-color: #a58c8c;
   color: white;
   padding: 15px 20px;
   border: none;
@@ -39,23 +43,26 @@
 }
 
 .CommunityTips .add-tip-form button:hover {
-  background-color: #007bff;
+  background-color: #7d4f50;
 }
 
 /* List Styling */
 .CommunityTips .community-tip-list {
   list-style-type: none;
   padding: 0;
-  
+ 
 }
 
 .CommunityTips .community-tip-list li {
-  background-color: rgb(206, 233, 243);
+  background-color: #a58c8c;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+background-image: url("../../assets/route.png");
+background-repeat: no-repeat;
+  
 }
 
 .CommunityTips .community-tip-list li:hover {
@@ -75,13 +82,9 @@
   align-items: center;
 }
 
-/* .CommunityTips .community-tip-list .star-icon {
-  margin-right: 20px;
-} */
-
 
 .CommunityTips .fa-solid.fa-star {
-  color: #F39C12; /* Gold for solid star */
+  color: #e2ab54; /* Gold for solid star */
 }
 
 .CommunityTips .fa-regular.fa-star {
@@ -104,40 +107,60 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 2px solid rgb(42, 18, 72); 
-  border-bottom: 2px solid rgb(42, 18, 72); 
+  border-top: 5px solid rgb(61, 58, 65); 
+  border-bottom: 5px solid rgb(61, 58, 65); 
   padding: 10px;
+  
 }
 
-.left-column {
+.CommunityTips .left-column {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
 }
 
-.right-column {
+.CommunityTips .right-column {
   display: flex;
   flex-direction: column;
   margin-left: 50px; 
   flex: 3; 
 }
 
-.community-tip-list img {
+/* .CommunityTips .community-tip-list img {
   max-width: 100px; 
+} */
+
+.CommunityTips .tip-content {
+  margin-bottom: 30px; 
 }
 
-.tip-content {
-  margin-bottom: 10px; 
+.CommunityTips .tip-content .date{
+  font-size: smaller;
 }
-
-.tip-actions {
+.CommunityTips .tip-actions {
   display: flex;
   align-items: center;
 }
 
 .CommunityTips .tip-actions p {
   margin-left: auto; 
-
 }
 
+.CommunityTips .tip-actions button {
+  background-color: #a58c8c;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+
+.CommunityTips .tip-actions button:hover {
+  background-color: #7d4f50;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .CommunityTips {
+    max-width: 800px;
+  }
+}
