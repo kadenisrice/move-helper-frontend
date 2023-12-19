@@ -4,7 +4,7 @@ import AuthContext from "../../context/AuthContext";
 import BoxSet from "../../models/BoxSet";
 import Account from "../../models/Account";
 import { updateAccountById } from "../../services/accountApi";
-import { ReccomendedBoxSetsDataArr } from "../../Utilities/ReccomendedBoxSetsData";
+import { ReccomendedBoxSetsDataArr } from "../../utilities/ReccomendedBoxSetsData";
 
 interface Props {
   setShowBoxSetList: (b: boolean) => void;
