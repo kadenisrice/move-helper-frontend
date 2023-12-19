@@ -1,9 +1,23 @@
+.AccountSetup {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin: 20px;
+  gap: 20px;
+}
+
+/* below is the landing page photos*/
+/* trying to get the banner of photos to slowly move across the page repeatedly*/
+
+.AccountSetup .landing-page .stock-photos {
+  display: flex;
+}
+
+.AccountSetup .landing-page .stock-photos img {
+  max-width: 300px;
+  max-height: 150px;
+  margin-right: 10px;
+}
+
 @media only screen and (min-width: 768px) {
-  .AccountSetup {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    margin: 20px;
-    gap: 20px;
-  }
 }
