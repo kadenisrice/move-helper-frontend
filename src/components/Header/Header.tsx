@@ -5,6 +5,8 @@ import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import MainNavigation from "../MainNavigation/MainNavigation";
 
+import cargoCompanionLogo from "../../assets/936810.png";
+
 const Header = () => {
   const { user, account } = useContext(AuthContext);
 
@@ -12,8 +14,9 @@ const Header = () => {
 
   return (
     <header className="Header">
-      <Link to="/dashboard">
+      <Link className="header-link" to="/dashboard">
         <h1>CargoCompanion</h1>
+        <img src={cargoCompanionLogo} alt="cargo logo" />
       </Link>
       {!user && <button onClick={signInWithGoogle}>Sign In With Google</button>}
 

@@ -51,7 +51,7 @@ const AddBoxForm = () => {
 
   return (
     <form className="AddBoxForm" onSubmit={(e) => submitHandler(e)}>
-      <h2>Add Box</h2>
+      <h2>Add a box to your list!</h2>
       <div className="add-box-input">
         <label htmlFor="length">Length:</label>
         <input
