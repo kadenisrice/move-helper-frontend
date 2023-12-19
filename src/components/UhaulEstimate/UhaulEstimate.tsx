@@ -4,7 +4,7 @@ import UHaul from "../../models/UHaulTruck";
 import { Box } from "../../models/Account";
 import AuthContext from "../../context/AuthContext";
 import UhaulContext from "../../context/UhaulContext";
-import uhualFleet from "../../Utilities/UHaulTruckData";
+import uhualFleet from "../../utilities/UHaulTruckData";
 
 const UhaulEstimate = () => {
   const { truckOption, milesTraveling, setTruckOption, setMilesTraveling } =

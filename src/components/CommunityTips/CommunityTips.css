@@ -3,7 +3,7 @@
   max-width: 600px;
   margin: auto;
   padding: 20px;
-  background-color: #f0f0f0;; 
+  background-color: #f0f0f0;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   /* background-image: url("../../assets/route.png");
@@ -11,19 +11,16 @@
 }
 
 .CommunityTips h2 {
- 
   color: #333;
   text-align: center;
-
 }
 
-.CommunityTips .tip-text{
+.CommunityTips .tip-text {
   display: inline-block;
-  overflow-wrap: break-word;
-white-space: normal;
-width: 90%;
+  word-break: break-word;
+  white-space: normal;
+  width: 90%;
 }
-
 
 /* Form Styling */
 .CommunityTips .add-tip-form {
@@ -37,7 +34,7 @@ width: 90%;
 .CommunityTips .add-tip-form textarea {
   padding: 15px;
   border-radius: 8px;
-  border: 1px solid #9d9b9b; 
+  border: 1px solid #9d9b9b;
 }
 
 .CommunityTips .add-tip-form button {
@@ -59,7 +56,6 @@ width: 90%;
 .CommunityTips .community-tip-list {
   list-style-type: none;
   padding: 0;
- 
 }
 
 .CommunityTips .community-tip-list li {
@@ -71,11 +67,10 @@ width: 90%;
   transition: transform 0.3s ease;
   background-image: url("../../assets/route.png");
   background-repeat: no-repeat;
-  
 }
 
 .CommunityTips .community-tip-list li:hover {
-  transform: scale(1.01); 
+  transform: scale(1.01);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -91,49 +86,42 @@ width: 90%;
   align-items: center;
 }
 
-
-
 .CommunityTips .fa-solid.fa-star {
-  color: #FFD700; /* Gold for solid star */
+  color: #ffd700; /* Gold for solid star */
 }
 
 .CommunityTips .fa-regular.fa-star {
   color: #3f5d71; /* Light gray for regular star */
 }
 
-
-
 .CommunityTips .community-tip-list p {
   margin: 10px 0;
 }
 
-
 .CommunityTips .community-tip-list span {
-  margin-right: 20px; 
+  margin-right: 20px;
 }
-
 
 .CommunityTips .tip-item-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 5px solid rgb(15, 3, 86); 
-  border-bottom: 5px solid rgb(15, 3, 86); ; 
+  border-top: 5px solid rgb(15, 3, 86);
+  border-bottom: 5px solid rgb(15, 3, 86);
   padding: 10px;
-  
 }
 
 .CommunityTips .left-column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 25%
+  width: 25%;
 }
 
 .CommunityTips .right-column {
   display: flex;
   flex-direction: column;
-  margin-left: 50px; 
+  margin-left: 50px;
   width: 75%;
 }
 
@@ -142,10 +130,10 @@ width: 90%;
 } */
 
 .CommunityTips .tip-content {
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
 
-.CommunityTips .tip-content .date{
+.CommunityTips .tip-content .date {
   font-size: small;
 }
 .CommunityTips .tip-actions {
@@ -155,23 +143,20 @@ width: 90%;
 }
 
 .CommunityTips .tip-actions p {
-  margin-left: auto; 
+  margin-left: auto;
 }
 
 .CommunityTips .tip-actions button {
   background-color: #7489be;
   cursor: pointer;
   border-radius: 10px;
-  
 }
-
 
 .CommunityTips .tip-actions button:hover {
   background-color: #235382;
 }
 
 @media only screen and (min-width: 768px) {
-
   .CommunityTips {
     max-width: 800px;
   }

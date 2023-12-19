@@ -51,18 +51,20 @@ const MyCalendar = ({ isMiniView }: Props) => {
   const tasksAsMyEvent: MyEvent[] = [];
 
   if (account) {
-    account.tasks.forEach((task) => {
-      const dateArray = task.deadline.split("-");
-      const newTask = {
-        title: task.name,
-        description: task.content,
-        start: new Date(+dateArray[0], +dateArray[1] - 1, +dateArray[2]),
-        end: new Date(+dateArray[0], +dateArray[1] - 1, +dateArray[2]),
-        uuid: task.uuid,
-      };
+    account.tasks
+      .filter((task) => !task.completed)
+      .forEach((task) => {
+        const dateArray = task.deadline.split("-");
+        const newTask = {
+          title: task.name,
+          description: task.content,
+          start: new Date(+dateArray[0], +dateArray[1] - 1, +dateArray[2]),
+          end: new Date(+dateArray[0], +dateArray[1] - 1, +dateArray[2]),
+          uuid: task.uuid,
+        };
 
-      tasksAsMyEvent.push(newTask);
-    });
+        tasksAsMyEvent.push(newTask);
+      });
   }
 
   const submitHandler = (e: FormEvent) => {

@@ -23,3 +23,8 @@ h1 {
 i {
   cursor: pointer;
 }
+
+#root {
+  overflow-x: hidden;
+  position: relative;
+}

@@ -41,6 +41,11 @@
 .Dashboard .mini-calendar {
   background-color: #d9eeef; /* Morning Mist */
   width: 40vw;
+  min-height: 100px;
+}
+
+.Dashboard h3 {
+  text-align: center;
 }
 
 .Dashboard .tasks-tips {

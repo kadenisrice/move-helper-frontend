@@ -98,7 +98,9 @@ const Dashboard = () => {
           <Link to="/tasks">
             <div className="mini-tasks mini-display">
               <h3>Next Tasks:</h3>
-              {account && account.tasks[0] ? (
+              {account &&
+              account.tasks[0] &&
+              account.tasks.some((task) => !task.completed) ? (
                 <ul>
                   {account?.tasks
                     .filter((task) => !task.completed)
@@ -140,7 +142,7 @@ const Dashboard = () => {
                     return (
                       <li key={tip._id}>
                         <p style={{ wordWrap: "break-word" }}>{tip.text}</p>
-                        <p>- {tip.from}</p>
+                        <p style={{ textAlign: "right" }}>‣ {tip.from}</p>
                       </li>
                     );
                   })}
@@ -156,21 +158,25 @@ const Dashboard = () => {
           </Link>
           <Link to="/cost-estimate">
             <div className="mini-cost-estimate mini-display">
-              <h3 style={{ textDecoration: "underline" }}>
-                Estimate Your Move
-              </h3>
-              <p style={{ textAlign: "center" }}>My Boxes {`(LxWxH) (in)`}</p>
-              {account?.boxes.map((box, index) => {
-                //if (index >= 3) return;
-                return (
-                  <li>
-                    <p>Box {index + 1}:</p>
-                    <p style={{ textAlign: "center" }}>
-                      {box.length} x {box.width} x {box.height}
-                    </p>
-                  </li>
-                );
-              })}
+              <h3>Estimate Your Move:</h3>
+              {account?.boxes[0] && (
+                <p style={{ textAlign: "center" }}>My Boxes {`(LxWxH) (in)`}</p>
+              )}
+              {account?.boxes[0] ? (
+                account?.boxes.map((box, index) => {
+                  //if (index >= 3) return;
+                  return (
+                    <li>
+                      <p>Box {index + 1}:</p>
+                      <p style={{ textAlign: "center" }}>
+                        {box.length} x {box.width} x {box.height}
+                      </p>
+                    </li>
+                  );
+                })
+              ) : (
+                <p>Add boxes to get a cost estimate here!</p>
+              )}
             </div>
           </Link>
         </div>
