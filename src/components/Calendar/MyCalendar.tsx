@@ -101,17 +101,35 @@ const MyCalendar = ({ isMiniView }: Props) => {
     setShowAddForm(false);
   };
 
+  const formatDate = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    };
+    return date.toLocaleDateString("en-US", options);
+  };
+
+  const today = new Date();
+  const formattedDate = formatDate(today);
+
   return (
     <div className="Calendar" style={isMiniView ? { marginTop: "0px" } : {}}>
+      {!isMiniView && (
+        <h2 style={{ textAlign: "center", fontSize: "50px" }}>
+          {formattedDate}
+        </h2>
+      )}
       <Calendar
         localizer={localizer}
         events={myEventsList}
         startAccessor="start"
         endAccessor="end"
-        views={["month", "agenda"]}
+        views={!isMiniView ? ["month", "agenda"] : ["month"]}
         onSelectEvent={(e) => setEvent(e)}
         onSelectSlot={handleClickDay}
         selectable
+        toolbar={!isMiniView}
       />
       {event && (
         <div className="eventContainer">
