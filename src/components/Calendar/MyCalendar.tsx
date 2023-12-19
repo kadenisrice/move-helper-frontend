@@ -114,7 +114,10 @@ const MyCalendar = ({ isMiniView }: Props) => {
   const formattedDate = formatDate(today);
 
   return (
-    <div className="Calendar" style={isMiniView ? { marginTop: "0px" } : {}}>
+    <div
+      className="Calendar"
+      style={isMiniView ? { marginTop: "0px", boxSizing: "border-box" } : {}}
+    >
       {!isMiniView && (
         <h2 style={{ textAlign: "center", fontSize: "50px" }}>
           {formattedDate}
@@ -130,7 +133,9 @@ const MyCalendar = ({ isMiniView }: Props) => {
         onSelectSlot={handleClickDay}
         selectable
         toolbar={!isMiniView}
+        className={!isMiniView ? "main-calendar" : "main-calendar-mini"}
       />
+
       {event && (
         <div className="eventContainer">
           <h2>{event.title}</h2>

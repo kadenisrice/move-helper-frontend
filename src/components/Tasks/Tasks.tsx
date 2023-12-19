@@ -142,7 +142,10 @@ const Tasks = () => {
       </ul>
       {showTaskForm && <TaskForm setShowTaskForm={setShowTaskForm} />}
       {!showTaskForm && (
-        <button onClick={() => setShowTaskForm((prev) => !prev)}>
+        <button
+          style={{ margin: "20px" }}
+          onClick={() => setShowTaskForm((prev) => !prev)}
+        >
           Create a new task
         </button>
       )}

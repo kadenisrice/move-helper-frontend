@@ -3,10 +3,11 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 80vw;
+  width: 100%;
   height: fit-content;
   margin: 20px auto;
   font-family: "Arial", sans-serif;
+  box-sizing: border-box;
 }
 
 .SuggestedTasks h2 {
@@ -53,7 +54,9 @@
   border-radius: 8px;
   margin-bottom: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
   transition: box-shadow 0.3s;
+  width: 100%;
 }
 
 .SuggestedTasks li:hover {
@@ -96,4 +99,57 @@
 .SuggestedTasks button:hover {
   background-color: #235382; /* Deep Sea */
   transform: scale(1.05);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .SuggestedTasks h2 {
+    font-size: 22px; /* Slightly larger font size for headings */
+  }
+
+  .SuggestedTasks h3 {
+    display: block;
+    width: 100%;
+  }
+
+  .SuggestedTasks ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .SuggestedTasks li {
+    width: calc(50% - 40px);
+    margin: 10px;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .SuggestedTasks h2 {
+    font-size: 24px; /* Larger font size for headings */
+  }
+
+  .SuggestedTasks h3 {
+    display: block;
+    width: 100%;
+  }
+
+  .SuggestedTasks button {
+    padding: 12px 25px; /* Larger button padding */
+    font-size: 16px; /* Larger font size for buttons */
+  }
+
+  .SuggestedTasks ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .SuggestedTasks li {
+    width: calc(33% - 40px);
+    margin: 10px;
+    height: auto;
+  }
 }

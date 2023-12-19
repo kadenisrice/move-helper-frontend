@@ -22,7 +22,7 @@
 .Tasks .tasks-header {
   display: flex;
   justify-content: space-around;
-  width: 100vw;
+  width: 100%;
   margin-bottom: 25px;
 }
 
@@ -59,17 +59,22 @@
 
 .Tasks ul {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding: 0;
+  width: 100%;
 }
 
 .Tasks li {
   background-color: #d9eeef; /* Morning Mist */
   padding: 15px; /* Increased padding */
   border-radius: 8px; /* Rounded corners */
-  margin-bottom: 20px; /* Increased spacing */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: box-shadow 0.3s; /* Smooth transition for shadow */
-  width: 80vw;
+  margin: auto auto;
+
+  width: 90%;
 }
 
 .Tasks li:hover {
@@ -118,4 +123,19 @@
 .Tasks .completed {
   text-decoration: line-through; /* Cross out completed tasks */
   color: #7489be; /* Evening Tide - to distinguish from active tasks */
+}
+
+@media only screen and (min-width: 768px) {
+  .Tasks ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .Tasks li {
+    width: calc(50% - 100px);
+    margin: 10px;
+    height: auto;
+  }
 }
