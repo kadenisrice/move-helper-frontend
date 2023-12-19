@@ -1,5 +1,5 @@
 .Header {
-  padding: 15px 20px;
+  padding: 10px 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -9,6 +9,7 @@
 
 .Header .header-link {
   display: flex;
+  align-items: center;
 }
 
 .Header a {
@@ -17,20 +18,20 @@
 }
 
 .Header h1 {
-  font-size: 32px;
+  font-size: 20px;
   margin: 0;
 }
 
 .Header img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-left: 15px;
 }
 
 .Header button {
   background-color: #007bff;
   color: white;
-  padding: 8px 15px;
+  padding: 10px 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -45,4 +46,15 @@
   cursor: pointer;
   color: #333;
   font-size: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .Header h1 {
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .Header button {
+    padding: 15px 10px;
+  }
 }
