@@ -48,6 +48,10 @@
   background-color: #7489be; /* Evening Tide */
 }
 
+.Calendar .rbc-toolbar-label {
+  display: none;
+}
+
 /* Event Container Styles */
 .Calendar .eventContainer {
   position: absolute;

@@ -53,7 +53,9 @@ const Dashboard = () => {
     if (account) {
       const today = new Date();
       todaysTasks = account.tasks.filter((task) => {
-        return task.deadline === today.toISOString().slice(0, 10);
+        return (
+          !task.completed && task.deadline === today.toISOString().slice(0, 10)
+        );
       });
     }
     return todaysTasks;
@@ -65,15 +67,17 @@ const Dashboard = () => {
         <div className="todays-date">{formattedDate}</div>
 
         <ul className="todays-task-list">
-          <h2
-            style={{
-              textAlign: "center",
-              textDecoration: "underline",
-              marginBottom: "10px",
-            }}
-          >
-            Today's Tasks
-          </h2>
+          {getTasksForToday()[0] && (
+            <h2
+              style={{
+                textAlign: "center",
+                textDecoration: "underline",
+                marginBottom: "10px",
+              }}
+            >
+              Today's Tasks
+            </h2>
+          )}
           {getTasksForToday().map((task, index) => {
             return (
               <>
@@ -144,12 +148,32 @@ const Dashboard = () => {
             </div>
           </Link>
         </div>
-
-        <Link to="/calendar">
-          <div className="mini-calendar mini-display">
-            <MyCalendar isMiniView={true} />
-          </div>
-        </Link>
+        <div className="flex">
+          <Link to="/calendar">
+            <div className="mini-calendar mini-display">
+              <MyCalendar isMiniView={true} />
+            </div>
+          </Link>
+          <Link to="/cost-estimate">
+            <div className="mini-cost-estimate mini-display">
+              <h3 style={{ textDecoration: "underline" }}>
+                Estimate Your Move
+              </h3>
+              <p style={{ textAlign: "center" }}>My Boxes {`(LxWxH) (in)`}</p>
+              {account?.boxes.map((box, index) => {
+                //if (index >= 3) return;
+                return (
+                  <li>
+                    <p>Box {index + 1}:</p>
+                    <p style={{ textAlign: "center" }}>
+                      {box.length} x {box.width} x {box.height}
+                    </p>
+                  </li>
+                );
+              })}
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );
