@@ -1,8 +1,9 @@
 .BoxSetList {
   overflow: scroll;
-  background-color: #f3d5b5;
+  background-color: white;
   position: absolute;
   padding: 20px 20px;
+  border: 1px solid #80808066;
   border-radius: 25px;
   box-shadow: 0px 3px 20px 6px #0000002e;
   top: 50%;
@@ -18,8 +19,9 @@
 }
 
 .BoxSetList .boxset-card {
-  background-color: #ffedd8;
+  background-color: #0e4d86;
+  color: white;
   margin-bottom: 5px;
-  padding: 5px 5px;
+  padding: 10px 10px;
   border-radius: 10px;
 }

@@ -1,5 +1,5 @@
 .UhaulEstimate {
-  background-color: #f3d5b5;
+  background-color: white;
   padding: 10px 5px;
 }
 
@@ -13,17 +13,18 @@
 
 .UhaulEstimate .miles-input,
 .UhaulEstimate .truck-options {
-  background-color: #ffedd8;
+  background-color: white;
   margin-bottom: 7px;
   padding: 7px 10px;
   border-radius: 20px;
   width: 70%;
   box-shadow: 0px 3px 5px #0000002e;
+  border: 1px solid #80808066;
 }
 
 .UhaulEstimate input,
 .UhaulEstimate select {
-  background-color: #ffedd8;
+  background-color: white;
   width: 50%;
   border: none;
 }
@@ -38,7 +39,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #ffedd8;
+  background-color: rgb(218, 218, 218);
   padding: 5px;
   margin: 5px;
   border: 1px solid black;
@@ -49,10 +50,29 @@
   height: 100px;
 }
 
+.UhaulEstimate .uhaul-info p {
+  background-color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
 .UhaulEstimate .estimate-info {
   text-align: center;
 }
 .UhaulEstimate .remaining-space {
   font-size: 12px;
   font-style: italic;
+}
+
+@media only screen and (min-width: 768px) {
+  .UhaulEstimate .form-rates {
+    display: flex;
+  }
+  .UhaulEstimate .truck-form {
+    flex: 1;
+  }
+  .UhaulEstimate .uhaul-rates {
+    flex: 1;
+  }
 }

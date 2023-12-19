@@ -7,6 +7,7 @@
 
 .CostEstimate {
   margin-top: 25px;
+  height: 100vh;
 }
 
 .CostEstimate button {
@@ -30,7 +31,7 @@
 }
 
 .CostEstimate .cost-estimate-tabs button {
-  background-color: #f3d5b5;
+  background-color: white;
   margin-right: 7px;
   padding: 7px 10px;
   border-radius: 10px 10px 0 0;
@@ -46,7 +47,7 @@
 .CostEstimate .form-boxlist {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100%;
 }
 
 .CostEstimate .rates-lists {
