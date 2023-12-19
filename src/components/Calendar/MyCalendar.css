@@ -1,10 +1,19 @@
 .Calendar {
-  height: 65vh;
-  width: 90vw;
+  height: 70vh;
+  width: 85vw;
   color: #235382; /* Deep Sea */
   background-color: #d9eeef; /* Morning Mist */
   margin: auto;
   margin-top: 75px;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.Calendar .main-calendar {
+  height: 90%;
+}
+
+.Calendar .main-calendar-mini {
 }
 
 .Calendar .rbc-toolbar {
@@ -129,4 +138,11 @@
 
 .addFormContainer button:hover {
   background-color: #235382; /* Deep Sea */
+}
+
+@media only screen and (min-width: 768px) {
+  .Calendar {
+    margin: 40px auto;
+    width: 60vw;
+  }
 }
