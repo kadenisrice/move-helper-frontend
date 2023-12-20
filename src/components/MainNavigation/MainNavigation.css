@@ -2,8 +2,8 @@
   position: absolute;
   background: linear-gradient(
     to left,
-    rgb(161, 110, 47) 0%,
-    rgb(224, 167, 74) 100%
+    rgb(211 255 240) 0%,
+    rgb(207 247 255) 100%
   );
   right: -35%;
   top: 0;
@@ -38,7 +38,7 @@
   width: max-content;
   padding: 5px 0;
   width: 100%;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .MainNavigation a:hover {

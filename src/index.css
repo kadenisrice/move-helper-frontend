@@ -16,8 +16,8 @@ li {
 body {
   background: linear-gradient(
     to bottom,
-    rgb(255, 221, 179) 0%,
-    rgb(255, 200, 112) 100%
+    rgb(209, 246, 255) 0%,
+    rgb(202, 255, 222) 100%
   );
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
