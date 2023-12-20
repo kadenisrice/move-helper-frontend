@@ -112,7 +112,6 @@
   }
 
   .SuggestedTasks h3 {
-    display: block;
     width: 100%;
   }
 
@@ -128,6 +127,15 @@
     margin: 10px;
     height: auto;
   }
+  .SuggestedTasks h3 span {
+    transition: 0.3s ease;
+    transform: rotate(0deg);
+  }
+
+  .SuggestedTasks .flipUpsideDown {
+    transform: rotate(180deg);
+    display: inline-block;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -136,7 +144,6 @@
   }
 
   .SuggestedTasks h3 {
-    display: block;
     width: 100%;
   }
 
@@ -156,5 +163,14 @@
     width: calc(33% - 40px);
     margin: 10px;
     height: auto;
+  }
+
+  .SuggestedTasks h3 span {
+    transition: transform 0.3s;
+  }
+
+  .SuggestedTasks .flipUpsideDown {
+    transform: rotate(180deg);
+    display: inline-block;
   }
 }

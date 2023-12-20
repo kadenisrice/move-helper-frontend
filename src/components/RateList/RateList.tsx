@@ -76,7 +76,7 @@ const RateList = () => {
       <div className="rates-lists">
         {
           <ul className="ups-list rate-list">
-            {costEstimate?.rates.some((rate) => rate.provider === "USPS") ? (
+            {costEstimate?.rates.some((rate) => rate.provider === "UPS") ? (
               costEstimate?.rates
                 .filter((rate) => {
                   return rate.provider === "UPS";

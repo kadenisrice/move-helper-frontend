@@ -26,6 +26,11 @@
   max-width: 60%;
 }
 
+.Dashboard .todays-task-li {
+  margin-bottom: 10px;
+  width: 60vw;
+}
+
 .Dashboard .flex {
   display: flex;
   justify-content: center;
@@ -77,4 +82,7 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .Dashboard .todays-task-li {
+    width: 30vw;
+  }
 }

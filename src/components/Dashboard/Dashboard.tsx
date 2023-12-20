@@ -78,15 +78,11 @@ const Dashboard = () => {
               Today's Tasks
             </h2>
           )}
-          {getTasksForToday().map((task, index) => {
+          {getTasksForToday().map((task) => {
             return (
               <>
-                <li style={{ marginBottom: "10px" }} key={task.uuid}>
-                  <p>
-                    {index + 1}
-                    {") "}
-                    {task.name}:
-                  </p>
+                <li className="todays-task-li" key={task.uuid}>
+                  <p style={{ textDecoration: "underline" }}>{task.name}</p>
                   <p>{task.content}</p>
                 </li>
               </>
