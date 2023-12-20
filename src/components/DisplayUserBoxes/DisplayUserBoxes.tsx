@@ -117,7 +117,7 @@ const DisplayUserBoxes = () => {
               <div className="plus-minus-button">
                 <button
                   onClick={() => clickHandler(box.uuid, -1)}
-                  disabled={box.quantity === 1}
+                  disabled={box.quantity >= 1}
                 >
                   -
                 </button>

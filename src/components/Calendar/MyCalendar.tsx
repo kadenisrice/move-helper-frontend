@@ -6,7 +6,7 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import { getAccountById, updateTask } from "../../services/accountApi";
 import { Task } from "../../models/Account";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TaskForm from "../TaskForm/TaskForm";
 
 const localizer = momentLocalizer(moment);
@@ -124,6 +124,11 @@ const MyCalendar = ({ isMiniView }: Props) => {
         <h2 style={{ textAlign: "center", fontSize: "50px" }}>
           {formattedDate}
         </h2>
+      )}
+      {!isMiniView && (
+        <Link to="/tasks">
+          <button id="view-in-tasks">View in Tasks</button>
+        </Link>
       )}
       <Calendar
         localizer={localizer}

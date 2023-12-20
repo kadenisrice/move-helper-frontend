@@ -2,7 +2,7 @@
   height: 70vh;
   width: 85vw;
   color: #235382; /* Deep Sea */
-  background-color: #d9eeef; /* Morning Mist */
+  background-color: rgb(161, 198, 219); /* Morning Mist */
   margin: auto;
   margin-top: 75px;
   border-radius: 15px;
@@ -11,6 +11,35 @@
 
 .Calendar .main-calendar {
   height: 90%;
+}
+
+#view-in-tasks {
+  background-color: #7489be; /* Evening Tide */
+  color: #ffffff; /* Pure Light */
+  padding: 10px 20px; /* Adjusted padding for better proportion */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s, transform 0.2s; /* Added transform transition */
+  font-weight: 500; /* Slightly bolder */
+  width: fit-content;
+}
+
+#view-in-tasks:hover {
+  background-color: #235382; /* Deep Sea */
+  transform: scale(1.02); /* Slight scale increase on hover */
+}
+
+#view-in-tasks a {
+  color: white;
+  text-decoration: none;
+}
+
+#view-in-tasks {
+  border: none;
+  position: absolute;
+  top: 75px;
 }
 
 .not-mini {
@@ -22,7 +51,7 @@
   flex-direction: column;
   align-items: flex-start;
   background-color: #d8e3fe; /* Twilight */
-  color: #7489be; /* Evening Tide  */
+  color: rgb(68, 68, 68); /* Evening Tide  */
   padding: 10px;
   border-radius: 8px;
 }
@@ -45,8 +74,8 @@
 }
 
 .Calendar .rbc-toolbar button {
-  color: #235382; /* Deep Sea */
-  background-color: #b5dafe; /* DayDream */
+  color: black; /* Deep Sea */
+  background-color: white; /* DayDream */
   border: none;
   margin: 0 5px;
   padding: 8px 12px;
@@ -66,6 +95,7 @@
   display: block;
   width: 100%;
   text-align: center;
+  margin: 5px 0;
 }
 
 /* Event Container Styles */
@@ -163,5 +193,9 @@
     margin: 40px auto;
     width: 60vw;
     border: 6px outset #b5dafe;
+  }
+
+  #view-in-tasks {
+    left: 20px;
   }
 }

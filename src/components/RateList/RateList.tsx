@@ -96,26 +96,29 @@ const RateList = () => {
             )}
           </ul>
         }
-        {costEstimate?.rates.some((rate) => rate.provider === "USPS") ? (
-          <ul className="ups-list rate-list">
-            {costEstimate?.rates
-              .filter((rate) => {
-                return rate.provider === "USPS";
-              })
-              .sort((a, b) => +a.amount - +b.amount)
-              .map((rate) => (
-                <li className="rate-item" key={rate.object_id}>
-                  <p>{rate.provider}</p>
-                  <p>${rate.amount}</p>
-                  <p>{rate.duration_terms}</p>
-                </li>
-              ))}
-          </ul>
-        ) : (
-          <p style={{ width: "50%", textAlign: "center" }}>
-            No rates from USPS
-          </p>
-        )}
+        <ul className="usps-list rate-list">
+          {" "}
+          {costEstimate?.rates.some((rate) => rate.provider === "USPS") ? (
+            <>
+              {costEstimate?.rates
+                .filter((rate) => {
+                  return rate.provider === "USPS";
+                })
+                .sort((a, b) => +a.amount - +b.amount)
+                .map((rate) => (
+                  <li className="rate-item" key={rate.object_id}>
+                    <p>{rate.provider}</p>
+                    <p>${rate.amount}</p>
+                    <p>{rate.duration_terms}</p>
+                  </li>
+                ))}
+            </>
+          ) : (
+            <p style={{ width: "50%", textAlign: "center" }}>
+              No rates from USPS
+            </p>
+          )}
+        </ul>
       </div>
     </div>
   );

@@ -112,9 +112,24 @@ const CommunityTips = () => {
         </>
       )}
       <div className="filter">
-        <button onClick={() => setFilter("mostLiked")}>Most Liked</button>
-        <button onClick={() => setFilter("desc")}>Newest</button>
-        <button onClick={() => setFilter("asc")}>Oldest</button>
+        <button
+          className={filter === "mostLiked" ? "isActive" : ""}
+          onClick={() => setFilter("mostLiked")}
+        >
+          Most Liked
+        </button>
+        <button
+          className={filter === "desc" ? "isActive" : ""}
+          onClick={() => setFilter("desc")}
+        >
+          Newest
+        </button>
+        <button
+          className={filter === "asc" ? "isActive" : ""}
+          onClick={() => setFilter("asc")}
+        >
+          Oldest
+        </button>
       </div>
 
       <div className="community-tip-list">
