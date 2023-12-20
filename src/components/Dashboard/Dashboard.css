@@ -5,6 +5,12 @@
   color: #235382; /* Deep Sea */
 }
 
+.Dashboard li {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .Dashboard ul {
   display: flex;
   flex-direction: column;
@@ -26,7 +32,6 @@
 }
 
 .Dashboard .dashboard-display {
-  background-color: whitesmoke; /* Gentle Whisper */
   width: 100%;
   height: fit-content;
   padding-bottom: 20px;

@@ -10,7 +10,11 @@ li {
 }
 
 body {
-  background-color: whitesmoke;
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 221, 179) 0%,
+    rgb(255, 200, 112) 100%
+  );
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
