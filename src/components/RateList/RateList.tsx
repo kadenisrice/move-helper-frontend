@@ -57,39 +57,65 @@ const RateList = () => {
   }, [account]);
   console.log(costEstimate);
 
+  const getTotalNumberOfBoxes = () => {
+    let total = 0;
+    account?.boxes.forEach((box) => {
+      total += box.quantity;
+    });
+    return total;
+  };
+
   return (
     <div className="RateList">
       <h2>Here are shipping rates for your current box sets!</h2>
-      {!costEstimate?.rates[0] && <p>None Available</p>}
+      <p
+        style={{ textAlign: "center" }}
+      >{`Showing rates for ${getTotalNumberOfBoxes()} boxes from ${
+        account?.fromAddress.city
+      } to ${account?.toAddress.city}`}</p>
       <div className="rates-lists">
-        <ul className="ups-list rate-list">
-          {costEstimate?.rates
-            .filter((rate) => {
-              return rate.provider === "UPS";
-            })
-            .sort((a, b) => +a.amount - +b.amount)
-            .map((rate) => (
-              <li className="rate-item" key={rate.object_id}>
-                <p>{rate.provider}</p>
-                <p>${rate.amount}</p>
-                <p>{rate.duration_terms}</p>
-              </li>
-            ))}
-        </ul>
-        <ul className="ups-list rate-list">
-          {costEstimate?.rates
-            .filter((rate) => {
-              return rate.provider === "USPS";
-            })
-            .sort((a, b) => +a.amount - +b.amount)
-            .map((rate) => (
-              <li className="rate-item" key={rate.object_id}>
-                <p>{rate.provider}</p>
-                <p>${rate.amount}</p>
-                <p>{rate.duration_terms}</p>
-              </li>
-            ))}
-        </ul>
+        {
+          <ul className="ups-list rate-list">
+            {costEstimate?.rates.some((rate) => rate.provider === "USPS") ? (
+              costEstimate?.rates
+                .filter((rate) => {
+                  return rate.provider === "UPS";
+                })
+                .sort((a, b) => +a.amount - +b.amount)
+                .map((rate) => (
+                  <li className="rate-item" key={rate.object_id}>
+                    <p>{rate.provider}</p>
+                    <p>${rate.amount}</p>
+                    <p>{rate.duration_terms}</p>
+                  </li>
+                ))
+            ) : (
+              <p style={{ width: "50%", textAlign: "center" }}>
+                No rates from UPS
+              </p>
+            )}
+          </ul>
+        }
+        {costEstimate?.rates.some((rate) => rate.provider === "USPS") ? (
+          <ul className="ups-list rate-list">
+            {costEstimate?.rates
+              .filter((rate) => {
+                return rate.provider === "USPS";
+              })
+              .sort((a, b) => +a.amount - +b.amount)
+              .map((rate) => (
+                <li className="rate-item" key={rate.object_id}>
+                  <p>{rate.provider}</p>
+                  <p>${rate.amount}</p>
+                  <p>{rate.duration_terms}</p>
+                </li>
+              ))}
+          </ul>
+        ) : (
+          <p style={{ width: "50%", textAlign: "center" }}>
+            No rates from USPS
+          </p>
+        )}
       </div>
     </div>
   );
