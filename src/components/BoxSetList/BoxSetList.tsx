@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { MouseEvent, useContext } from "react";
 import "./BoxSetList.css";
 import AuthContext from "../../context/AuthContext";
 import BoxSet from "../../models/BoxSet";
@@ -18,6 +18,24 @@ const BoxSetList = ({ setShowBoxSetList }: Props) => {
       const updatedAccount: Account = {
         ...account,
         boxes: boxset.boxes,
+      };
+
+      updateAccountById(account._id!, updatedAccount).then((res) => {
+        if (res) {
+          setAccount(res);
+        }
+      });
+    }
+  };
+
+  const deleteHandler = (event: MouseEvent, boxset: BoxSet) => {
+    event.stopPropagation();
+
+    if (account && user) {
+      const temp = account.boxSets.filter((set) => set.uuid !== boxset.uuid);
+      const updatedAccount: Account = {
+        ...account,
+        boxSets: temp,
       };
 
       updateAccountById(account._id!, updatedAccount).then((res) => {
@@ -65,7 +83,14 @@ const BoxSetList = ({ setShowBoxSetList }: Props) => {
                 setShowBoxSetList(false);
               }}
             >
-              <p>{boxset.name}</p>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p>{boxset.name}</p>
+                <i
+                  className="fa-regular fa-trash-can"
+                  onClick={(e) => deleteHandler(e, boxset)}
+                ></i>
+              </div>
+
               {boxset.maxSquareFeet && boxset.maxSquareFeet > 0 ? (
                 <p>{boxset.maxSquareFeet} square feet</p>
               ) : (
