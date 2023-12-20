@@ -1,6 +1,10 @@
 .MainNavigation {
   position: absolute;
-  background-color: #f8f9fa;
+  background: linear-gradient(
+    to left,
+    rgb(161, 110, 47) 0%,
+    rgb(224, 167, 74) 100%
+  );
   right: -35%;
   top: 0;
   height: 100vh;
@@ -34,6 +38,7 @@
   width: max-content;
   padding: 5px 0;
   width: 100%;
+  color: white;
 }
 
 .MainNavigation a:hover {

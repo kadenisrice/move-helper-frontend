@@ -1,5 +1,4 @@
 .Tasks {
-  background-color: whitesmoke; /* Gentle Whisper */
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 800px;
@@ -104,12 +103,12 @@
 .Tasks .list-content h4 {
   text-align: center;
   font-size: 17px;
-  color: #555;
+  color: #2c2c2c;
 }
 
 .Tasks .list-content p {
   margin: 5px 10px;
-  color: #555; /* Darker text for better readability */
+  color: #2c2c2c;
   font-size: 16px; /* Adjusted for consistent text sizing */
 }
 

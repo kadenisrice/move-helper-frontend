@@ -70,8 +70,8 @@
 
 .SuggestedTasks p {
   margin: 5px 0;
-  color: #555;
-  font-size: 14px;
+  color: #2c2c2c;
+  font-size: 15px;
 }
 
 .SuggestedTasks .deadline-input {

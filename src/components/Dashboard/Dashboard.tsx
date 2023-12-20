@@ -142,7 +142,12 @@ const Dashboard = () => {
                     return (
                       <li key={tip._id}>
                         <p style={{ wordWrap: "break-word" }}>{tip.text}</p>
-                        <p style={{ textAlign: "right" }}>‣ {tip.from}</p>
+                        <p style={{ textAlign: "right" }}>
+                          ‣{" "}
+                          {tip.fromNickname === ""
+                            ? tip.from
+                            : tip.fromNickname}
+                        </p>
                       </li>
                     );
                   })}
@@ -162,21 +167,23 @@ const Dashboard = () => {
               {account?.boxes[0] && (
                 <p style={{ textAlign: "center" }}>My Boxes {`(LxWxH) (in)`}</p>
               )}
-              {account?.boxes[0] ? (
-                account?.boxes.map((box, index) => {
-                  //if (index >= 3) return;
-                  return (
-                    <li>
-                      <p>Box {index + 1}:</p>
-                      <p style={{ textAlign: "center" }}>
-                        {box.length} x {box.width} x {box.height}
-                      </p>
-                    </li>
-                  );
-                })
-              ) : (
-                <p>Add boxes to get a cost estimate here!</p>
-              )}
+              <ul>
+                {account?.boxes[0] ? (
+                  account?.boxes.map((box, index) => {
+                    //if (index >= 3) return;
+                    return (
+                      <li>
+                        <p>Box {index + 1}:</p>
+                        <p style={{ textAlign: "center" }}>
+                          {box.length} x {box.width} x {box.height}
+                        </p>
+                      </li>
+                    );
+                  })
+                ) : (
+                  <p>Add boxes to get a cost estimate here!</p>
+                )}
+              </ul>
             </div>
           </Link>
         </div>

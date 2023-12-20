@@ -58,8 +58,14 @@
   background-color: #7489be; /* Evening Tide */
 }
 
-.Calendar .rbc-toolbar-label {
+.rbc-toolbar-label {
   display: none;
+}
+
+.not-mini .rbc-toolbar-label {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 /* Event Container Styles */
