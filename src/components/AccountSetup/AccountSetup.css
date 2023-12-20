@@ -2,21 +2,49 @@
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  margin: 20px;
+  margin: 20px 0;
   gap: 20px;
 }
 
 /* below is the landing page photos*/
 /* trying to get the banner of photos to slowly move across the page repeatedly*/
 
-.AccountSetup .landing-page .stock-photos {
+/* .AccountSetup .landing-page .stock-photos {
   display: flex;
+} */
+
+/* landing poage stuff */
+.AccountSetup .landing-page h2 {
+  text-align: center;
+}
+.AccountSetup .landing-page p {
+  text-align: center;
 }
 
-.AccountSetup .landing-page .stock-photos img {
-  max-width: 300px;
-  max-height: 150px;
-  margin-right: 10px;
+/* carousel stuff */
+
+.AccountSetup .landing-page .stock-photos {
+  margin-top: 20px;
+}
+
+.slick-track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-slider.slick-initialized {
+  width: 100vw;
+
+  overflow: hidden;
+}
+
+.AccountSetup .landing-page img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 @media only screen and (min-width: 768px) {

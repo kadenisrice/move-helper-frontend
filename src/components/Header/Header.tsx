@@ -26,6 +26,7 @@ const Header = () => {
           className="fa-solid fa-bars"
         ></i>
       )}
+
       <MainNavigation
         showMainNav={showMainNav}
         setShowMainNav={setShowMainNav}

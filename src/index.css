@@ -9,6 +9,10 @@ li {
   padding: 0;
 }
 
+#root {
+  height: 100vh;
+}
+
 body {
   background: linear-gradient(
     to bottom,
