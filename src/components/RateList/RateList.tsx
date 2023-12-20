@@ -72,7 +72,9 @@ const RateList = () => {
         style={{ textAlign: "center" }}
       >{`Showing rates for ${getTotalNumberOfBoxes()} boxes from ${
         account?.fromAddress.city
-      } to ${account?.toAddress.city}`}</p>
+      }, ${account?.fromAddress.state} to ${account?.toAddress.city}, ${
+        account?.toAddress.state
+      }`}</p>
       <div className="rates-lists">
         {
           <ul className="ups-list rate-list">
