@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -13,6 +13,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
+        <Route path="*" element={<Navigate to="/" />}></Route>
         <Route path="/" element={<AccountSetup />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/tasks" element={<Tasks />}></Route>

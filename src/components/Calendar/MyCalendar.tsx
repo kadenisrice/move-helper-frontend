@@ -36,7 +36,7 @@ const MyCalendar = ({ isMiniView }: Props) => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (!account || !user) {
+    if (!account || !user || !account.toAddress.state) {
       navigate("/");
     }
   }, [user]);
