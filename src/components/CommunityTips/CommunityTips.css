@@ -5,8 +5,6 @@
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  /* background-image: url("../../assets/route.png");
-  background-repeat: no-repeat; */
 }
 
 .CommunityTips h2 {
@@ -105,8 +103,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 5px solid rgb(15, 3, 86);
-  border-bottom: 5px solid rgb(15, 3, 86);
+  border-top: 5px solid rgb(15, 1, 87);
+  border-bottom: 5px solid rgb(15, 1, 87);
   padding: 10px;
 }
 
@@ -151,8 +149,21 @@
   border-radius: 10px;
 }
 
-.CommunityTips .tip-actions button:hover {
+.CommunityTips button {
+  background-color: #7f92c4;
+  cursor: pointer;
+  border: #333;
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+
+.CommunityTips button:hover {
   background-color: #235382;
+}
+
+.CommunityTips .filter button {
+  margin-top: 10px;;
+  margin-right: 5px;
 }
 
 @media only screen and (min-width: 768px) {
