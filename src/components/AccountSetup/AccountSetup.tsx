@@ -14,8 +14,17 @@ import movingTruck1 from "../../assets/photo-1600518464441-9154a4dea21b.avif";
 import movingTruck2 from "../../assets/photo-1601656125693-aac12521664f.avif";
 import boxes from "../../assets/photo-1624137527136-66e631bdaa0e.avif";
 import movingTruck3 from "../../assets/moving-photo-5.jpg";
-import movingTruckCartoon from "../../assets/cartoon-moving.avif";
-import manWithBoxes from "../../assets/man-with-boxes.jpg";
+import manTrampleBoxes from "../../assets/man-trampled-boxes.jpg";
+import manWomanBox from "../../assets/man-woman-box.jpg";
+import manWomanCar from "../../assets/man-woman-car.jpg";
+import womanSurroundedBoxes from "../../assets/woman-surrounded-boxes.jpg";
+import womanTapingBox from "../../assets/woman-taping-box.jpg";
+
+import box1 from "../../assets/box-1.jpg";
+import box2 from "../../assets/box-2.jpg";
+import box3 from "../../assets/box-3.jpg";
+import box4 from "../../assets/box-4.jpg";
+import box5 from "../../assets/box-5.jpg";
 
 const AccountSetup = () => {
   const { user, account } = useContext(AuthContext);
@@ -111,85 +120,65 @@ const AccountSetup = () => {
 
           <Slider className="stock-photos-mid" {...settingsMid}>
             <div>
-              <img src={dogInABox} alt="dog in a box" />
+              <img src={manTrampleBoxes} alt="dog in a box" />
             </div>
 
             <div>
-              <img src={movingTruck1} alt="moving truck people" />
+              <img src={manWomanBox} alt="moving truck people" />
             </div>
 
             <div>
-              <img src={movingTruckCartoon} alt="boxes" />
+              <img src={womanSurroundedBoxes} alt="boxes" />
             </div>
 
             <div>
-              <img src={movingTruck3} alt="boxes" />
+              <img src={womanTapingBox} alt="boxes" />
             </div>
 
             <div>
-              <img src={movingTruck2} alt="friends with moving truck" />
+              <img src={manWomanCar} alt="friends with moving truck" />
             </div>
 
             <div>
-              <img src={dogInABox} alt="dog in a box" />
+              <img src={manTrampleBoxes} alt="dog in a box" />
             </div>
 
             <div>
-              <img src={movingTruck1} alt="moving truck people" />
+              <img src={manWomanBox} alt="moving truck people" />
             </div>
 
             <div>
-              <img src={movingTruck2} alt="friends with moving truck" />
+              <img src={womanSurroundedBoxes} alt="boxes" />
             </div>
 
             <div>
-              <img src={movingTruckCartoon} alt="boxes" />
+              <img src={womanTapingBox} alt="boxes" />
             </div>
 
             <div>
-              <img src={movingTruck3} alt="boxes" />
+              <img src={manWomanCar} alt="friends with moving truck" />
             </div>
           </Slider>
 
           <Slider className="stock-photos-low" {...settings1}>
             <div>
-              <img src={dogInABox} alt="dog in a box" />
+              <img src={box1} alt="dog in a box" />
             </div>
 
             <div>
-              <img src={movingTruck1} alt="moving truck people" />
+              <img src={box2} alt="moving truck people" />
             </div>
 
             <div>
-              <img src={manWithBoxes} alt="friends with moving truck" />
+              <img src={box3} alt="friends with moving truck" />
             </div>
 
             <div>
-              <img src={boxes} alt="boxes" />
+              <img src={box4} alt="boxes" />
             </div>
 
             <div>
-              <img src={movingTruck3} alt="boxes" />
-            </div>
-
-            <div>
-              <img src={dogInABox} alt="dog in a box" />
-            </div>
-
-            <div>
-              <img src={movingTruck1} alt="moving truck people" />
-            </div>
-
-            <div>
-              <img src={manWithBoxes} alt="friends with moving truck" />
-            </div>
-
-            <div>
-              <img src={boxes} alt="boxes" />
-            </div>
-
-            <div>
-              <img src={movingTruck3} alt="boxes" />
+              <img src={box5} alt="boxes" />
             </div>
           </Slider>
         </div>
