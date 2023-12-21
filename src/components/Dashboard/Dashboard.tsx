@@ -168,7 +168,7 @@ const Dashboard = () => {
                   account?.boxes.map((box, index) => {
                     //if (index >= 3) return;
                     return (
-                      <li>
+                      <li key={box.uuid}>
                         <p>Box {index + 1}:</p>
                         <p style={{ textAlign: "center" }}>
                           {box.length} x {box.width} x {box.height}

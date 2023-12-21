@@ -10,11 +10,14 @@ import DisplayUserBoxes from "../DisplayUserBoxes/DisplayUserBoxes";
 import UhaulEstimate from "../UhaulEstimate/UhaulEstimate";
 import { useNavigate } from "react-router-dom";
 import RateList from "../RateList/RateList";
+import InfoPopUp from "../InfoPopUp/InfoPopUp";
 
 const CostEstimate = () => {
   const { account, user } = useContext(AuthContext);
 
   const [selectedTab, setSelectedTab] = useState(0);
+
+  const [displayInfo, setDisplayInfo] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -22,6 +25,37 @@ const CostEstimate = () => {
       navigate("/");
     }
   }, [user]);
+
+  const getInfoBasedOnSelectedTab = (): string[] => {
+    if (selectedTab === 1) {
+      return [
+        "Get real-time shipping cost estimates from major carriers.",
+        "Costs are calculated based on box dimensions, weight, and shipping destinations.",
+        "Compare rates across different carriers like USPS and UPS",
+        "Estimates on the most cost-effective or fastest shipping option for your needs.",
+      ];
+    } else if (selectedTab === 2) {
+      return [
+        "Calculate the estimated cost of renting a U-Haul for your move.",
+        "Enter the size of the U-Haul truck you're considering and your travel distance.",
+        "Estimate includes rental fees and estimated fuel costs per mile.",
+        "Compare different truck sizes to find the most economical option.",
+        "We'll also check if your boxes fit in the U-Haul, ensuring enough space for easy packing.",
+      ];
+    } else if (selectedTab === 3) {
+      return [
+        "Update shipping and destination addresses to get accurate cost estimates.",
+        "Addresses are essential for calculating precise shipping.",
+        "Ensure your address details are current for the most accurate estimates.",
+      ];
+    } else {
+      return [
+        "Define each box by its length, width, height, and weight.",
+        " Specify the number of boxes of each type you anticipate having.",
+        " As you add boxes, they will appear below, allowing you to add as many or as few as you need.",
+      ];
+    }
+  };
 
   return (
     <div className="CostEstimate">
@@ -62,6 +96,12 @@ const CostEstimate = () => {
         >
           Edit Address
         </button>
+        <div
+          onClick={() => setDisplayInfo((prev) => !prev)}
+          className={`info-span ${displayInfo ? "isActive" : ""}`}
+        >
+          ?{displayInfo && <InfoPopUp info={getInfoBasedOnSelectedTab()} />}
+        </div>
       </div>
 
       <div className="tab-components">

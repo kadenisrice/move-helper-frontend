@@ -75,6 +75,7 @@ const RateList = () => {
       }, ${account?.fromAddress.state} to ${account?.toAddress.city}, ${
         account?.toAddress.state
       }`}</p>
+      {!costEstimate && <p>Searching ...</p>}
       <div className="rates-lists">
         {
           <ul className="ups-list rate-list">

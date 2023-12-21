@@ -51,7 +51,7 @@ const UhaulEstimate = () => {
 
   const calculateBoxFitAndRemainingSpace = (uhaul: UHaul, boxes: Box[]) => {
     let totalBoxVolume = 0.0;
-    const marginError = 1.25; // 25% margin
+    const marginError = 0.75; // 25% margin
 
     boxes.forEach((box) => {
       totalBoxVolume +=
@@ -59,15 +59,15 @@ const UhaulEstimate = () => {
         ((+box.length / 12) * (+box.width / 12) * (+box.height / 12));
     });
 
-    totalBoxVolume *= marginError;
+    const adjustedUhaulVolume = uhaul.volume * marginError;
 
-    if (totalBoxVolume <= uhaul.volume) {
-      const remainingSpace = uhaul.volume - totalBoxVolume;
+    if (totalBoxVolume <= adjustedUhaulVolume) {
+      const remainingSpace = adjustedUhaulVolume - totalBoxVolume;
       return `Your boxes fit. Remaining space in U-Haul: ${Math.round(
         remainingSpace
       )} cubic feet.`;
     } else {
-      const additionalSpaceNeeded = totalBoxVolume - uhaul.volume;
+      const additionalSpaceNeeded = totalBoxVolume - adjustedUhaulVolume;
       return `Your boxes do not fit. Additional space needed: ${Math.round(
         additionalSpaceNeeded
       )} cubic feet.`;

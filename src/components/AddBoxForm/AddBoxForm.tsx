@@ -4,6 +4,7 @@ import AuthContext from "../../context/AuthContext";
 import Account from "../../models/Account";
 import { updateAccountById } from "../../services/accountApi";
 import { v4 as uuidv4 } from "uuid";
+import InfoPopUp from "../InfoPopUp/InfoPopUp";
 
 const AddBoxForm = () => {
   const [length, setLength] = useState("");
@@ -51,7 +52,7 @@ const AddBoxForm = () => {
 
   return (
     <form className="AddBoxForm" onSubmit={(e) => submitHandler(e)}>
-      <h2>Add a box to your list!</h2>
+      <h2 className="header-h2">Add a box to your current box set! </h2>
       <div className="add-box-input">
         <label htmlFor="length">Length:</label>
         <input

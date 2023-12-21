@@ -1,0 +1,24 @@
+.InfoPopUp .info-ul {
+  position: absolute;
+  z-index: 50;
+  font-size: 1rem;
+  width: 30vw;
+  background: linear-gradient(
+    to top,
+    rgb(209, 246, 255) 0%,
+    rgb(184, 231, 202) 100%
+  );
+  list-style: circle;
+  padding: 15px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  left: 0;
+  cursor: default;
+}
+
+.InfoPopUp li {
+  color: black;
+  font-weight: 400;
+}

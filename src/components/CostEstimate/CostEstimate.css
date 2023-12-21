@@ -57,3 +57,22 @@
 .CostEstimate .rates-lists {
   display: flex;
 }
+
+.CostEstimate .info-span {
+  font-size: 1.2rem;
+  color: rgb(167, 73, 73);
+  cursor: pointer;
+  position: relative;
+  bottom: 15px;
+  left: 10px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.CostEstimate .isActive {
+  color: red;
+}
+
+.CostEstimate .info-span:hover {
+  color: red;
+}
