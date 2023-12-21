@@ -58,3 +58,10 @@
 .MainNavigation .fa-xmark:hover {
   transform: rotate(180deg);
 }
+
+@media only screen and (min-width: 768px) {
+  .MainNavigation {
+    width: 20%;
+    transition: all 1s ease-in-out;
+  }
+}
