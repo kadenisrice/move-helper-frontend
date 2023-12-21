@@ -14,11 +14,25 @@
   flex-direction: column;
   gap: 10px;
   border-radius: 10px;
-  left: 0;
+  right: 0;
   cursor: default;
 }
 
 .InfoPopUp li {
   color: black;
   font-weight: 400;
+}
+
+@media only screen and (min-width: 475px) {
+  .InfoPopUp .info-ul {
+    transform: translateX(-50%);
+    left: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .InfoPopUp .info-ul {
+    transform: translateX(0);
+    left: 0;
+  }
 }
