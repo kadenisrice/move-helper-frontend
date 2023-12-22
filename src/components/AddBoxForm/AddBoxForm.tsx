@@ -4,7 +4,6 @@ import AuthContext from "../../context/AuthContext";
 import Account from "../../models/Account";
 import { updateAccountById } from "../../services/accountApi";
 import { v4 as uuidv4 } from "uuid";
-import InfoPopUp from "../InfoPopUp/InfoPopUp";
 
 const AddBoxForm = () => {
   const [length, setLength] = useState("");
